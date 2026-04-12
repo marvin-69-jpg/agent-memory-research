@@ -46,3 +46,11 @@
 
 - Created: tools/memory-lint.py (memory 品質 linter)
 - Updated: wiki/sleep-time-compute.md (加 Implementation section，記錄 Phase 1 實作)
+
+## [2026-04-12] impl | memory CLI — 統一入口
+
+- Created: tools/memory.py (統一 CLI，subcommands: lint / consolidate / improve / stats)
+- Created: ~/bin/memory (shell wrapper)
+- Deleted: tools/memory-lint.py (功能整合進 memory.py)
+- Updated: CLAUDE.md (Sleep-Time Self-Improvement section + 專案結構)
+- Updated: auto-memory feedback_session_selfimprove.md (指向 `memory improve`)
