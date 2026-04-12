@@ -46,3 +46,11 @@
 
 - Created: tools/memory-lint.py (memory 品質 linter)
 - Updated: wiki/sleep-time-compute.md (加 Implementation section，記錄 Phase 1 實作)
+
+## [2026-04-12] impl | Sleep-time compute Phase 2: consolidation + self-improvement
+
+- Created: tools/memory-consolidate.py (語意層分析：重複偵測、promotion 候選、staleness)
+- Created: tools/memory-selfimprove.py (整合 lint+consolidate，session 啟動時跑)
+- Updated: wiki/sleep-time-compute.md (Phase 2 Implementation 記錄)
+- Updated: CLAUDE.md (新增 Sleep-Time Self-Improvement section)
+- Created: auto-memory feedback_session_selfimprove.md (讓所有 session 知道要跑 scan)

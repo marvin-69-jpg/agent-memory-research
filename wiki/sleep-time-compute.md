@@ -42,11 +42,35 @@ Sleep-time compute 最簡單的起步：定期 lint 記憶品質。
 - **跑法**：`uv run python3 tools/memory-lint.py [--memory-dir PATH]`
 - **觀察**：首次跑在 22 個記憶上全 pass，表示之前的寫入品質不錯。下一步是排 cron 定期跑，或在 entity-detection 收尾時自動跑。
 
+### memory-consolidate.py + memory-selfimprove.py（Phase 2 — 2026-04-12）
+
+Phase 1 的 lint 只檢查格式。Phase 2 加入**語意層分析**：
+
+- **`tools/memory-consolidate.py`** — 深度分析，找出：
+  - 近似重複（description/body 相似度 > 60%）→ 建議合併
+  - feedback 主題群聚（同 topic 2+ 條且 CLAUDE.md 沒涵蓋）→ 建議升級
+  - 過時 project 記憶 → 建議 review/刪除
+  - 缺失的 cross-reference → 建議補連結
+- **`tools/memory-selfimprove.py`** — 整合 lint + consolidate 成一個簡潔報告，設計給 session 啟動時跑
+  - 輸出分 FIX（當場修）/ MERGE / REVIEW / PROMOTE / NOTE
+  - 附 health score（0-100）
+
+**關鍵決策**：不做自動修改,只輸出報告讓 agent 判斷。原因：
+- 合併記憶需要理解語意,script 只能找候選
+- promote feedback 到 CLAUDE.md 需要判斷是否真的穩定
+- 刪除過時記憶需要確認是否真的不再需要
+
+**觸發方式**：寫進 CLAUDE.md + auto-memory,每個新 session 開始時自動跑。不是真的 cron,但效果一樣 — 每次對話記憶系統都比上次好。
+
+**首次跑結果**（22 memories）：
+- 1 個 PROMOTE：pepe topic（2 feedbacks）可考慮升級
+- 1 個 NOTE：缺 user 類型記憶
+- Health: 90/100
+
 ### 預計的後續 Phase
 
-- **Phase 2**：memory consolidation — 合併重複記憶、更新過時 project 記憶
-- **Phase 3**：feedback → CLAUDE.md 回流 — 穩定 pattern 升級為正式規則
-- **Phase 4**：cross-link enrichment — 掃記憶之間該互相引用但沒有的
+- **Phase 3**：自動執行 — 對 FIX 類問題直接修,不只是報告
+- **Phase 4**：feedback → CLAUDE.md 回流的自動化 PR
 
 ## Related
 

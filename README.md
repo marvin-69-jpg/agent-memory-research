@@ -110,6 +110,7 @@ tags: [memory, architecture, ...]
 |---------|------|------|------|
 | Brain-First Lookup | GBrain | 已實作 ✅ | 回答前先 grep memory/ 找相關記憶 |
 | Entity Detection | GBrain | 已實作 ✅ | 對話結束前掃一遍漏存的 entity |
+| Sleep-Time Self-Improvement | GBrain + Letta | 已實作 ✅ | session 啟動時跑 lint+consolidation scan |
 | Compiled Truth + Timeline | GBrain | 不需要 | git history 天然就是 timeline |
 
 詳見各 wiki page 的 Implementation section。
