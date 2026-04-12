@@ -1,19 +1,39 @@
 # Agent Memory Research
 
-Agent 記憶機制的研究筆記與文章整理。
+LLM-maintained knowledge base about agent memory systems.
+Inspired by [Andrej Karpathy's LLM Wiki pattern](https://github.com/karpathy/llm-wiki).
 
-## 目錄結構
+## Architecture
 
 ```
-papers/          — 原始文章摘要與筆記
-notes/           — 自由筆記、想法
-topics/          — 按主題整理的知識卡片
+raw/          ← 原始文章全文（immutable，不可改）
+wiki/         ← LLM 維護的 entity pages（知識庫）
+index.md      ← wiki 目錄 + 一句話摘要
+log.md        ← 操作記錄（append-only）
+schema/       ← ingest/query/lint 規則
 ```
 
-## 這是什麼
+- **Raw** = source of truth，LLM 只讀不改
+- **Wiki** = LLM 完全擁有，建立 / 更新 / cross-link / 淘汰過時資訊
+- **Schema** = 人類定義的規則
 
-收集、整理關於 AI agent 記憶系統的文獻與實作筆記，包括但不限於：
-- 記憶架構設計（短期 / 長期 / 工作記憶）
-- 記憶檢索與更新策略
-- 記憶在 multi-agent 系統中的角色
-- 實作案例與 benchmark
+## As Obsidian Vault
+
+1. Clone this repo
+2. Install [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git)
+3. Open the repo as an Obsidian vault
+4. Set auto-pull interval
+5. Browse wiki pages, explore graph view, search with `[[wiki-links]]`
+
+## Topics Covered
+
+- Agent memory 架構（短期 / 長期 / 工作記憶）
+- Agent harness 與 memory 的關係
+- Memory lock-in 與 open memory
+- Context engineering
+- 各家產品比較（Claude Code, Deep Agents, Letta, Codex...）
+
+## Credits
+
+- Pattern: [Andrej Karpathy — LLM Wiki](https://github.com/karpathy/llm-wiki)
+- Maintained by: Claude Code (via [openab](https://github.com/marvin-69-jpg/openab))
