@@ -43,6 +43,7 @@
 ## 注意事項
 
 - **一律用 agent-browser 讀取 URL**，不要用 curl hack 或 WebFetch
+- **arxiv 論文用 alphaxiv skill**（`curl -sL "https://www.alphaxiv.org/overview/{PAPER_ID}.md"`），比讀 PDF 更完整
 - Wiki pages 用 Obsidian `[[wiki-links]]` 格式互相連結
 - 一個概念一個 page，不要合併
 - 筆記用繁體中文，技術名詞保留英文

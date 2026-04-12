@@ -38,4 +38,5 @@
 | 2026-04-11 | [[raw/harrison-chase-your-harness-your-memory]] | Your Harness, Your Memory |
 | 2026-04-03 | [[raw/sarah-wooders-memory-isnt-a-plugin]] | Why Memory Isn't a Plugin (It's the Harness) |
 | 2026-04-02 | [[raw/letta-context-constitution]] | The Context Constitution |
-| 2023-10-12 | [[raw/memgpt-paper]] | MemGPT: Towards LLMs as Operating Systems |
+| 2023-10-12 | [[raw/memgpt-paper-alphaxiv]] | MemGPT: Towards LLMs as Operating Systems (alphaxiv deep analysis) |
+| 2023-10-12 | [[raw/memgpt-paper]] | MemGPT: Towards LLMs as Operating Systems (summary) |

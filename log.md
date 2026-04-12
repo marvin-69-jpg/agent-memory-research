@@ -29,3 +29,9 @@
 - Created: memgpt.md, context-constitution.md, sleep-time-compute.md
 - Updated: sarah-wooders.md (MemGPT 共同作者, 原始 blog 內容), letta.md (產品線, benchmarks, Context Constitution)
 - New cross-links: memgpt ↔ letta, memgpt ↔ sarah-wooders, context-constitution ↔ letta, sleep-time-compute ↔ gbrain, sleep-time-compute ↔ context-constitution
+
+## [2026-04-12] ingest | MemGPT alphaxiv deep analysis + arxiv skill
+
+- Source: raw/memgpt-paper-alphaxiv.md (alphaxiv structured overview)
+- Created: .claude/skills/arxiv/SKILL.md (alphaxiv paper lookup skill)
+- Updated: memgpt.md (完整 memory hierarchy details, control flow, evaluation results)
