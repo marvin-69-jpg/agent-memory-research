@@ -141,6 +141,35 @@ Periodic health check:
 - Missing cross-links
 - Write findings to `wiki/_lint-report.md`
 
+## Wiki Page Format — Implementation Section
+
+當一個 wiki concept 被實際應用到 openab-bot 時，在該 wiki page 加上 `## Implementation` section（放在 Key Sources 和 Related 之間）。
+
+```markdown
+## Implementation
+
+### <日期> — <簡短描述>
+
+- **做法**：具體怎麼實作的（簡化了什麼、改了什麼）
+- **PR**：marvin-69-jpg/agent-memory-research#<number>
+- **觀察**：（實作後的效果，持續補充）
+```
+
+**規則**：
+- 一個 concept 可以有多次 implementation（不同階段的嘗試）
+- 每次 implementation 對應一個 PR
+- 「觀察」欄在實作當下可以先寫「待觀察」，後續 session 發現效果時回來補
+- 觀察結果如果產生新的 insight，可以反過來更新 Current Understanding
+
+**這形成研究閉環**：
+
+```
+外部文獻 → raw/ → wiki（Current Understanding）→ 識別 pattern → 實作（PR）
+                        ↑                                           ↓
+                        └──────── Implementation section ───────────┘
+                                  （效果觀察回流更新理解）
+```
+
 ## Rules
 
 1. **Never modify raw files.** Raw sources are immutable.
@@ -154,3 +183,4 @@ Periodic health check:
 9. **Update index.md on every operation.**
 10. **Log every operation.** No silent changes.
 11. **Use agent-browser to read URLs.** Never curl hack or WebFetch.
+12. **Implementation 回流**。實作了某個 concept 就更新該 wiki page 的 Implementation section。
