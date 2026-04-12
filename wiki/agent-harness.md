@@ -20,8 +20,9 @@ Agent harness 是包裹在 LLM 外面的執行框架，負責管理 tool calling
 
 ## Key Sources
 
+- **2026-04-12** — GBrain 的 "thin harness, fat skills" 哲學：harness 是薄殼，knowledge 在 markdown skills 裡。Source: [[raw/garry-tan-gbrain]]
 - **2026-04-11** — Harrison Chase 提出 harness 不會消失、與 memory 綁定的論點。Source: [[raw/harrison-chase-your-harness-your-memory]]
 
 ## Related
 
-[[agent-memory]] [[context-engineering]] [[memory-lock-in]] [[deep-agents]] [[letta]] [[harrison-chase]]
+[[agent-memory]] [[context-engineering]] [[memory-lock-in]] [[deep-agents]] [[letta]] [[harrison-chase]] [[gbrain]]
