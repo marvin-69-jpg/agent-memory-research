@@ -35,3 +35,9 @@
 - Source: raw/memgpt-paper-alphaxiv.md (alphaxiv structured overview)
 - Created: .claude/skills/arxiv/SKILL.md (alphaxiv paper lookup skill)
 - Updated: memgpt.md (完整 memory hierarchy details, control flow, evaluation results)
+
+## [2026-04-12] schema | 加入 Implementation section 回流機制
+
+- Updated: schema/CLAUDE.md (新增 Implementation section 格式定義 + Rule 12)
+- Updated: brain-first-lookup.md (加 Implementation section，記錄 openab-bot 實作)
+- Updated: entity-detection.md (加 Implementation section，記錄 openab-bot 實作)

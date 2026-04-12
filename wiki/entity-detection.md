@@ -27,6 +27,15 @@ tags: [memory, architecture]
 
 - **2026-04-12** — GBrain entity-detection guide。Source: [[raw/garry-tan-gbrain-deep]]
 
+## Implementation
+
+### 2026-04-12 — 應用到 openab-bot auto-memory
+
+- **做法**：加規則到 CLAUDE.md —— 對話收尾時批次掃一遍整段對話，檢查有沒有該存但漏存的 entity（人、專案、偏好/決策、外部資源）。判斷標準：「下一個 session 的我遇到類似情境，會需要知道什麼？」
+- **簡化**：GBrain 是每條 message 都跑 async sub-agent，我們簡化為對話結束時一次掃。沒有 async sub-agent、沒有 notability filtering、沒有自動 web search enrichment。是即時存記憶的 safety net，不是取代它。
+- **PR**：追溯記錄在 marvin-69-jpg/agent-memory-research#1 comment
+- **觀察**：待觀察 —— 未來 session 結束時看 bot 是否主動做 entity scan
+
 ## Related
 
 [[brain-agent-loop]] [[gbrain]] [[compounding-memory]] [[enrichment-pipeline]]

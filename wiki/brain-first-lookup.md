@@ -24,6 +24,15 @@ GBrain 的查詢優先級：永遠先查 brain，external API 是 fallback。
 
 - **2026-04-12** — GBrain brain-first-lookup guide。Source: [[raw/garry-tan-gbrain-deep]]
 
+## Implementation
+
+### 2026-04-12 — 應用到 openab-bot auto-memory
+
+- **做法**：加規則到 CLAUDE.md —— 回答問題前先 `grep -r` memory/ 目錄找相關記憶，不只靠 session 開頭讀的 MEMORY.md 索引。觸發條件：使用者問過去的事、提到可能有記憶的 entity、回答可能跟 feedback 衝突時。
+- **簡化**：GBrain 有四層 fallback（keyword → hybrid → slug guess → external API），我們只做第一層 keyword grep。沒有 embedding、沒有 hybrid search。
+- **PR**：追溯記錄在 marvin-69-jpg/agent-memory-research#1 comment
+- **觀察**：待觀察 —— 未來 session 看 bot 是否在回答前主動查 memory/
+
 ## Related
 
 [[gbrain]] [[hybrid-search]] [[brain-agent-loop]] [[compounding-memory]]
