@@ -41,3 +41,8 @@
 - Updated: schema/CLAUDE.md (新增 Implementation section 格式定義 + Rule 12)
 - Updated: brain-first-lookup.md (加 Implementation section，記錄 openab-bot 實作)
 - Updated: entity-detection.md (加 Implementation section，記錄 openab-bot 實作)
+
+## [2026-04-12] impl | Sleep-time compute Phase 1: memory-lint
+
+- Created: tools/memory-lint.py (memory 品質 linter)
+- Updated: wiki/sleep-time-compute.md (加 Implementation section，記錄 Phase 1 實作)
