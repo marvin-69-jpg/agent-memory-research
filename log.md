@@ -54,3 +54,8 @@
 - Deleted: tools/memory-lint.py (功能整合進 memory.py)
 - Updated: CLAUDE.md (Sleep-Time Self-Improvement section + 專案結構)
 - Updated: auto-memory feedback_session_selfimprove.md (指向 `memory improve`)
+
+## [2026-04-12] refactor | memory skill — CLI + skill 架構
+
+- Created: .claude/skills/memory/SKILL.md (memory skill，驅動 memory CLI)
+- Updated: CLAUDE.md (Sleep-Time section 簡化，指向 skill)
