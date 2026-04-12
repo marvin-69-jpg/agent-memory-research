@@ -108,8 +108,8 @@ tags: [memory, architecture, ...]
 
 | Pattern | 來源 | 狀態 | 說明 |
 |---------|------|------|------|
-| Brain-First Lookup | GBrain | 實作中 | 回答前先 grep memory/ 找相關記憶 |
-| Entity Detection | GBrain | 實作中 | 對話結束前掃一遍漏存的 entity |
+| Brain-First Lookup | GBrain | 已實作 ✅ | 回答前先 grep memory/ 找相關記憶 |
+| Entity Detection | GBrain | 已實作 ✅ | 對話結束前掃一遍漏存的 entity |
 | Compiled Truth + Timeline | GBrain | 不需要 | git history 天然就是 timeline |
 
 詳見各 wiki page 的 Implementation section。
