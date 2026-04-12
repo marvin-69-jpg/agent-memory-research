@@ -118,13 +118,14 @@ tags: [memory, architecture, ...]
 
 ## Memory CLI
 
-統一的記憶管理工具，安裝在 `~/bin/memory`，任何地方都能直接用。
+統一的記憶管理工具，在專案目錄內用 `uv run` 執行。
 
 ```bash
-memory lint          # 格式 + 結構檢查
-memory consolidate   # 語意分析：重複、過時、promotion 候選、cross-ref
-memory improve       # 整合 lint + consolidate（session 開頭跑這個）
-memory stats         # 記憶分佈概覽
+cd /home/node/agent-memory-research
+uv run python3 tools/memory.py lint          # 格式 + 結構檢查
+uv run python3 tools/memory.py consolidate   # 語意分析：重複、過時、promotion 候選、cross-ref
+uv run python3 tools/memory.py improve       # 整合 lint + consolidate（session 開頭跑這個）
+uv run python3 tools/memory.py stats         # 記憶分佈概覽
 ```
 
 ### 運作方式
