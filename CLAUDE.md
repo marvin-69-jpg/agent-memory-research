@@ -80,3 +80,32 @@ log.md         ← 操作記錄
 - arxiv 論文用 alphaxiv skill（`curl -sL "https://www.alphaxiv.org/overview/{PAPER_ID}.md"`）
 - GitHub repo 需要深讀時 clone 下來讀 docs/
 - 繁體中文，技術名詞保留英文
+
+### 改動流程（必須遵守）
+
+**所有對 repo 結構、規則、實作的改動都要開 PR**，不可直接 push main。
+
+PR body 必須包含：
+1. **研究脈絡**：這個改動是從哪篇文獻 / 哪個 pattern 學到的
+2. **思考過程**：為什麼選這個做法、考慮過哪些替代方案、為什麼排除
+3. **預期效果**：改完之後應該會怎樣
+4. **觀察方式**：怎麼驗證效果（下次對話觀察、比對 git log 等）
+
+**為什麼**：這個專案是「邊研究邊實作」，每次改動本身就是研究產出。PR 是改動原因的永久記錄，merge 後效果觀察又回饋成新的研究素材。直接 push main 會丟失思考脈絡。
+
+```bash
+cd /home/node/agent-memory-research
+git fetch origin && git checkout main && git pull --ff-only
+BRANCH="bot/<short-slug>-$(date +%s)"
+git checkout -b "$BRANCH"
+# ... 改動 ...
+git add <files>
+git commit -m "<簡短訊息>"
+git push -u origin "$BRANCH"
+export GH_TOKEN=$(cat /home/node/.gh-token-marvin)
+gh pr create --base main --head "$BRANCH" \
+  --title "<title>" \
+  --body "<詳細研究脈絡 + 思考 + 預期效果>"
+```
+
+**例外**：純 wiki ingest（新增 raw + wiki pages）可以直接 push main，因為 ingest 的記錄在 log.md。但改規則、改結構、改實作方向一律走 PR。
