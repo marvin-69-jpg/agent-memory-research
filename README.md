@@ -13,6 +13,7 @@ agent-memory-research/
  |-- raw/              原始文章全文（immutable，不可改）
  |-- wiki/             LLM 維護的 entity pages（知識庫）
  |-- schema/           ingest / query / lint 規則
+ |-- tools/            CLI 工具（memory CLI）
  |-- index.md          wiki 目錄 + 一句話摘要
  |-- log.md            操作記錄（append-only）
  |-- CLAUDE.md         專案規則 + 已實作的改進
@@ -110,9 +111,44 @@ tags: [memory, architecture, ...]
 |---------|------|------|------|
 | Brain-First Lookup | GBrain | 已實作 ✅ | 回答前先 grep memory/ 找相關記憶 |
 | Entity Detection | GBrain | 已實作 ✅ | 對話結束前掃一遍漏存的 entity |
+| Sleep-Time Self-Improvement | GBrain + Letta | 已實作 ✅ | `memory` CLI — session 啟動時自動 lint + consolidate |
 | Compiled Truth + Timeline | GBrain | 不需要 | git history 天然就是 timeline |
 
 詳見各 wiki page 的 Implementation section。
+
+## Memory CLI
+
+統一的記憶管理工具，安裝在 `~/bin/memory`，任何地方都能直接用。
+
+```bash
+memory lint          # 格式 + 結構檢查
+memory consolidate   # 語意分析：重複、過時、promotion 候選、cross-ref
+memory improve       # 整合 lint + consolidate（session 開頭跑這個）
+memory stats         # 記憶分佈概覽
+```
+
+### 運作方式
+
+```
+session 開始
+    |
+    v
+讀 MEMORY.md（索引）
+    |
+    v
+memory improve（自動檢查）
+    |
+    +--→ FIX: 格式錯誤、index 脫鉤 → 當場修
+    +--→ MERGE: 近似重複 → 合併
+    +--→ REVIEW: project 記憶 >14d → 確認/更新/刪除
+    +--→ PROMOTE: feedback 群聚 → 升級為 CLAUDE.md 規則
+    +--→ NOTE: 類型平衡建議
+    |
+    v
+開始回應使用者
+```
+
+每個 session 都跑一輪，記憶系統隨使用次數自動改善。
 
 ## 用 Obsidian 瀏覽
 
