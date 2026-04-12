@@ -15,3 +15,10 @@
 - Created: gbrain.md, garry-tan.md, compiled-truth-pattern.md, hybrid-search.md, compounding-memory.md
 - Updated: agent-memory.md (三層記憶模型 + compiled truth pattern), agent-harness.md (thin harness fat skills)
 - New cross-links: gbrain ↔ garry-tan, gbrain ↔ compiled-truth-pattern, gbrain ↔ hybrid-search, gbrain ↔ compounding-memory, gbrain ↔ agent-memory, gbrain ↔ agent-harness, compounding-memory ↔ harrison-chase, compounding-memory ↔ memory-lock-in
+
+## [2026-04-12] ingest | GBrain Deep Dive (docs/)
+
+- Source: raw/garry-tan-gbrain-deep.md (cloned repo, read docs/, skills/, ethos/)
+- Created: thin-harness-fat-skills.md, brain-agent-loop.md, brain-first-lookup.md, entity-detection.md, enrichment-pipeline.md, mece-resolver.md
+- Updated: gbrain.md (14,700+ files, full loop details), garry-tan.md (thin harness philosophy), context-engineering.md (resolver concept)
+- New cross-links: thin-harness-fat-skills ↔ gbrain, brain-agent-loop ↔ compounding-memory, entity-detection ↔ brain-agent-loop, enrichment-pipeline ↔ entity-detection, mece-resolver ↔ compiled-truth-pattern, context-engineering ↔ garry-tan

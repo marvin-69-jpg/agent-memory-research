@@ -1,0 +1,37 @@
+---
+aliases: [thin harness fat skills, fat skills thin harness, skill file architecture]
+first_seen: 2026-04-12
+last_updated: 2026-04-12
+tags: [architecture, harness]
+---
+
+# Thin Harness, Fat Skills
+
+[[garry-tan]] 提出的 agent 架構哲學：把 intelligence 往上推進 markdown skills，把 execution 往下推進 deterministic tooling，harness 本身保持極薄。
+
+## Current Understanding
+
+- **三層架構**：
+  1. Fat skills（top）— markdown procedures encoding judgment + process，90% of value
+  2. Thin CLI harness（middle）— ~200 lines，JSON in text out
+  3. Your app（bottom）— QueryDB, ReadDoc, Search，deterministic foundation
+- **Skill file = method call**：接受參數，同一 skill 用不同參數產出完全不同能力。不是 prompt engineering，是 software design with markdown as programming language
+- **Anti-pattern**：fat harness（40+ tool definitions 吃掉半個 context window、MCP round-trip 2-5 秒）
+- **五個核心定義**：Skill File, Harness, Resolver, Latent vs. Deterministic, Diarization
+- **Resolver 是關鍵**：context 的 routing table，task X 出現時自動載入 document Y。Garry 的 CLAUDE.md 從 20,000 行瘦身到 200 行 pointer — attention degradation 問題解決
+- **Self-learning loop**：skill 讀 feedback → 改寫自己的 rules → 下次自動更好（YC Startup School: OK ratings 12% → 4%）
+- 跟 [[harrison-chase]] 的 harness 觀點對比：Chase 強調 harness 與 memory 綁定；Garry 強調 harness 要 thin，intelligence 在 skills 裡
+
+### 關鍵引言
+
+> 「The bottleneck is never the model's intelligence. The bottleneck is whether the model understands your schema.」
+
+> 「Every skill I write is a permanent upgrade. It never degrades. It never forgets. When the next model drops, every skill instantly gets better.」
+
+## Key Sources
+
+- **2026-04-12** — "Thin Harness, Fat Skills" essay + YC Spring 2026 talk。Source: [[raw/garry-tan-gbrain-deep]]
+
+## Related
+
+[[garry-tan]] [[gbrain]] [[agent-harness]] [[context-engineering]] [[brain-agent-loop]]
