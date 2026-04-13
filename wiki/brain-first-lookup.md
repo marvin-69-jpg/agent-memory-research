@@ -40,6 +40,14 @@ GBrain 的查詢優先級：永遠先查 brain，external API 是 fallback。
 - **PR**：marvin-69-jpg/agent-memory-research#12
 - **觀察**：剛實作，待後續 session 觀察是否被使用
 
+### 2026-04-13 — UserPromptSubmit Hook：每則訊息注入提醒
+
+- **做法**：在 `~/.claude/settings.json` 加 `UserPromptSubmit` hook，每次使用者送訊息時自動注入 `additionalContext`，提醒 agent 先查 brain
+- **機制**：hook 輸出 JSON 的 `hookSpecificOutput.additionalContext`，Claude Code 會把內容注入 agent 的 context，等同於每次都有「先查 brain」的 system-level 提醒
+- **與 CLAUDE.md 規則的差異**：CLAUDE.md 規則在 context window 長了之後容易被 attention drift 忽略；hook 每次都重新注入，不受 window 位置影響
+- **預期效果**：brain-first lookup 100% 執行率（從 benchmark 的 75% → 100%）
+- **觀察**：待下次 benchmark 驗證
+
 ## Related
 
 [[gbrain]] [[hybrid-search]] [[brain-agent-loop]] [[compounding-memory]]

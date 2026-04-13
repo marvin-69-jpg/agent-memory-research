@@ -36,6 +36,14 @@ tags: [memory, architecture]
 - **PR**：追溯記錄在 marvin-69-jpg/agent-memory-research#1 comment
 - **觀察**（2026-04-13）：在 04-11 ~ 04-13 的多個 session 中，bot 有在對話中**即時**存 feedback memory（被糾正時立刻寫），但**收尾時的批次 entity scan 從未被觸發過**。原因：(1) 對話通常沒有明確「收尾」時刻（使用者直接離開或換 thread），(2) CLAUDE.md 裡的觸發條件（「使用者說謝謝 / 沒有後續 / 明確收尾」）太模糊。**結論：即時存記憶運作良好，但 safety net 掃描機制形同虛設。需要更明確的觸發點，或改成 CLI 定期掃。**
 
+### 2026-04-13 — UserPromptSubmit Hook：每則訊息注入提醒
+
+- **做法**：在 `UserPromptSubmit` hook 中同時注入 entity-detection 提醒 — 使用者透露身份/角色/偏好時，立即存記憶
+- **機制**：與 brain-first lookup 共用同一個 hook，每次使用者送訊息都提醒
+- **為什麼不用獨立機制**：entity detection 的問題不是「不知道該做」而是「回答優先級比存記憶高」。透過 hook 在回答前注入提醒，強制 agent 先處理 entity 再回答
+- **預期效果**：從 0% → 有改善（最難的 pattern，因為需要 agent 改變優先級而非只是加一步操作）
+- **觀察**：待下次 benchmark 驗證
+
 ## Related
 
 [[brain-agent-loop]] [[gbrain]] [[compounding-memory]] [[enrichment-pipeline]]

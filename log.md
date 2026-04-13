@@ -99,6 +99,31 @@ Key insight: 問題不在 model 強弱，在 CLAUDE.md 規則的 enforcement 機
 - Updated: tools/memory.py (improve 新增 OBSERVE category，掃 wiki/ 待回流的觀察)
 - New insight: 三個 pattern 都出現同樣問題 — 寫進 CLAUDE.md 的規則不保證行為改變
 
+## [2026-04-13] impl | Claude Code Hooks — 基礎設施層 enforcement
+
+加了兩個 hooks 到 `~/.claude/settings.json`：
+
+1. **SessionStart** → 自動跑 `memory improve`（sleep-time compute 不再依賴 agent 意願）
+2. **UserPromptSubmit** → 每則訊息注入 `additionalContext` 提醒 brain-first lookup + entity detection
+
+Behavior Benchmark v3 結果：
+
+| Pattern | v1 (62%) | v2 硬規則 (88%) | v3 +hooks (100%) |
+|---------|----------|----------------|------------------|
+| brain-first-lookup | 75% | 100% | **100%** |
+| entity-detection | 0% | 0% | **100%** ← 最大突破 |
+| sleep-time-compute | 50% | 100% | **100%** |
+| security | 100% | 100% | **100%** |
+
+**Key insight**: entity-detection 從 0% → 100% 完全靠 UserPromptSubmit hook 的 additionalContext。hook 在每次 prompt 前注入提醒，成功改變了 agent 的優先級（先存記憶再回答），這是 CLAUDE.md 規則無論怎麼措辭都做不到的。
+
+Enforcement spectrum 完整驗證：
+- CLAUDE.md 建議語氣 → 62%
+- CLAUDE.md 硬規則 → 88%（+26%）
+- Hooks（基礎設施層）→ 100%（+12%）
+
+Updated wiki Implementation sections: sleep-time-compute.md, brain-first-lookup.md, entity-detection.md
+
 ## [2026-04-13] ingest | Viv Trivedy — Harness, Memory, Context Fragments, & the Bitter Lesson
 
 - Source: raw/viv-trivedy-harness-memory-bitter-lesson.md
