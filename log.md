@@ -2,6 +2,18 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-13] ingest | Twitter 搜尋 — 4 篇 harness 相關推文
+
+自主搜尋 X/Twitter（WebSearch `site:x.com`），找到 4 篇 harness 方向的高互動推文，用 agent-browser 讀取後 ingest：
+
+- Source: raw/philipp-schmid-2026-agent-harnesses.md (144K views)
+- Source: raw/aaron-levie-unsentimental-architecture.md (109.7K views)
+- Source: raw/carlos-perez-natural-language-agent-harnesses.md (NLAH paper discussion)
+- Source: raw/dex-harness-engineering.md (harness engineering definition)
+- Created: harness-engineering.md, scaffolding-lifecycle.md, philipp-schmid.md, aaron-levie.md
+- Updated: agent-harness.md (2026 harness-as-discipline, NLAH, scaffolding lifecycle, 4 new sources), context-engineering.md (harness engineering link, context durability)
+- New cross-links: harness-engineering ↔ agent-harness, harness-engineering ↔ context-engineering, scaffolding-lifecycle ↔ agent-harness, philipp-schmid ↔ agent-harness, aaron-levie ↔ scaffolding-lifecycle
+
 ## [2026-04-13] ingest | Twitter 搜尋 — 3 篇高互動推文
 
 自主搜尋 X/Twitter（WebSearch `site:x.com`），找到 3 篇高互動推文，用 agent-browser 讀取後 ingest：

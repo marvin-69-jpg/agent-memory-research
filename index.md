@@ -43,6 +43,10 @@
 | [[wiki/memory-arena\|MemoryArena]] | Agentic memory benchmark，測跨 session 行動能力 | benchmark, memory | 2026-04-13 |
 | [[wiki/agemem\|AgeMem]] | 統一 long/short-term memory 管理，RL 訓練 agent 自己學 | product, memory | 2026-04-13 |
 | [[wiki/leonie\|Leonie]] | Filesystem vs database 辯論分析者 | people | 2026-04-13 |
+| [[wiki/harness-engineering\|Harness Engineering]] | Agent integration points 工程，context engineering 的上層 | harness, architecture | 2026-04-13 |
+| [[wiki/scaffolding-lifecycle\|Scaffolding Lifecycle]] | Scaffolding 有生命週期，模型變強時要拆 | harness, architecture | 2026-04-13 |
+| [[wiki/philipp-schmid\|Philipp Schmid]] | HuggingFace，「2026 = Agent Harnesses 年代」 | people | 2026-04-13 |
+| [[wiki/aaron-levie\|Aaron Levie]] | Box CEO，brutally unsentimental architecture | people | 2026-04-13 |
 
 ## Raw Sources
 
