@@ -39,6 +39,10 @@
 | [[wiki/multi-scope-memory\|Multi-Scope Memory]] | 四層 scope（user/agent/session/org）+ metadata filtering | memory, architecture | 2026-04-13 |
 | [[wiki/memory-staleness\|Memory Staleness]] | 高 relevance 但過時的記憶，open problem | memory, architecture | 2026-04-13 |
 | [[wiki/actor-aware-memory\|Actor-Aware Memory]] | Multi-agent 記憶來源追蹤，避免 inference cascade | memory, multi-agent | 2026-04-13 |
+| [[wiki/filesystem-vs-database\|Filesystem vs Database]] | Agent memory 的 file interface vs DB 辯論 | memory, architecture | 2026-04-13 |
+| [[wiki/memory-arena\|MemoryArena]] | Agentic memory benchmark，測跨 session 行動能力 | benchmark, memory | 2026-04-13 |
+| [[wiki/agemem\|AgeMem]] | 統一 long/short-term memory 管理，RL 訓練 agent 自己學 | product, memory | 2026-04-13 |
+| [[wiki/leonie\|Leonie]] | Filesystem vs database 辯論分析者 | people | 2026-04-13 |
 
 ## Raw Sources
 
@@ -53,3 +57,6 @@
 | 2026-04-13 | [[raw/viv-trivedy-harness-memory-bitter-lesson]] | Harness, Memory, Context Fragments, & the Bitter Lesson |
 | 2023-10-12 | [[raw/memgpt-paper]] | MemGPT: Towards LLMs as Operating Systems (summary) |
 | 2026-04-01 | [[raw/mem0-state-of-ai-agent-memory-2026]] | State of AI Agent Memory 2026 |
+| 2026-01-19 | [[raw/leonie-filesystem-vs-database-debate]] | Filesystem vs Database Debate (tweet, 29.6K views) |
+| 2026-02-19 | [[raw/dair-ai-memory-benchmarks-misleading]] | Memory Benchmarks Are Misleading — MemoryArena (tweet, 37.8K views) |
+| 2026-01-12 | [[raw/elvis-agemem-unified-memory]] | AgeMem: Unified Memory via RL (tweet, 56.4K views) |

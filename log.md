@@ -2,6 +2,17 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-13] ingest | Twitter 搜尋 — 3 篇高互動推文
+
+自主搜尋 X/Twitter（WebSearch `site:x.com`），找到 3 篇高互動推文，用 agent-browser 讀取後 ingest：
+
+- Source: raw/leonie-filesystem-vs-database-debate.md (29.6K views)
+- Source: raw/dair-ai-memory-benchmarks-misleading.md (37.8K views)
+- Source: raw/elvis-agemem-unified-memory.md (56.4K views)
+- Created: filesystem-vs-database.md, memory-arena.md, agemem.md, leonie.md
+- Updated: (cross-links added to new pages)
+- New cross-links: filesystem-vs-database ↔ agent-memory, memory-arena ↔ locomo, agemem ↔ mem0, leonie ↔ filesystem-vs-database
+
 ## [2026-04-13] ingest | State of AI Agent Memory 2026 (Mem0)
 
 - Source: raw/mem0-state-of-ai-agent-memory-2026.md (via WebSearch + agent-browser)
