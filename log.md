@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-14] ingest | SHL0MS — Autoreason (Nous Research)
+
+- Source: raw/shl0ms-autoreason.md (208.6K views tweet + GitHub repo clone)
+- Created: autoreason.md, shl0ms.md
+- Updated: scaffolding-lifecycle.md (bloat/prune oscillation 呼應 + transition point), actor-aware-memory.md (memory isolation by design 反向策略), procedural-memory.md (emergent skill 實例), compounding-memory.md (遺忘作為 feature 的反例)
+- New cross-links: autoreason ↔ scaffolding-lifecycle, autoreason ↔ actor-aware-memory, autoreason ↔ procedural-memory, autoreason ↔ compounding-memory, autoreason ↔ memory-staleness, autoreason ↔ thin-harness-fat-skills, shl0ms ↔ autoreason
+
 ## [2026-04-13] ingest | Twitter 搜尋 — 4 篇 harness 相關推文
 
 自主搜尋 X/Twitter（WebSearch `site:x.com`），找到 4 篇 harness 方向的高互動推文，用 agent-browser 讀取後 ingest：

@@ -27,6 +27,7 @@ Agent scaffolding 不是永久建設 — 它有生命週期。模型變強時，
   - 兩者互補：thin harness 是起點，lifecycle awareness 是持續維護
 - **NLAH 的回應**：Natural-Language Agent Harnesses 讓 harness 變成可 ablate 的模組 — 更容易測試哪個 scaffolding 還有用、哪個該拆
 - **與我們的實踐**：openab-bot 的 behavior benchmark 可以量化測試每個 rule/hook 的效果。如果某個 hook 變得不需要（因為模型自己就會做），benchmark 會顯示它是 redundant
+- **Autoreason 的微觀版本**：[[autoreason]] 的 bloat/prune oscillation 是同一個 pattern 在單次 task 層面的體現 — AB（synthesis）系統性增加複雜度，B（adversarial revision）系統性刪減。當模型夠強（Haiku 4.5 transition point），refinement 增益消失 — 跟 Levie 的「模型變強 scaffolding 要拆」一致
 
 ## Key Sources
 
@@ -34,4 +35,4 @@ Agent scaffolding 不是永久建設 — 它有生命週期。模型變強時，
 
 ## Related
 
-[[agent-harness]] [[harness-engineering]] [[thin-harness-fat-skills]] [[context-engineering]]
+[[agent-harness]] [[harness-engineering]] [[thin-harness-fat-skills]] [[context-engineering]] [[autoreason]]

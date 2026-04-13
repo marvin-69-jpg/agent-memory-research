@@ -47,6 +47,8 @@
 | [[wiki/scaffolding-lifecycle\|Scaffolding Lifecycle]] | Scaffolding 有生命週期，模型變強時要拆 | harness, architecture | 2026-04-13 |
 | [[wiki/philipp-schmid\|Philipp Schmid]] | HuggingFace，「2026 = Agent Harnesses 年代」 | people | 2026-04-13 |
 | [[wiki/aaron-levie\|Aaron Levie]] | Box CEO，brutally unsentimental architecture | people | 2026-04-13 |
+| [[wiki/autoreason\|Autoreason]] | A/B/AB tournament self-refinement，memory isolation by design | product, architecture | 2026-04-14 |
+| [[wiki/shl0ms\|SHL0MS]] | Autoreason 作者，與 Hermes Agent 共同撰寫論文 | people | 2026-04-14 |
 
 ## Raw Sources
 
@@ -64,3 +66,4 @@
 | 2026-01-19 | [[raw/leonie-filesystem-vs-database-debate]] | Filesystem vs Database Debate (tweet, 29.6K views) |
 | 2026-02-19 | [[raw/dair-ai-memory-benchmarks-misleading]] | Memory Benchmarks Are Misleading — MemoryArena (tweet, 37.8K views) |
 | 2026-01-12 | [[raw/elvis-agemem-unified-memory]] | AgeMem: Unified Memory via RL (tweet, 56.4K views) |
+| 2026-04-12 | [[raw/shl0ms-autoreason]] | Autoreason: Self-Refinement That Knows When to Stop (208.6K views + GitHub) |

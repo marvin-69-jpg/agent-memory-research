@@ -19,6 +19,7 @@ tags: [memory, architecture]
 - **Mem0 的實作**：`memory_type="procedural_memory"` 參數路由到不同的 extraction prompt，專注 distilling procedures 和 workflows 而非 facts 和 preferences
 - **與 GBrain 的對比**：GBrain 的 thin-harness-fat-skills 架構隱含了 procedural memory — skills 本身就是 procedure 的具體化。但 GBrain 是 explicit skills（寫成 markdown），Mem0 的 procedural memory 是 extracted implicit procedures
 - **與 openab-bot 的對比**：我們的 feedback memory 其實部分扮演了 procedural memory 的角色（「日報配圖要用彩蛋不要氛圍」= 一種 procedure），但沒有明確區分 type
+- **Autoreason 的 emergent skill**：[[autoreason]] 的論文寫作過程中，Hermes Agent 開發了 research-paper-writing skill — procedural memory 的實際案例。Skill 是在 task 執行中浮現的，不是預先寫好的
 
 ## Key Sources
 
@@ -26,4 +27,4 @@ tags: [memory, architecture]
 
 ## Related
 
-[[mem0]] [[agent-memory]] [[thin-harness-fat-skills]] [[compounding-memory]]
+[[mem0]] [[agent-memory]] [[thin-harness-fat-skills]] [[compounding-memory]] [[autoreason]]
