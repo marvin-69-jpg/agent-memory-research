@@ -42,6 +42,7 @@ cd /home/node/agent-memory-research && export PATH="/home/node/.local/bin:$PATH"
 | Category | 意思 | 怎麼做 |
 |----------|------|--------|
 | `FIX` | 格式錯誤、MEMORY.md 脫鉤 | **當場修**，不要拖 |
+| `OBSERVE` | wiki Implementation section 有待回流的觀察 | 讀該 wiki page，根據這個 session 的經驗補上觀察結果 |
 | `MERGE` | 近似重複記憶 | 讀兩個檔案，合併成一條，刪掉另一條，更新 MEMORY.md |
 | `REVIEW` | project 記憶超過 14 天 | 讀該記憶，確認是否過時。過時就刪或更新 |
 | `PROMOTE` | feedback 群聚，CLAUDE.md 沒涵蓋 | 讀那幾條 feedback，判斷是否穩定。穩定的話合併成一條 CLAUDE.md 規則 |

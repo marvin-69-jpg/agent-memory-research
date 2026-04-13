@@ -55,6 +55,14 @@
 - Updated: CLAUDE.md (Sleep-Time Self-Improvement section + 專案結構)
 - Updated: auto-memory feedback_session_selfimprove.md (指向 `memory improve`)
 
+## [2026-04-13] impl | 觀察回流 + pending observation check
+
+- Updated: brain-first-lookup.md (觀察：規則存在 ≠ 行為改變，CLI 比 CLAUDE.md 規則可靠)
+- Updated: entity-detection.md (觀察：即時存記憶 OK，收尾 scan 從未觸發)
+- Updated: sleep-time-compute.md (觀察：session 開頭沒跑 improve，需更強觸發)
+- Updated: tools/memory.py (improve 新增 OBSERVE category，掃 wiki/ 待回流的觀察)
+- New insight: 三個 pattern 都出現同樣問題 — 寫進 CLAUDE.md 的規則不保證行為改變
+
 ## [2026-04-13] ingest | Viv Trivedy — Harness, Memory, Context Fragments, & the Bitter Lesson
 
 - Source: raw/viv-trivedy-harness-memory-bitter-lesson.md
