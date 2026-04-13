@@ -33,6 +33,12 @@ GBrain 的查詢優先級：永遠先查 brain，external API 是 fallback。
 - **PR**：追溯記錄在 marvin-69-jpg/agent-memory-research#1 comment
 - **觀察**：待觀察 —— 未來 session 看 bot 是否在回答前主動查 memory/
 
+### 2026-04-13 — `memory recall` CLI：搜尋範圍擴展到 wiki
+
+- **做法**：新增 `memory recall <query>` subcommand，同時搜尋 memory/ 和 wiki/。按 keyword 頻率排序，輸出 compiled truth 摘要。把 brain-first lookup 從「只 grep memory/」擴展到「查整個 brain（memory + wiki）」。
+- **PR**：marvin-69-jpg/agent-memory-research#(pending)
+- **觀察**：待觀察 —— 未來 session 回答研究相關問題時是否先跑 recall
+
 ## Related
 
 [[gbrain]] [[hybrid-search]] [[brain-agent-loop]] [[compounding-memory]]

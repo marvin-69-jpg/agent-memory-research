@@ -7,16 +7,21 @@ Subcommands:
   consolidate  Semantic analysis: duplicates, staleness, promotion candidates
   improve      Combined lint + consolidate (designed for session startup)
   stats        Quick overview of memory distribution
+  recall       Search across memory/ + wiki/ for a query (brain-first lookup)
+  brief        Session startup briefing — compressed overview of everything the agent knows
 
 Usage:
   memory lint
   memory consolidate
   memory improve
   memory stats
+  memory recall <query> [<query> ...]
+  memory brief
 
 Global options:
   --memory-dir PATH   Memory directory (default: /home/node/.claude/projects/-home-node/memory/)
   --claude-md PATH    CLAUDE.md path for promotion checking (default: /home/node/CLAUDE.md)
+  --wiki-dir PATH     Wiki directory (default: /home/node/agent-memory-research/wiki/)
 """
 
 import argparse
@@ -31,11 +36,16 @@ from pathlib import Path
 
 DEFAULT_MEMORY_DIR = Path("/home/node/.claude/projects/-home-node/memory/")
 DEFAULT_CLAUDE_MD = Path("/home/node/CLAUDE.md")
+DEFAULT_WIKI_DIR = Path("/home/node/agent-memory-research/wiki/")
+DEFAULT_WIKI_INDEX = Path("/home/node/agent-memory-research/index.md")
 VALID_TYPES = {"user", "feedback", "project", "reference"}
 REQUIRED_FIELDS = {"name", "description", "type"}
 STALE_DAYS = 14
 SIM_THRESHOLD_LINT = 0.7
 SIM_THRESHOLD_CONSOLIDATE = 0.6
+RECALL_MAX_HITS = 10
+RECALL_CONTEXT_LINES = 2
+BRIEF_MAX_WIKI_PAGES = 30
 
 # ── Shared helpers ────────────────────────────────────────
 
@@ -362,6 +372,279 @@ def cmd_stats(memory_dir: Path, **_):
     return 0
 
 
+# ── recall ────────────────────────────────────────────────
+
+
+def grep_files(directory: Path, query: str, glob_pattern: str = "*.md") -> list[tuple[str, int, str]]:
+    """Return list of (filepath, line_no, line_text) matching query (case-insensitive)."""
+    hits = []
+    q = query.lower()
+    for p in sorted(directory.glob(glob_pattern)):
+        if p.name.startswith("_") or p.name == "MEMORY.md":
+            continue
+        try:
+            lines = p.read_text("utf-8").splitlines()
+        except Exception:
+            continue
+        for i, line in enumerate(lines):
+            if q in line.lower():
+                hits.append((str(p.relative_to(directory.parent if directory.name == "memory" else directory.parent)), i + 1, line.strip()))
+    return hits
+
+
+def extract_summary(filepath: Path, max_lines: int = 5) -> str:
+    """Extract the first meaningful paragraph after the heading (compiled truth)."""
+    try:
+        text = filepath.read_text("utf-8")
+    except Exception:
+        return "(unreadable)"
+    lines = text.splitlines()
+    # Skip frontmatter
+    start = 0
+    if lines and lines[0].strip() == "---":
+        for i in range(1, len(lines)):
+            if lines[i].strip() == "---":
+                start = i + 1
+                break
+    # Skip title heading
+    for i in range(start, len(lines)):
+        if lines[i].strip().startswith("# "):
+            start = i + 1
+            break
+    # Collect first non-empty paragraph
+    result = []
+    for i in range(start, len(lines)):
+        line = lines[i].strip()
+        if not line:
+            if result:
+                break
+            continue
+        if line.startswith("## "):
+            if result:
+                break
+            continue
+        result.append(line)
+        if len(result) >= max_lines:
+            break
+    return " ".join(result) if result else "(empty)"
+
+
+def cmd_recall(memory_dir: Path, wiki_dir: Path, query: list[str], **_):
+    q = " ".join(query)
+    if not q.strip():
+        print("Usage: memory recall <query>")
+        return 1
+
+    keywords = q.lower().split()
+    print(f"recall: searching for '{q}'\n")
+
+    sections = [
+        ("memory/", memory_dir, "*.md"),
+        ("wiki/", wiki_dir, "*.md"),
+    ]
+
+    total_hits = 0
+    shown_files = set()
+
+    for label, directory, pattern in sections:
+        if not directory.exists():
+            continue
+        # Score each file by keyword hit count
+        file_scores: dict[Path, int] = {}
+        for p in sorted(directory.glob(pattern)):
+            if p.name.startswith("_") or p.name == "MEMORY.md":
+                continue
+            try:
+                text = p.read_text("utf-8").lower()
+            except Exception:
+                continue
+            score = sum(text.count(kw) for kw in keywords)
+            if score > 0:
+                file_scores[p] = score
+
+        if not file_scores:
+            continue
+
+        ranked = sorted(file_scores.items(), key=lambda x: -x[1])[:RECALL_MAX_HITS]
+        print(f"── {label} ({len(file_scores)} files match, showing top {len(ranked)}) ──\n")
+
+        for p, score in ranked:
+            rel = p.name
+            if rel in shown_files:
+                continue
+            shown_files.add(rel)
+
+            # Get frontmatter info
+            fm_text = p.read_text("utf-8")
+            fields, _ = parse_frontmatter(fm_text)
+            name = fields.get("name", "") if fields else ""
+            ftype = fields.get("type", "") if fields else ""
+            desc = fields.get("description", "") if fields else ""
+
+            # For wiki pages, use the page title
+            if not name:
+                for line in fm_text.splitlines():
+                    if line.startswith("# "):
+                        name = line[2:].strip()
+                        break
+
+            summary = extract_summary(p, max_lines=3)
+
+            header = f"  {rel}"
+            if name:
+                header += f"  [{name}]"
+            if ftype:
+                header += f"  ({ftype})"
+            print(f"{header}  score={score}")
+            if desc:
+                print(f"    desc: {desc}")
+            print(f"    >>> {summary[:200]}")
+            print()
+            total_hits += 1
+
+    if total_hits == 0:
+        print("(no matches)")
+
+    return 0
+
+
+# ── brief ────────────────────────────────────────────────
+
+
+def cmd_brief(memory_dir: Path, wiki_dir: Path, **_):
+    mems = load_memories(memory_dir)
+    counts = type_dist(mems)
+
+    print("=" * 60)
+    print("  MEMORY BRIEF — What you currently know")
+    print("=" * 60)
+
+    # ── Auto-memory summary ──
+    print(f"\n## Auto-Memory ({len(mems)} files)")
+    print(f"   Distribution: {dist_str(counts)}\n")
+
+    # Group by type, show name + description
+    by_type: dict[str, list[tuple[str, str, str]]] = {}
+    for f, m in mems.items():
+        if m["fields"]:
+            t = m["fields"].get("type", "?")
+            name = m["fields"].get("name", f)
+            desc = m["fields"].get("description", "")
+            by_type.setdefault(t, []).append((f, name, desc))
+
+    for t in ("user", "feedback", "project", "reference"):
+        items = by_type.get(t, [])
+        if not items:
+            continue
+        print(f"  [{t}] ({len(items)})")
+        for f, name, desc in items:
+            line = f"    - {name}"
+            if desc:
+                line += f" — {desc[:80]}"
+            print(line)
+        print()
+
+    # ── Wiki summary ──
+    wiki_index = wiki_dir.parent / "index.md" if wiki_dir.exists() else None
+    if wiki_index and wiki_index.exists():
+        idx_text = wiki_index.read_text("utf-8")
+        # Count wiki pages
+        wiki_pages = []
+        raw_sources = []
+        section = None
+        for line in idx_text.splitlines():
+            if "## Wiki Pages" in line:
+                section = "wiki"
+                continue
+            elif "## Raw Sources" in line:
+                section = "raw"
+                continue
+            if section == "wiki" and line.startswith("|") and "---" not in line and "Page" not in line:
+                # Obsidian wiki-links use | as alias separator: [[wiki/name\|Display]]
+                # This clashes with markdown table | delimiter. Use regex instead.
+                wm = re.match(
+                    r'\|\s*\[\[.+?\\\|(.+?)\]\]\s*\|(.+?)\|(.+?)\|(.+?)\|',
+                    line
+                )
+                if wm:
+                    display = wm.group(1).strip()
+                    summary = wm.group(2).strip()
+                    tags = wm.group(3).strip()
+                    wiki_pages.append((display, summary, tags))
+            elif section == "raw" and line.startswith("|") and "---" not in line and "Date" not in line:
+                # Raw sources don't use pipe-alias wiki-links, safe to split
+                rm = re.match(r'\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|', line)
+                if rm:
+                    raw_sources.append((rm.group(1).strip(), rm.group(3).strip()))
+
+        print(f"## Research Wiki ({len(wiki_pages)} pages, {len(raw_sources)} sources)")
+        print(f"   Path: {wiki_dir}\n")
+
+        # Group wiki by tag categories
+        concepts = []
+        products = []
+        people = []
+        for display, summary, tags in wiki_pages:
+            if "people" in tags:
+                people.append((display, summary))
+            elif "product" in tags:
+                products.append((display, summary))
+            else:
+                concepts.append((display, summary))
+
+        if concepts:
+            print(f"  [concepts] ({len(concepts)})")
+            for name, summary in concepts:
+                print(f"    - {name} — {summary[:70]}")
+            print()
+
+        if products:
+            print(f"  [products] ({len(products)})")
+            for name, summary in products:
+                print(f"    - {name} — {summary[:70]}")
+            print()
+
+        if people:
+            print(f"  [people] ({len(people)})")
+            for name, summary in people:
+                print(f"    - {name} — {summary[:70]}")
+            print()
+
+        if raw_sources:
+            print(f"  [sources] ({len(raw_sources)})")
+            for date, title in raw_sources:
+                print(f"    - {date}  {title[:60]}")
+            print()
+
+    # ── Implemented patterns ──
+    print("## Implemented Patterns (applied to openab-bot)")
+    impl_pages = []
+    if wiki_dir.exists():
+        for p in sorted(wiki_dir.glob("*.md")):
+            try:
+                text = p.read_text("utf-8")
+            except Exception:
+                continue
+            if "## Implementation" in text:
+                # Get page title
+                for line in text.splitlines():
+                    if line.startswith("# "):
+                        impl_pages.append(line[2:].strip())
+                        break
+    if impl_pages:
+        for name in impl_pages:
+            print(f"    ✅ {name}")
+    else:
+        print("    (none found)")
+    print()
+
+    print("=" * 60)
+    print("  Use 'memory recall <query>' to search specific topics")
+    print("=" * 60)
+
+    return 0
+
+
 # ── Main ──────────────────────────────────────────────────
 
 
@@ -372,20 +655,37 @@ def main():
     )
     parser.add_argument("--memory-dir", default=str(DEFAULT_MEMORY_DIR))
     parser.add_argument("--claude-md", default=str(DEFAULT_CLAUDE_MD))
+    parser.add_argument("--wiki-dir", default=str(DEFAULT_WIKI_DIR))
 
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("lint", help="Check format and structural integrity")
     sub.add_parser("consolidate", help="Semantic analysis: duplicates, staleness, promotions")
     sub.add_parser("improve", help="Combined lint + consolidate (session startup)")
     sub.add_parser("stats", help="Quick memory distribution overview")
+    p_recall = sub.add_parser("recall", help="Search memory/ + wiki/ for a query")
+    p_recall.add_argument("query", nargs="+", help="Search keywords")
+    sub.add_parser("brief", help="Session startup briefing — what you currently know")
 
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
         sys.exit(1)
 
-    kwargs = {"memory_dir": Path(args.memory_dir), "claude_md": Path(args.claude_md)}
-    cmds = {"lint": cmd_lint, "consolidate": cmd_consolidate, "improve": cmd_improve, "stats": cmd_stats}
+    kwargs = {
+        "memory_dir": Path(args.memory_dir),
+        "claude_md": Path(args.claude_md),
+        "wiki_dir": Path(args.wiki_dir),
+    }
+    if args.command == "recall":
+        kwargs["query"] = args.query
+    cmds = {
+        "lint": cmd_lint,
+        "consolidate": cmd_consolidate,
+        "improve": cmd_improve,
+        "stats": cmd_stats,
+        "recall": cmd_recall,
+        "brief": cmd_brief,
+    }
     sys.exit(cmds[args.command](**kwargs))
 
 
