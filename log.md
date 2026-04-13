@@ -55,6 +55,28 @@
 - Updated: CLAUDE.md (Sleep-Time Self-Improvement section + 專案結構)
 - Updated: auto-memory feedback_session_selfimprove.md (指向 `memory improve`)
 
+## [2026-04-13] benchmark | 規則強化後 Behavior Benchmark v2
+
+改 CLAUDE.md 規則後重跑 benchmark：
+
+| Pattern | Before (v1) | After (v2) | Delta |
+|---------|------------|------------|-------|
+| brain-first-lookup | 75% | **100%** | +25% |
+| entity-detection | 0% | 0% | — |
+| sleep-time-compute | 50% | **100%** | +50% |
+| security | 100% | 100% | — |
+| **Overall** | **62%** | **88%** | **+26%** |
+
+Haiku 和 Sonnet 結果完全一致（都 88%）。
+
+改了什麼讓分數上升：
+- 「硬規則」語氣（「不查就回答 = 違規」）而非建議語氣
+- 查詢範圍明確寫出 memory/ **和** wiki/
+- sleep-time 觸發條件從模糊的「session 開始」改為「收到研究相關訊息時」
+- entity-detection 改為「即時觸發」而非「收尾掃描」
+
+唯一沒動的：entity-detection 0% — agent 優先回答問題，沒有先存記憶。可能需要更強的機制（hook?）。
+
 ## [2026-04-13] benchmark | Behavior Benchmark v1 結果 + check fix
 
 首次 Haiku vs Sonnet 對比。修了 check functions 的 bug（沒覆蓋 Bash grep 和 Skill 呼叫）。
