@@ -462,6 +462,35 @@ def extract_summary(filepath: Path, max_lines: int = 5) -> str:
     return " ".join(result) if result else "(empty)"
 
 
+def score_directory(directory: Path, keywords: list[str], pattern: str = "*.md", max_results: int = RECALL_MAX_HITS) -> list[tuple[Path, int]]:
+    """Score files in a directory by keyword frequency. Returns sorted (path, score) list."""
+    file_scores: dict[Path, int] = {}
+    if not directory.exists():
+        return []
+    for p in sorted(directory.glob(pattern)):
+        if p.name.startswith("_") or p.name == "MEMORY.md":
+            continue
+        try:
+            text = p.read_text("utf-8").lower()
+        except Exception:
+            continue
+        score = sum(text.count(kw) for kw in keywords)
+        if score > 0:
+            file_scores[p] = score
+    return sorted(file_scores.items(), key=lambda x: -x[1])[:max_results]
+
+
+def recall_ranked(memory_dir: Path, wiki_dir: Path, query: str, max_results: int = RECALL_MAX_HITS) -> list[tuple[str, int]]:
+    """Return ranked list of (filename, score) across memory/ + wiki/. Used by benchmark."""
+    keywords = query.lower().split()
+    results = []
+    for directory in [memory_dir, wiki_dir]:
+        for p, score in score_directory(directory, keywords, max_results=max_results * 2):
+            results.append((p.name, score))
+    results.sort(key=lambda x: -x[1])
+    return results[:max_results]
+
+
 def cmd_recall(memory_dir: Path, wiki_dir: Path, query: list[str], **_):
     q = " ".join(query)
     if not q.strip():
@@ -480,26 +509,10 @@ def cmd_recall(memory_dir: Path, wiki_dir: Path, query: list[str], **_):
     shown_files = set()
 
     for label, directory, pattern in sections:
-        if not directory.exists():
+        ranked = score_directory(directory, keywords, pattern)
+        if not ranked:
             continue
-        # Score each file by keyword hit count
-        file_scores: dict[Path, int] = {}
-        for p in sorted(directory.glob(pattern)):
-            if p.name.startswith("_") or p.name == "MEMORY.md":
-                continue
-            try:
-                text = p.read_text("utf-8").lower()
-            except Exception:
-                continue
-            score = sum(text.count(kw) for kw in keywords)
-            if score > 0:
-                file_scores[p] = score
-
-        if not file_scores:
-            continue
-
-        ranked = sorted(file_scores.items(), key=lambda x: -x[1])[:RECALL_MAX_HITS]
-        print(f"── {label} ({len(file_scores)} files match, showing top {len(ranked)}) ──\n")
+        print(f"── {label} (showing top {len(ranked)}) ──\n")
 
         for p, score in ranked:
             rel = p.name
