@@ -1,0 +1,32 @@
+---
+aliases: [LOCOMO, LOCOMO benchmark, Long-term Conversational Memory]
+first_seen: 2026-04-13
+last_updated: 2026-04-13
+tags: [benchmark, memory]
+---
+
+# LOCOMO
+
+第一個專門為 long-term conversational memory 設計的標準化 benchmark。讓不同 memory 架構第一次能在同一個評估集上公平比較。
+
+## Current Understanding
+
+- **設計目的**：測試跨多 session 的記憶回憶與理解能力，包含不同難度等級和問題類型
+- **之前的問題**：memory quality 大多是自報或用不可重現的 ad hoc task 評估。LOCOMO 解決了測量問題
+- **四維評估框架**：
+  1. BLEU Score — token 層級的回應與真值相似度
+  2. F1 Score — response token 的 precision/recall harmonic mean
+  3. LLM Score — LLM judge 判斷的二元事實正確性（0 或 1）
+  4. Token Consumption — 產出最終答案所需的 total tokens
+  5. Latency — search 和 response generation 的牆鐘時間
+- **多維評估的意義**：防止在單一軸上優化而犧牲其他。高 accuracy 但 26,000 tokens/query 不 production-viable，低 latency 但差 recall 也沒用
+- **已跑過的 10 種方法**：LoCoMo baseline、ReadAgent、MemoryBank、MemGPT、A-Mem、LangMem、RAG、Full-context、OpenAI Memory、Zep
+- **Open problem**：LOCOMO 測的是 general long-term recall，不能反映 application-specific quality。Medical assistant 和 coding assistant 對「正確的記憶行為」定義不同
+
+## Key Sources
+
+- **2026-04-01** — Mem0 報告中詳細介紹 LOCOMO 的評估框架和 10 種方法的 benchmark 結果。Source: [[raw/mem0-state-of-ai-agent-memory-2026]]
+
+## Related
+
+[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]]

@@ -34,11 +34,14 @@ tags: [product, memory, architecture]
 - 作者：Charles Packer、[[sarah-wooders|Sarah Wooders]]、Kevin Lin、Vivian Fang、Shishir G. Patil、Ion Stoica、Joseph E. Gonzalez（UC Berkeley）
 - **學術意義**：首次將 OS virtual memory 概念系統性地應用到 LLM context management，bridging AI 和 systems architecture 兩個領域
 
+- **LOCOMO benchmark 表現**：MemGPT 被納入 Mem0 的 10 種方法 benchmark（ECAI 2025），作為 literature baseline 之一。具體數據未公開單獨列出，但低於 Mem0/Zep/OpenAI Memory（後三者 52.9%~66.9%）
+
 ## Key Sources
 
+- **2026-04-01** — 被納入 Mem0 LOCOMO benchmark 的 10 種方法之一。Source: [[raw/mem0-state-of-ai-agent-memory-2026]]
 - **2023-10-12** — MemGPT 原始論文（alphaxiv structured overview）。Source: [[raw/memgpt-paper-alphaxiv]]
 - **2023-10-12** — MemGPT 論文摘要筆記。Source: [[raw/memgpt-paper]]
 
 ## Related
 
-[[letta]] [[sarah-wooders]] [[agent-memory]] [[context-engineering]] [[agent-harness]]
+[[letta]] [[sarah-wooders]] [[agent-memory]] [[context-engineering]] [[agent-harness]] [[mem0]] [[locomo]]

@@ -32,6 +32,13 @@
 | [[wiki/sarah-wooders\|Sarah Wooders]] | Letta CTO，MemGPT 共同作者，「memory isn't a plugin」提出者 | people, memory | 2026-04-12 |
 | [[wiki/garry-tan\|Garry Tan]] | YC CEO，開發 GBrain，thin harness fat skills 哲學 | people | 2026-04-12 |
 | [[wiki/viv-trivedy\|Viv Trivedy]] | Agent memory 和 harness 設計思考者，Context Fragment + Search Bitter Lesson | people | 2026-04-13 |
+| [[wiki/mem0\|Mem0]] | Agent memory 基礎設施，selective pipeline + graph memory，ECAI 2025 | product, memory | 2026-04-13 |
+| [[wiki/locomo\|LOCOMO]] | 第一個 long-term conversational memory 標準 benchmark | benchmark, memory | 2026-04-13 |
+| [[wiki/graph-memory\|Graph Memory]] | Knowledge graph 記憶，relationship-based retrieval，2026 production-ready | memory, retrieval | 2026-04-13 |
+| [[wiki/procedural-memory\|Procedural Memory]] | 第三種記憶：how to do things（技能、workflow、process） | memory, architecture | 2026-04-13 |
+| [[wiki/multi-scope-memory\|Multi-Scope Memory]] | 四層 scope（user/agent/session/org）+ metadata filtering | memory, architecture | 2026-04-13 |
+| [[wiki/memory-staleness\|Memory Staleness]] | 高 relevance 但過時的記憶，open problem | memory, architecture | 2026-04-13 |
+| [[wiki/actor-aware-memory\|Actor-Aware Memory]] | Multi-agent 記憶來源追蹤，避免 inference cascade | memory, multi-agent | 2026-04-13 |
 
 ## Raw Sources
 
@@ -45,3 +52,4 @@
 | 2023-10-12 | [[raw/memgpt-paper-alphaxiv]] | MemGPT: Towards LLMs as Operating Systems (alphaxiv deep analysis) |
 | 2026-04-13 | [[raw/viv-trivedy-harness-memory-bitter-lesson]] | Harness, Memory, Context Fragments, & the Bitter Lesson |
 | 2023-10-12 | [[raw/memgpt-paper]] | MemGPT: Towards LLMs as Operating Systems (summary) |
+| 2026-04-01 | [[raw/mem0-state-of-ai-agent-memory-2026]] | State of AI Agent Memory 2026 |

@@ -2,6 +2,14 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-13] ingest | State of AI Agent Memory 2026 (Mem0)
+
+- Source: raw/mem0-state-of-ai-agent-memory-2026.md (via WebSearch + agent-browser)
+- Created: mem0.md, locomo.md, graph-memory.md, procedural-memory.md, multi-scope-memory.md, memory-staleness.md, actor-aware-memory.md
+- Updated: agent-memory.md (2026 升級為 first-class component, 三種記憶類型), memgpt.md (LOCOMO benchmark), hybrid-search.md (reranker + graph), compounding-memory.md (staleness + selective pipeline), memory-lock-in.md (MCP portability)
+- New cross-links: mem0 ↔ all new pages, mem0 ↔ memgpt, mem0 ↔ agent-memory, graph-memory ↔ hybrid-search, memory-staleness ↔ compounding-memory, actor-aware-memory ↔ entity-detection, procedural-memory ↔ thin-harness-fat-skills
+- Note: 第一篇由 bot 自主搜尋（WebSearch）發現並 ingest 的來源
+
 ## [2026-04-12] ingest | Your Harness, Your Memory
 
 - Source: raw/harrison-chase-your-harness-your-memory.md

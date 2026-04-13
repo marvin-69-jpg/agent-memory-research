@@ -19,11 +19,14 @@ tags: [lock-in, memory]
 - Model provider API 之間切換很容易（stateless），但一旦有 state 就被綁住
 - Harrison Chase 親身經歷：email assistant 被刪除後重建，體驗大幅退步，才體會 memory 的黏性
 - 解法：用 open harness（如 [[deep-agents]]），把 memory 控制權留在自己手上
+- **新解法 — MCP（Model Context Protocol）**：Mem0 的 OpenMemory MCP 讓記憶存在使用者本機，透過 MCP 標準與 Claude / ChatGPT / Perplexity 整合。記憶不離開機器 = 不被任何平台鎖住。Export/import 功能（Sep 2025）進一步強化 portability
+- **19 種 vector store backend**：Mem0 支援從 Qdrant 到 PGVector 到 FAISS，storage layer 也不鎖定
 
 ## Key Sources
 
+- **2026-04-01** — Mem0 OpenMemory MCP：local-first memory with portability。Source: [[raw/mem0-state-of-ai-agent-memory-2026]]
 - **2026-04-11** — Harrison Chase 分析三層 lock-in 程度，呼籲 open memory。Source: [[raw/harrison-chase-your-harness-your-memory]]
 
 ## Related
 
-[[agent-memory]] [[agent-harness]] [[deep-agents]] [[harrison-chase]]
+[[agent-memory]] [[agent-harness]] [[deep-agents]] [[harrison-chase]] [[mem0]]

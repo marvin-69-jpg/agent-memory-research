@@ -23,11 +23,14 @@ tags: [retrieval, architecture]
   5. 4-Layer Dedup：best chunk per page → cosine > 0.85 去重 → type diversity 60% cap → per-page chunk cap
   6. Stale alerts：compiled truth 比 timeline 舊的標記提醒
 - Embedding、chunking、search fusion 是 engine-agnostic — 只有 raw search 是 engine-specific
+- **Reranker 層**（Mem0 的經驗）：vector similarity 回傳 candidate set，但排序常常是錯的。Reranker 是 second-pass model 重新評分 candidates。支援 Cohere、ZeroEntropy、Hugging Face、Sentence Transformers、LLM-based rerankers
+- **Graph memory 作為新維度**：除了 vector + keyword，[[graph-memory]] 提供 relationship-based retrieval。不是搜尋「語意相似」或「字面匹配」，而是「透過關係連結」的事實。2026 年初已 production-ready
 
 ## Key Sources
 
+- **2026-04-01** — Mem0 報告：reranker 層的重要性，graph memory 進入 production。Source: [[raw/mem0-state-of-ai-agent-memory-2026]]
 - **2026-04-12** — GBrain README 的 search 架構說明。Source: [[raw/garry-tan-gbrain]]
 
 ## Related
 
-[[gbrain]] [[agent-memory]] [[context-engineering]]
+[[gbrain]] [[agent-memory]] [[context-engineering]] [[mem0]] [[graph-memory]] [[bitter-lesson-search]]
