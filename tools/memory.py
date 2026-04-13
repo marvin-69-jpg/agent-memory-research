@@ -462,27 +462,120 @@ def extract_summary(filepath: Path, max_lines: int = 5) -> str:
     return " ".join(result) if result else "(empty)"
 
 
+def parse_aliases(text: str) -> list[str]:
+    """Extract aliases from frontmatter (YAML list: [a, b, c] or multi-line - a)."""
+    fields, _ = parse_frontmatter(text)
+    if not fields or "aliases" not in fields:
+        return []
+    raw = fields["aliases"]
+    # Handle [a, b, c] format
+    if raw.startswith("[") and raw.endswith("]"):
+        return [a.strip().lower() for a in raw[1:-1].split(",") if a.strip()]
+    # Single value
+    return [raw.strip().lower()] if raw.strip() else []
+
+
+def extract_numbers(text: str) -> list[float]:
+    """Extract all numbers from text (handles commas: 14,700 → 14700)."""
+    return [float(m.replace(",", "")) for m in re.findall(r'\d[\d,]*\.?\d*', text)]
+
+
 def score_directory(directory: Path, keywords: list[str], pattern: str = "*.md", max_results: int = RECALL_MAX_HITS) -> list[tuple[Path, int]]:
-    """Score files in a directory by keyword frequency. Returns sorted (path, score) list."""
-    file_scores: dict[Path, int] = {}
+    """Score files in a directory by keyword frequency + alias/filename/number boosting + IDF."""
     if not directory.exists():
         return []
+
+    # Pre-extract numbers from query for fuzzy number matching
+    query_numbers = extract_numbers(" ".join(keywords))
+
+    # First pass: count document frequency for each keyword (IDF-like)
+    all_files: list[tuple[Path, str, str]] = []  # (path, raw_text, lower_text)
     for p in sorted(directory.glob(pattern)):
         if p.name.startswith("_") or p.name == "MEMORY.md":
             continue
         try:
-            text = p.read_text("utf-8").lower()
+            raw_text = p.read_text("utf-8")
+            all_files.append((p, raw_text, raw_text.lower()))
         except Exception:
             continue
-        score = sum(text.count(kw) for kw in keywords)
+
+    n_docs = len(all_files)
+    if n_docs == 0:
+        return []
+
+    # Document frequency: how many files contain each keyword
+    doc_freq: dict[str, int] = {}
+    for kw in keywords:
+        doc_freq[kw] = sum(1 for _, _, text in all_files if kw in text)
+
+    # IDF weight: rare keywords matter more (log scale, min weight = 1)
+    import math
+    idf: dict[str, float] = {}
+    for kw in keywords:
+        df = doc_freq.get(kw, 0)
+        idf[kw] = math.log(n_docs / (1 + df)) + 1 if df > 0 else 0
+
+    # Second pass: score each file
+    file_scores: dict[Path, float] = {}
+    for p, raw_text, text in all_files:
+        # Base score: keyword frequency weighted by IDF
+        score = sum(text.count(kw) * idf.get(kw, 1) for kw in keywords)
+
+        # Boost 1: Alias matching — alias hit = +15 per keyword match (strong signal)
+        aliases = parse_aliases(raw_text)
+        for alias in aliases:
+            for kw in keywords:
+                if kw in alias or alias in kw:
+                    score += 15
+
+        # Boost 2: Filename matching — filename contains keyword = +8
+        fname = p.stem.lower().replace("-", " ").replace("_", " ")
+        for kw in keywords:
+            if kw in fname:
+                score += 8
+
+        # Boost 3: Fuzzy number matching — query number within ±10% of text number = +10
+        if query_numbers:
+            text_numbers = extract_numbers(text)
+            for qn in query_numbers:
+                for tn in text_numbers:
+                    if tn > 0 and abs(qn - tn) / tn <= 0.10:
+                        score += 10
+                        break  # one match per query number
+
         if score > 0:
             file_scores[p] = score
     return sorted(file_scores.items(), key=lambda x: -x[1])[:max_results]
 
 
+def tokenize_query(query: str) -> list[str]:
+    """Split query into keywords, with CJK n-gram extraction for better Chinese matching.
+
+    English words split by whitespace. CJK runs are split into 2-grams and 3-grams
+    to handle unsegmented Chinese text (e.g., '睡覺時做什麼' → ['睡覺', '覺時', '時做', '做什', '什麼', '睡覺時', '覺時做', '時做什', '做什麼']).
+    """
+    tokens = []
+    # Split into CJK runs vs non-CJK runs
+    cjk_range = r'[\u4e00-\u9fff\u3400-\u4dbf]'
+    parts = re.split(f'({cjk_range}+)', query.lower())
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+        if re.match(f'^{cjk_range}+$', part):
+            # CJK: extract 2-grams and 3-grams
+            for n in (2, 3):
+                for i in range(len(part) - n + 1):
+                    tokens.append(part[i:i+n])
+        else:
+            # Non-CJK: split by whitespace
+            tokens.extend(w for w in part.split() if w)
+    return list(dict.fromkeys(tokens))  # dedupe preserving order
+
+
 def recall_ranked(memory_dir: Path, wiki_dir: Path, query: str, max_results: int = RECALL_MAX_HITS) -> list[tuple[str, int]]:
     """Return ranked list of (filename, score) across memory/ + wiki/. Used by benchmark."""
-    keywords = query.lower().split()
+    keywords = tokenize_query(query)
     results = []
     for directory in [memory_dir, wiki_dir]:
         for p, score in score_directory(directory, keywords, max_results=max_results * 2):
@@ -497,7 +590,7 @@ def cmd_recall(memory_dir: Path, wiki_dir: Path, query: list[str], **_):
         print("Usage: memory recall <query>")
         return 1
 
-    keywords = q.lower().split()
+    keywords = tokenize_query(q)
     print(f"recall: searching for '{q}'\n")
 
     sections = [

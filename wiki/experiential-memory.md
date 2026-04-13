@@ -1,5 +1,5 @@
 ---
-aliases: [experiential data, agent traces, interaction data]
+aliases: [experiential data, agent traces, interaction data, 經驗, 經驗記憶, 跨instance共享]
 first_seen: 2026-04-13
 last_updated: 2026-04-13
 tags: [memory, architecture]

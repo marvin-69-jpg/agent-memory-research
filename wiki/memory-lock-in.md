@@ -1,5 +1,5 @@
 ---
-aliases: [memory lock-in, vendor lock-in, platform lock-in]
+aliases: [memory lock-in, vendor lock-in, platform lock-in, 鎖住, 綁定, 平台鎖定]
 first_seen: 2026-04-11
 last_updated: 2026-04-11
 tags: [lock-in, memory]
