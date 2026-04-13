@@ -1,7 +1,7 @@
 ---
 aliases: [agent scaffold, agent scaffolding, harness]
 first_seen: 2026-04-11
-last_updated: 2026-04-11
+last_updated: 2026-04-13
 tags: [harness, architecture]
 ---
 
@@ -16,13 +16,15 @@ Agent harness 是包裹在 LLM 外面的執行框架，負責管理 tool calling
 - 證據：Claude Code 被洩漏時有 512k 行 code — 那就是 harness
 - API 背後的功能（如 web search）也不是「模型的一部分」，而是輕量 harness 在做 tool calling
 - Harness 與 [[agent-memory]] 密不可分 — 管理 [[context-engineering|context]] 是 harness 的核心職責
+- Harness 最重要的工作：高效且正確地把資料 route 進 context window — 每個被載入的物件都是一個 [[context-fragment|Context Fragment]]，代表設計者的顯式決策
 - 如果你不擁有 harness，你就不擁有 memory → [[memory-lock-in]]
 
 ## Key Sources
 
+- **2026-04-13** — Viv Trivedy: harness 的核心工作是 route data into context window，每個 loaded object 是 Context Fragment。Source: [[raw/viv-trivedy-harness-memory-bitter-lesson]]
 - **2026-04-12** — GBrain 的 "thin harness, fat skills" 哲學：harness 是薄殼，knowledge 在 markdown skills 裡。Source: [[raw/garry-tan-gbrain]]
 - **2026-04-11** — Harrison Chase 提出 harness 不會消失、與 memory 綁定的論點。Source: [[raw/harrison-chase-your-harness-your-memory]]
 
 ## Related
 
-[[agent-memory]] [[context-engineering]] [[memory-lock-in]] [[deep-agents]] [[letta]] [[harrison-chase]] [[gbrain]]
+[[agent-memory]] [[context-engineering]] [[context-fragment]] [[memory-lock-in]] [[deep-agents]] [[letta]] [[harrison-chase]] [[gbrain]] [[viv-trivedy]]

@@ -55,6 +55,13 @@
 - Updated: CLAUDE.md (Sleep-Time Self-Improvement section + 專案結構)
 - Updated: auto-memory feedback_session_selfimprove.md (指向 `memory improve`)
 
+## [2026-04-13] ingest | Viv Trivedy — Harness, Memory, Context Fragments, & the Bitter Lesson
+
+- Source: raw/viv-trivedy-harness-memory-bitter-lesson.md
+- Created: context-fragment.md, experiential-memory.md, bitter-lesson-search.md, viv-trivedy.md
+- Updated: agent-harness.md (Context Fragment 概念), agent-memory.md (experiential memory + bitter lesson), context-engineering.md (Context Fragment), compounding-memory.md (跨 agent 累積 + search 挑戰)
+- New cross-links: context-fragment ↔ context-engineering, context-fragment ↔ agent-harness, context-fragment ↔ thin-harness-fat-skills, experiential-memory ↔ compounding-memory, experiential-memory ↔ sleep-time-compute, bitter-lesson-search ↔ hybrid-search, bitter-lesson-search ↔ memory-lock-in, viv-trivedy ↔ all new pages
+
 ## [2026-04-12] refactor | memory skill — CLI + skill 架構
 
 - Created: .claude/skills/memory/SKILL.md (memory skill，驅動 memory CLI)

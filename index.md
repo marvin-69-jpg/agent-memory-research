@@ -23,11 +23,15 @@
 | [[wiki/context-constitution\|Context Constitution]] | Letta 的原則集，定義 agent 如何管理 context 來學習 | memory, architecture | 2026-04-12 |
 | [[wiki/sleep-time-compute\|Sleep-Time Compute]] | Agent 閒置時的背景記憶處理（dream cycle） | memory, architecture | 2026-04-12 |
 | [[wiki/gbrain\|GBrain]] | Garry Tan 的個人知識庫系統，14,700+ files | product, memory, architecture | 2026-04-12 |
+| [[wiki/context-fragment\|Context Fragment]] | Context window 中每個 loaded object 作為 harness 的顯式設計決策 | context, architecture, harness | 2026-04-13 |
+| [[wiki/experiential-memory\|Experiential Memory]] | Agent 經驗記憶，可跨 instances 累積 | memory, architecture | 2026-04-13 |
+| [[wiki/bitter-lesson-search\|Bitter Lesson (Search)]] | Agent 資料超指數成長下的搜尋挑戰 | retrieval, memory, architecture | 2026-04-13 |
 | [[wiki/deep-agents\|Deep Agents]] | LangChain 開源 agent harness，model agnostic | product, harness | 2026-04-11 |
 | [[wiki/letta\|Letta]] | Stateful agent 先驅（前 MemGPT），memory-first harness + benchmarks | product, memory | 2026-04-12 |
 | [[wiki/harrison-chase\|Harrison Chase]] | LangChain CEO，主張 harness 與 memory 綁定、memory 應 open | people | 2026-04-11 |
 | [[wiki/sarah-wooders\|Sarah Wooders]] | Letta CTO，MemGPT 共同作者，「memory isn't a plugin」提出者 | people, memory | 2026-04-12 |
 | [[wiki/garry-tan\|Garry Tan]] | YC CEO，開發 GBrain，thin harness fat skills 哲學 | people | 2026-04-12 |
+| [[wiki/viv-trivedy\|Viv Trivedy]] | Agent memory 和 harness 設計思考者，Context Fragment + Search Bitter Lesson | people | 2026-04-13 |
 
 ## Raw Sources
 
@@ -39,4 +43,5 @@
 | 2026-04-03 | [[raw/sarah-wooders-memory-isnt-a-plugin]] | Why Memory Isn't a Plugin (It's the Harness) |
 | 2026-04-02 | [[raw/letta-context-constitution]] | The Context Constitution |
 | 2023-10-12 | [[raw/memgpt-paper-alphaxiv]] | MemGPT: Towards LLMs as Operating Systems (alphaxiv deep analysis) |
+| 2026-04-13 | [[raw/viv-trivedy-harness-memory-bitter-lesson]] | Harness, Memory, Context Fragments, & the Bitter Lesson |
 | 2023-10-12 | [[raw/memgpt-paper]] | MemGPT: Towards LLMs as Operating Systems (summary) |
