@@ -40,7 +40,7 @@ Sleep-time compute 最簡單的起步：定期 lint 記憶品質。
   - project 記憶超過 14 天未更新（可能過時）
   - 近似重複偵測（description 相似度 > 70%）
 - **跑法**：`uv run python3 tools/memory-lint.py [--memory-dir PATH]`
-- **觀察**：首次跑在 22 個記憶上全 pass，表示之前的寫入品質不錯。下一步是排 cron 定期跑，或在 entity-detection 收尾時自動跑。
+- **觀察**（2026-04-13）：首次跑在 22 個記憶上全 pass。但後續 session（04-13）**沒有在 session 開頭跑 `memory improve`**，儘管 CLAUDE.md 和 feedback memory 都有寫這條規則。原因同 brain-first-lookup：規則存在 ≠ 行為改變。MEMORY.md 的 feedback 被 Claude Code 自動注入 context，但 agent 不一定會遵守裡面的每條指令。**結論：session 開頭的 self-improvement 需要更強的觸發機制（如 hook），或在 `memory brief` 裡整合 improve 輸出。**
 
 ### 預計的後續 Phase
 

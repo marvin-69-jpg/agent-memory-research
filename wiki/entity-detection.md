@@ -34,7 +34,7 @@ tags: [memory, architecture]
 - **做法**：加規則到 CLAUDE.md —— 對話收尾時批次掃一遍整段對話，檢查有沒有該存但漏存的 entity（人、專案、偏好/決策、外部資源）。判斷標準：「下一個 session 的我遇到類似情境，會需要知道什麼？」
 - **簡化**：GBrain 是每條 message 都跑 async sub-agent，我們簡化為對話結束時一次掃。沒有 async sub-agent、沒有 notability filtering、沒有自動 web search enrichment。是即時存記憶的 safety net，不是取代它。
 - **PR**：追溯記錄在 marvin-69-jpg/agent-memory-research#1 comment
-- **觀察**：待觀察 —— 未來 session 結束時看 bot 是否主動做 entity scan
+- **觀察**（2026-04-13）：在 04-11 ~ 04-13 的多個 session 中，bot 有在對話中**即時**存 feedback memory（被糾正時立刻寫），但**收尾時的批次 entity scan 從未被觸發過**。原因：(1) 對話通常沒有明確「收尾」時刻（使用者直接離開或換 thread），(2) CLAUDE.md 裡的觸發條件（「使用者說謝謝 / 沒有後續 / 明確收尾」）太模糊。**結論：即時存記憶運作良好，但 safety net 掃描機制形同虛設。需要更明確的觸發點，或改成 CLI 定期掃。**
 
 ## Related
 

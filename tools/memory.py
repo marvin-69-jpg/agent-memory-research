@@ -264,7 +264,7 @@ def cmd_consolidate(memory_dir: Path, claude_md: Path, **_):
 # ── improve (lint + consolidate combined) ─────────────────
 
 
-def cmd_improve(memory_dir: Path, claude_md: Path, **_):
+def cmd_improve(memory_dir: Path, claude_md: Path, wiki_dir: Path = DEFAULT_WIKI_DIR, **_):
     mems = load_memories(memory_dir)
     index = parse_index(memory_dir)
     actions = []  # (priority, category, message)
@@ -319,6 +319,38 @@ def cmd_improve(memory_dir: Path, claude_md: Path, **_):
     if counts.get("user", 0) == 0:
         actions.append((3, "NOTE", "no 'user' memories"))
 
+    # ── Pending observations in wiki ──
+    if wiki_dir.exists():
+        for p in sorted(wiki_dir.glob("*.md")):
+            try:
+                text = p.read_text("utf-8")
+            except Exception:
+                continue
+            if "## Implementation" not in text:
+                continue
+            # Find sections with pending observations
+            in_impl = False
+            current_heading = ""
+            for line in text.splitlines():
+                if line.startswith("## Implementation"):
+                    in_impl = True
+                    continue
+                if in_impl and line.startswith("## "):
+                    break
+                if in_impl and line.startswith("### "):
+                    current_heading = line.lstrip("# ").strip()
+                if in_impl and ("待觀察" in line or "待後續" in line or "pending" in line.lower()):
+                    # Get page title
+                    title = p.stem
+                    for tl in text.splitlines():
+                        if tl.startswith("# "):
+                            title = tl[2:].strip()
+                            break
+                    label = f"{title}"
+                    if current_heading:
+                        label += f" → {current_heading}"
+                    actions.append((1, "OBSERVE", label))
+
     # ── Report ──
     print(f"Memory: {len(mems)} files ({dist_str(counts)})")
 
@@ -328,11 +360,12 @@ def cmd_improve(memory_dir: Path, claude_md: Path, **_):
 
     actions.sort(key=lambda x: x[0])
 
-    for cat in ("FIX", "MERGE", "REVIEW", "PROMOTE", "NOTE"):
+    for cat in ("FIX", "OBSERVE", "MERGE", "REVIEW", "PROMOTE", "NOTE"):
         items = [msg for _, c, msg in actions if c == cat]
         if items:
             labels = {
                 "FIX": "⚠ Fix now",
+                "OBSERVE": "👁 Pending observations (wiki Implementation sections)",
                 "MERGE": "Consider merging",
                 "REVIEW": "Review needed",
                 "PROMOTE": "Ready to promote",
