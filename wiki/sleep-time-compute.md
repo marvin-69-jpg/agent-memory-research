@@ -1,5 +1,5 @@
 ---
-aliases: [sleep-time compute, dream cycle, background memory processing]
+aliases: [sleep-time compute, dream cycle, background memory processing, 睡覺, 閒置處理, 背景計算]
 first_seen: 2026-04-12
 last_updated: 2026-04-12
 tags: [memory, architecture]
