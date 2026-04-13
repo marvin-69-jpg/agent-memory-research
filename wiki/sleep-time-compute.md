@@ -42,6 +42,15 @@ Sleep-time compute 最簡單的起步：定期 lint 記憶品質。
 - **跑法**：`uv run python3 tools/memory-lint.py [--memory-dir PATH]`
 - **觀察**（2026-04-13）：首次跑在 22 個記憶上全 pass。但後續 session（04-13）**沒有在 session 開頭跑 `memory improve`**，儘管 CLAUDE.md 和 feedback memory 都有寫這條規則。原因同 brain-first-lookup：規則存在 ≠ 行為改變。MEMORY.md 的 feedback 被 Claude Code 自動注入 context，但 agent 不一定會遵守裡面的每條指令。**結論：session 開頭的 self-improvement 需要更強的觸發機制（如 hook），或在 `memory brief` 裡整合 improve 輸出。**
 
+### SessionStart Hook（Phase 1.5 — 2026-04-13）
+
+CLAUDE.md 規則和 feedback memory 都沒能讓 agent 在 session 開頭跑 `memory improve`。改用基礎設施層面的 enforcement：
+
+- **做法**：在 `~/.claude/settings.json` 加 `SessionStart` hook，自動執行 `uv run python3 tools/memory.py improve`
+- **機制**：Claude Code 在 session 建立時觸發 hook，不依賴 agent 的意願或 attention
+- **預期效果**：sleep-time compute 100% 執行率（從 benchmark 的 50% → 100%）
+- **觀察**：待下次 benchmark 驗證
+
 ### 預計的後續 Phase
 
 - **Phase 2**：memory consolidation — 合併重複記憶、更新過時 project 記憶
