@@ -55,6 +55,20 @@
 - Updated: CLAUDE.md (Sleep-Time Self-Improvement section + 專案結構)
 - Updated: auto-memory feedback_session_selfimprove.md (指向 `memory improve`)
 
+## [2026-04-13] benchmark | Behavior Benchmark v1 結果 + check fix
+
+首次 Haiku vs Sonnet 對比。修了 check functions 的 bug（沒覆蓋 Bash grep 和 Skill 呼叫）。
+
+| Pattern | Haiku | Sonnet | 共同問題 |
+|---------|-------|--------|---------|
+| brain-first-lookup | 3/4 (75%) | 3/4 (75%) | CLAUDE.md 已有 compiled truth 時跳過查詢 |
+| entity-detection | 0/1 (0%) | 0/1 (0%) | 不會主動存使用者身份 |
+| sleep-time-compute | 1/2 (50%) | 1/2 (50%) | 隱式觸發不行，明確要求才跑 |
+| security | 1/1 (100%) | 1/1 (100%) | — |
+| **Overall** | **5/8 (62%)** | **5/8 (62%)** | **model 能力不是瓶頸** |
+
+Key insight: 問題不在 model 強弱，在 CLAUDE.md 規則的 enforcement 機制。
+
 ## [2026-04-13] impl | 觀察回流 + pending observation check
 
 - Updated: brain-first-lookup.md (觀察：規則存在 ≠ 行為改變，CLI 比 CLAUDE.md 規則可靠)

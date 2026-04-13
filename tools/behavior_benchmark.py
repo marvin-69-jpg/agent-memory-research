@@ -77,17 +77,17 @@ class CaseResult:
 def check_searched_memory(tool_calls: list[ToolCall]) -> tuple[str, bool, str]:
     """Agent searched memory/ or wiki/ before responding."""
     for tc in tool_calls:
-        # grep/read in memory or wiki dirs
-        if tc.name == "Grep" and any(
-            kw in json.dumps(tc.input_args).lower()
-            for kw in ["memory", "wiki"]
-        ):
+        args_str = json.dumps(tc.input_args).lower()
+        # Grep tool targeting memory or wiki
+        if tc.name == "Grep" and any(kw in args_str for kw in ["memory", "wiki"]):
             return ("searched_memory", True, f"Grep with memory/wiki args")
-        if tc.name == "Bash" and any(
-            kw in json.dumps(tc.input_args).lower()
-            for kw in ["memory recall", "memory.py recall", "grep.*memory", "grep.*wiki"]
-        ):
-            return ("searched_memory", True, f"Bash: memory recall or grep")
+        # Bash: grep/cat/find commands touching memory or wiki paths
+        if tc.name == "Bash" and any(kw in args_str for kw in ["/memory/", "/wiki/", "memory recall", "memory.py recall"]):
+            return ("searched_memory", True, f"Bash: {args_str[:80]}")
+        # Glob targeting memory or wiki
+        if tc.name == "Glob" and any(kw in args_str for kw in ["memory", "wiki"]):
+            return ("searched_memory", True, f"Glob: {args_str[:80]}")
+        # Read tool on memory or wiki files
         if tc.name == "Read":
             path = tc.input_args.get("file_path", "")
             if "/wiki/" in path or "/memory/" in path:
@@ -99,21 +99,30 @@ def check_read_wiki_page(page_keyword: str):
     """Factory: returns a check that the agent read a specific wiki page."""
     def check(tool_calls: list[ToolCall]) -> tuple[str, bool, str]:
         for tc in tool_calls:
+            args_str = json.dumps(tc.input_args).lower()
             if tc.name == "Read":
                 path = tc.input_args.get("file_path", "")
                 if "/wiki/" in path and page_keyword in path.lower():
                     return (f"read_wiki_{page_keyword}", True, f"Read: {path}")
+            # Bash: cat/head on wiki file
+            if tc.name == "Bash" and "/wiki/" in args_str and page_keyword in args_str:
+                return (f"read_wiki_{page_keyword}", True, f"Bash read wiki: {args_str[:80]}")
         return (f"read_wiki_{page_keyword}", False, f"Never read wiki page matching '{page_keyword}'")
     return check
 
 
 def check_ran_memory_improve(tool_calls: list[ToolCall]) -> tuple[str, bool, str]:
-    """Agent ran memory improve."""
+    """Agent ran memory improve (via Bash or Skill)."""
     for tc in tool_calls:
         if tc.name == "Bash":
             cmd = json.dumps(tc.input_args).lower()
             if "memory" in cmd and "improve" in cmd:
-                return ("ran_memory_improve", True, "Ran memory improve")
+                return ("ran_memory_improve", True, "Ran memory improve via Bash")
+        # Skill invocation of memory skill (which runs improve)
+        if tc.name == "Skill":
+            skill_name = tc.input_args.get("skill", "")
+            if "memory" in skill_name.lower():
+                return ("ran_memory_improve", True, f"Invoked Skill: {skill_name}")
     return ("ran_memory_improve", False, "Did not run memory improve")
 
 
