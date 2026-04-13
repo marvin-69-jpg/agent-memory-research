@@ -1,6 +1,6 @@
 # Memory Skill
 
-觸發：session 開始、「記憶健康」「memory lint」「memory stats」「記憶品質」「合併記憶」「promote feedback」
+觸發：session 開始、「記憶健康」「memory lint」「memory stats」「記憶品質」「合併記憶」「promote feedback」「記得什麼」「recall」「brief」
 
 ---
 
@@ -20,6 +20,8 @@ uv run python3 tools/memory.py <subcommand>
 | `lint` | 格式 + 結構檢查 |
 | `consolidate` | 語意分析：重複、過時、promotion、cross-ref |
 | `stats` | 記憶分佈概覽 |
+| `recall <query>` | 跨 memory/ + wiki/ 搜尋，brain-first lookup |
+| `brief` | Session 啟動 briefing — 壓縮輸出 agent 目前知道的一切 |
 
 可選參數：
 - `--memory-dir PATH` — 記憶目錄（預設 `/home/node/.claude/projects/-home-node/memory/`）
@@ -82,6 +84,36 @@ consolidate 報告說有 PROMOTE 候選時：
    - feedback 記憶保留（作為歷史記錄）
 
 **注意**：CLAUDE.md（`/home/node/CLAUDE.md`）是 root-owned symlink，無法直接改。promote 的目標是各專案自己的 CLAUDE.md（例如 `/home/node/agent-memory-research/CLAUDE.md`）。
+
+---
+
+## Operation 5：Recall（brain-first lookup）
+
+使用者問的問題可能跟過去研究或記憶有關時。
+
+```bash
+cd /home/node/agent-memory-research && export PATH="/home/node/.local/bin:$PATH" && uv run python3 tools/memory.py recall <keywords>
+```
+
+- 同時搜尋 memory/（auto-memory）和 wiki/（研究 wiki）
+- 按 keyword 出現次數排序，顯示 top 10
+- 輸出每個命中檔案的名稱、type、description、compiled truth 摘要
+- 用來回答問題前先查 brain，external 是 fallback
+
+---
+
+## Operation 6：Brief（session 啟動 briefing）
+
+新 session 開始時，在 `improve` 之後跑，快速掌握全局。
+
+```bash
+cd /home/node/agent-memory-research && export PATH="/home/node/.local/bin:$PATH" && uv run python3 tools/memory.py brief
+```
+
+- 輸出 auto-memory 分佈 + 每條記憶的 name/description
+- 輸出 wiki 的 concepts / products / people 分類列表
+- 輸出已實作到 openab-bot 的 pattern
+- 一次讀完就掌握「我目前知道什麼」
 
 ---
 
