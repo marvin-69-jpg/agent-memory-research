@@ -2,6 +2,17 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-14] ingest | Phase 1 深化 — 3 篇高價值來源
+
+Phase 1 計劃：補學術深度，降低 single-source pages。三個來源同時搜尋 + 讀取 + ingest：
+
+- Source: raw/chrysb-long-term-memory-unsolved.md (262.1K views, 9 軸設計 + 10 failure modes)
+- Source: raw/pengfei-du-memory-survey-2026.md (arxiv 2603.07670, 系統性 survey)
+- Source: raw/yohei-nakajima-rise-of-ai-memory.md (24.6K views, 全景分析)
+- Created: memory-failure-modes.md, memory-evaluation.md, chrysb.md, yohei-nakajima.md
+- Updated: agent-memory.md (write-manage-read loop, 三維分類法, raw vs derived, evaluation paradox), memory-staleness.md (derivation drift, stale context dominance, forgetting propagation), memory-lock-in.md (memory as moat, Memory's Plaid), graph-memory.md (temporal KG, forgetting propagation), locomo.md (survey 定位, ACL 2024 原文), memory-arena.md (survey 定位, evaluation paradox), memgpt.md (evaluation link), agemem.md (survey: policy-learned management), letta.md (yohei 定位)
+- Single-source pages 降幅：agent-memory 4→7, memory-staleness 1→3, graph-memory 1→3, locomo 1→2(+survey), memory-arena 1→2(+survey), agemem 1→2, letta 4→5
+
 ## [2026-04-14] ingest | SHL0MS — Autoreason (Nous Research)
 
 - Source: raw/shl0ms-autoreason.md (208.6K views tweet + GitHub repo clone)

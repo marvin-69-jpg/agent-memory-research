@@ -49,6 +49,10 @@
 | [[wiki/aaron-levie\|Aaron Levie]] | Box CEO，brutally unsentimental architecture | people | 2026-04-13 |
 | [[wiki/autoreason\|Autoreason]] | A/B/AB tournament self-refinement，memory isolation by design | product, architecture | 2026-04-14 |
 | [[wiki/shl0ms\|SHL0MS]] | Autoreason 作者，與 Hermes Agent 共同撰寫論文 | people | 2026-04-14 |
+| [[wiki/memory-failure-modes\|Memory Failure Modes]] | 10 種常見記憶失敗模式，raw vs derived 根本張力 | memory, architecture | 2026-04-14 |
+| [[wiki/memory-evaluation\|Memory Evaluation]] | Evaluation paradox + benchmark 演進 + four-layer metric stack | benchmark, memory | 2026-04-14 |
+| [[wiki/chrysb\|Chrys Bader]] | 9 軸 memory 設計框架，262K views 的 practitioner 分析 | people | 2026-04-14 |
+| [[wiki/yohei-nakajima\|Yohei Nakajima]] | BabyAGI 創造者，AI Memory 全景分析 | people | 2026-04-14 |
 
 ## Raw Sources
 
@@ -67,3 +71,6 @@
 | 2026-02-19 | [[raw/dair-ai-memory-benchmarks-misleading]] | Memory Benchmarks Are Misleading — MemoryArena (tweet, 37.8K views) |
 | 2026-01-12 | [[raw/elvis-agemem-unified-memory]] | AgeMem: Unified Memory via RL (tweet, 56.4K views) |
 | 2026-04-12 | [[raw/shl0ms-autoreason]] | Autoreason: Self-Refinement That Knows When to Stop (208.6K views + GitHub) |
+| 2026-04-12 | [[raw/chrysb-long-term-memory-unsolved]] | Why Long-Term Memory for LLMs Remains Unsolved (262.1K views) |
+| 2026-03-08 | [[raw/pengfei-du-memory-survey-2026]] | Memory for Autonomous LLM Agents: Survey (arxiv 2603.07670) |
+| 2025-08-28 | [[raw/yohei-nakajima-rise-of-ai-memory]] | The Rise of AI Memory (24.6K views) |

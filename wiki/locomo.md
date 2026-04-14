@@ -28,7 +28,9 @@ tags: [benchmark, memory]
 - **2026-04-01** — Mem0 報告中詳細介紹 LOCOMO 的評估框架和 10 種方法的 benchmark 結果。Source: [[raw/mem0-state-of-ai-agent-memory-2026]]
 
 - **後續批評**：DAIR.AI 指出 LOCOMO 有根本局限 — 在 LOCOMO 上接近飽和的模型在 real agentic scenarios 表現很差。Memory 不只是 retrieval，是「在正確時機應用正確 context 做出好決策」→ [[memory-arena|MemoryArena]] 試圖補這個缺口
+- **Survey 定位**（Pengfei Du 2026）：LOCOMO 被歸類為 "passive recall" 層級的 benchmark。Survey 提出更完整的四層 metric stack（task effectiveness / memory quality / efficiency / governance）→ [[memory-evaluation]]
+- **原始論文**：Snap Research + UNC Chapel Hill，ACL 2024。300 turns / 9K tokens / 35 sessions。arxiv 2402.17753
 
 ## Related
 
-[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]] [[memory-arena]]
+[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]] [[memory-arena]] [[memory-evaluation]]

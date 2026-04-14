@@ -21,6 +21,8 @@ tags: [lock-in, memory]
 - 解法：用 open harness（如 [[deep-agents]]），把 memory 控制權留在自己手上
 - **新解法 — MCP（Model Context Protocol）**：Mem0 的 OpenMemory MCP 讓記憶存在使用者本機，透過 MCP 標準與 Claude / ChatGPT / Perplexity 整合。記憶不離開機器 = 不被任何平台鎖住。Export/import 功能（Sep 2025）進一步強化 portability
 - **19 種 vector store backend**：Mem0 支援從 Qdrant 到 PGVector 到 FAISS，storage layer 也不鎖定
+- **"Memory as moat"**（[[yohei-nakajima]]）：AI 越了解你就越難離開，各平台有動機鎖住記憶。消費端（ChatGPT / Claude / Gemini / Grok）都各自建 memory 系統，互不相通
+- **"Memory's Plaid"**（Yohei）：中立層讓使用者跨 assistant 攜帶記憶。跟 Mem0 OpenMemory 概念類似但更廣 — 不只是 API 層，是消費者可見的 portability layer
 
 ## Key Sources
 
@@ -29,4 +31,4 @@ tags: [lock-in, memory]
 
 ## Related
 
-[[agent-memory]] [[agent-harness]] [[deep-agents]] [[harrison-chase]] [[mem0]]
+[[agent-memory]] [[agent-harness]] [[deep-agents]] [[harrison-chase]] [[mem0]] [[yohei-nakajima]]

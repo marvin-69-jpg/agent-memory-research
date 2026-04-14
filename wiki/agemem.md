@@ -29,10 +29,12 @@ tags: [product, memory, architecture]
   - Full unified：+21.7% vs no-memory baseline
 - **與 openab-bot 的對比**：我們目前完全是 trigger-based rules（CLAUDE.md 硬規則 + hooks）。AgeMem 的方向是讓 agent 自己學會 memory management，不需要人寫規則。這是我們 enforcement spectrum 的下一個可能層級
 - **Paper**: arxiv.org/abs/2601.01885
+- **Survey 定位**（Pengfei Du 2026）：AgeMem 被歸類為 "Policy-learned Memory Management" — 五大機制家族中最先進的。Control Policy 維度上屬於 "learned control"（vs heuristic / prompted）。Survey 指出此方向能發現 non-obvious strategies（如 preemptive summarization），但有訓練成本和 interpretability 疑慮
 
 ## Key Sources
 
 - **2026-01-12** — Elvis (omarsar0) 的推文介紹 AgeMem（56.4K views）。Source: [[raw/elvis-agemem-unified-memory]]
+- **2026-03-08** — Pengfei Du survey: AgeMem 歸類為 policy-learned management。Source: [[raw/pengfei-du-memory-survey-2026]]
 
 ## Related
 

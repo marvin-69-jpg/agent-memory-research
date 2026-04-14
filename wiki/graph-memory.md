@@ -22,11 +22,17 @@ tags: [memory, architecture, retrieval]
 - **Latency trade-off**：Mem0g p95 2.59s vs vector-only 1.44s — graph 加了 ~1s 的 overhead
 - **何時該用 graph**：complex entity relationships（醫療病人 context、企業帳號階層、技術系統相依性）。簡單的 user preference 場景用 vector-only 就夠
 - **Graph backends**：Neo4j、Kuzu（embedded，不需要獨立 server process）、Neptune Analytics（AWS-native）
+- **Temporal knowledge graph**（[[yohei-nakajima]]）：Zep / Graphiti 代表時序知識圖譜方向 — 不只是 entity relationships，還追蹤 relationships 的時間演化。支援「X 在 2024 年用 Python，2025 年改用 Go」這種時序推理
+- **Graph 在 retrieval 中的角色**（[[chrysb]]）：Graph traversal 擅長「系統知道什麼關於這個 entity 以及所有相連的東西」。跟 semantic search（概念相似）和 full-text（精確詞組）互補，不是替代 → [[hybrid-search]]
+- **Forgetting propagation 問題**（[[chrysb]]）：刪除 source conversation 時，graph 中 extracted facts 變成 orphaned — 真正的 forgetting 需要 provenance tracking + cascade delete → [[memory-staleness]]
+- **Survey 定位**（Pengfei Du）：graph 屬於 Representational Substrate 中的 "structured stores" 分類。適合 complex entity relationships，但加了 ~1s latency overhead
 
 ## Key Sources
 
 - **2026-04-01** — Mem0 報告：graph memory 從實驗到 production。Source: [[raw/mem0-state-of-ai-agent-memory-2026]]
+- **2026-04-12** — Chrys Bader: graph traversal 在 retrieval 中的角色 + forgetting propagation 問題。Source: [[raw/chrysb-long-term-memory-unsolved]]
+- **2025-08-28** — Yohei Nakajima: Zep/Graphiti temporal knowledge graph。Source: [[raw/yohei-nakajima-rise-of-ai-memory]]
 
 ## Related
 
-[[mem0]] [[hybrid-search]] [[agent-memory]] [[brain-first-lookup]] [[entity-detection]]
+[[mem0]] [[hybrid-search]] [[agent-memory]] [[brain-first-lookup]] [[entity-detection]] [[chrysb]] [[yohei-nakajima]] [[memory-staleness]]

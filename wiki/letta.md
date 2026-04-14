@@ -23,6 +23,7 @@ Stateful agent 領域的先驅公司，CTO 是 [[sarah-wooders]]。前身為 Mem
 - 發布 [[context-constitution]]：定義 agent 如何管理 context 來從經驗學習
 - [[sleep-time-compute]]：agent 閒置時重寫 memory state
 - 「Today's models deeply identify with their own ephemerality」— 呼籲 labs 重視 experiential AI 而非只 coding benchmarks
+- **Yohei Nakajima 定位**：Letta = Berkeley spinout，$10M funding，model-agnostic agent memory，portable state。在 tools & startups landscape 中是 memory-first 的代表
 
 ## Key Sources
 
@@ -33,4 +34,4 @@ Stateful agent 領域的先驅公司，CTO 是 [[sarah-wooders]]。前身為 Mem
 
 ## Related
 
-[[sarah-wooders]] [[memgpt]] [[agent-memory]] [[agent-harness]] [[context-constitution]] [[sleep-time-compute]] [[deep-agents]] [[harrison-chase]]
+[[sarah-wooders]] [[memgpt]] [[agent-memory]] [[agent-harness]] [[context-constitution]] [[sleep-time-compute]] [[deep-agents]] [[harrison-chase]] [[yohei-nakajima]] [[memory-lock-in]]

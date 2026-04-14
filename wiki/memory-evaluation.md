@@ -1,0 +1,51 @@
+---
+aliases: [memory evaluation, memory benchmark, 記憶評估, evaluation paradox]
+first_seen: 2026-04-14
+last_updated: 2026-04-14
+tags: [benchmark, memory]
+---
+
+# Memory Evaluation
+
+Agent memory 的評估方法論 — 從 passive recall 到 agentic tasks，以及為什麼評估本身可能是不可能的。
+
+## Current Understanding
+
+### Evaluation Paradox（Chrys Bader）
+
+> 驗證記憶系統需要 ground truth，但真實對話記憶跨月/年的 ground truth 超過任何 context window，也超過任何人能標註的範圍。任何用來評估完整歷史的 judge 都有跟被評估系統一樣的 context 限制。
+
+→ 所有新方案都是「不同的 trade-offs 包裝成 solution」，沒人能證明自己的方法 works
+
+### Benchmark 演進
+
+| Benchmark | 層級 | 測什麼 | 限制 |
+|---|---|---|---|
+| [[locomo\|LoCoMo]] | Passive recall | 長對話理解、QA、摘要 | 只測 recall，不測決策 |
+| **MemBench** (Tan 2025) | Multi-session | 多 session + 明確 forgetting | — |
+| **MemoryAgentBench** (Hu 2025) | Agentic tasks | 記憶影響 action | ICLR 2026，四核能力 |
+| [[memory-arena\|MemoryArena]] (He 2026) | Cross-session | 跨 session 一致性 + cost-effectiveness | LoCoMo 滿分的模型在這裡 40-60% |
+
+### Key Findings from Survey
+
+1. **"Long context is not memory"** — 超長 context window 模型在需要 selective retrieval 的任務上仍輸給專用 memory 系統
+2. RAG 有幫助但距 human-level 仍有顯著差距（relevance & freshness）
+3. **Selective forgetting** 嚴重被低估 — 幾乎沒有系統被明確評估
+4. **Cross-session coherence** 是未解決的重大挑戰
+5. Cost-effectiveness 評估普遍缺席
+
+### Four-Layer Metric Stack（Pengfei Du）
+
+1. **Task effectiveness** — 任務完成品質
+2. **Memory quality** — 準確性、freshness
+3. **Efficiency** — token、latency、storage 成本
+4. **Governance** — 隱私、deletion、合規
+
+## Key Sources
+
+- **2026-04-12** — Chrys Bader: evaluation paradox。Source: [[raw/chrysb-long-term-memory-unsolved]]
+- **2026-03-08** — Pengfei Du: benchmark 演進 + four-layer metric stack。Source: [[raw/pengfei-du-memory-survey-2026]]
+
+## Related
+
+[[locomo]] [[memory-arena]] [[agent-memory]] [[chrysb]] [[memory-staleness]] [[memory-failure-modes]]

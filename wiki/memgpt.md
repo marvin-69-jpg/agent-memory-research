@@ -44,4 +44,4 @@ tags: [product, memory, architecture]
 
 ## Related
 
-[[letta]] [[sarah-wooders]] [[agent-memory]] [[context-engineering]] [[agent-harness]] [[mem0]] [[locomo]]
+[[letta]] [[sarah-wooders]] [[agent-memory]] [[context-engineering]] [[agent-harness]] [[mem0]] [[locomo]] [[memory-evaluation]]
