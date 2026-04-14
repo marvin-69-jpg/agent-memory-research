@@ -2,6 +2,12 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-14] structure | Phase 2 — 概念地圖 + Open Questions
+
+- Created: concept-map.md（三層架構：Infrastructure → Memory System → Retrieval & Evaluation，6 個跨層主題，7 products，10 people）
+- Created: open-questions.md（12 個未解問題分三個 tier：Fundamental / Hard but Approachable / Emerging，加研究缺口表）
+- Updated: index.md（加 Structure section 置頂）
+
 ## [2026-04-14] ingest | Phase 1 深化 — 3 篇高價值來源
 
 Phase 1 計劃：補學術深度，降低 single-source pages。三個來源同時搜尋 + 讀取 + ingest：

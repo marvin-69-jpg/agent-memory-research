@@ -2,6 +2,11 @@
 
 > Auto-maintained by LLM. Do not edit manually.
 
+## Structure
+
+- [[wiki/concept-map|Concept Map]] — 三層架構 + 跨層主題 + 人物/產品索引
+- [[wiki/open-questions|Open Questions]] — 12 個未解問題，按重要性排序 + 研究缺口
+
 ## Wiki Pages
 
 | Page | Summary | Tags | Last Updated |
@@ -53,6 +58,10 @@
 | [[wiki/memory-evaluation\|Memory Evaluation]] | Evaluation paradox + benchmark 演進 + four-layer metric stack | benchmark, memory | 2026-04-14 |
 | [[wiki/chrysb\|Chrys Bader]] | 9 軸 memory 設計框架，262K views 的 practitioner 分析 | people | 2026-04-14 |
 | [[wiki/yohei-nakajima\|Yohei Nakajima]] | BabyAGI 創造者，AI Memory 全景分析 | people | 2026-04-14 |
+| [[wiki/memory-failure-modes\|Memory Failure Modes]] | 10 種常見記憶失敗模式，raw vs derived 根本張力 | memory, architecture | 2026-04-14 |
+| [[wiki/memory-evaluation\|Memory Evaluation]] | Evaluation paradox + benchmark 演進 + four-layer metric stack | benchmark, memory | 2026-04-14 |
+| [[wiki/concept-map\|Concept Map]] | 三層架構 + 跨層主題 + 人物/產品索引 | architecture | 2026-04-14 |
+| [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-14 |
 
 ## Raw Sources
 
