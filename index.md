@@ -58,8 +58,8 @@
 | [[wiki/memory-evaluation\|Memory Evaluation]] | Evaluation paradox + benchmark 演進 + four-layer metric stack | benchmark, memory | 2026-04-14 |
 | [[wiki/chrysb\|Chrys Bader]] | 9 軸 memory 設計框架，262K views 的 practitioner 分析 | people | 2026-04-14 |
 | [[wiki/yohei-nakajima\|Yohei Nakajima]] | BabyAGI 創造者，AI Memory 全景分析 | people | 2026-04-14 |
-| [[wiki/memory-failure-modes\|Memory Failure Modes]] | 10 種常見記憶失敗模式，raw vs derived 根本張力 | memory, architecture | 2026-04-14 |
-| [[wiki/memory-evaluation\|Memory Evaluation]] | Evaluation paradox + benchmark 演進 + four-layer metric stack | benchmark, memory | 2026-04-14 |
+| [[wiki/chatgpt-memory\|ChatGPT Memory]] | 四層靜態注入架構，no RAG no vector DB | product, memory | 2026-04-14 |
+| [[wiki/coding-agent-memory\|Coding Agent Memory]] | Cursor/Claude Code/Windsurf/Cline 記憶架構比較 | product, memory, architecture | 2026-04-14 |
 | [[wiki/concept-map\|Concept Map]] | 三層架構 + 跨層主題 + 人物/產品索引 | architecture | 2026-04-14 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-14 |
 
@@ -83,3 +83,5 @@
 | 2026-04-12 | [[raw/chrysb-long-term-memory-unsolved]] | Why Long-Term Memory for LLMs Remains Unsolved (262.1K views) |
 | 2026-03-08 | [[raw/pengfei-du-memory-survey-2026]] | Memory for Autonomous LLM Agents: Survey (arxiv 2603.07670) |
 | 2025-08-28 | [[raw/yohei-nakajima-rise-of-ai-memory]] | The Rise of AI Memory (24.6K views) |
+| 2025-12-09 | [[raw/manthan-gupta-chatgpt-memory-reverse-engineered]] | ChatGPT Memory Reverse Engineered (四層靜態注入) |
+| 2026-04-14 | [[raw/coding-agents-memory-comparison]] | Coding Agent Memory Comparison (Cursor/Claude Code/Windsurf/Cline) |

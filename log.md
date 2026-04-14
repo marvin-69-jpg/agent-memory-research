@@ -2,6 +2,18 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-14] ingest | Phase 3 — 產業視角（ChatGPT Memory + Coding Agents）
+
+- Source: raw/manthan-gupta-chatgpt-memory-reverse-engineered.md (ChatGPT 四層靜態注入逆向工程)
+- Source: raw/coding-agents-memory-comparison.md (Cursor/Claude Code/Windsurf/Cline 架構比較，多來源綜合)
+- Created: chatgpt-memory.md, coding-agent-memory.md
+- Key findings:
+  - ChatGPT 不用 RAG/vector DB，是 4 層靜態注入（speed over completeness）
+  - 4 個 coding agent 全收斂在 file-based memory（驗證 filesystem camp）
+  - 分歧在 who curates（user vs system）和 when retrieval（always vs on-demand vs auto-learned）
+  - Enterprise: 62% 實驗 agents，只有 14% production-ready（McKinsey）
+- Open questions research gap "Production cases 太少" → 已部分解決
+
 ## [2026-04-14] structure | Phase 2 — 概念地圖 + Open Questions
 
 - Created: concept-map.md（三層架構：Infrastructure → Memory System → Retrieval & Evaluation，6 個跨層主題，7 products，10 people）

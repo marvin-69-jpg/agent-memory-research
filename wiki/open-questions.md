@@ -139,7 +139,7 @@ Sources: [[raw/pengfei-du-memory-survey-2026]], [[agemem]]
 
 | Gap | 狀態 | 需要什麼 |
 |---|---|---|
-| Production cases 太少 | 只有 GBrain | 需要 Cursor / ChatGPT Memory / enterprise 案例 |
+| Production cases 太少 | **已部分解決** — ChatGPT Memory + 4 coding agents | 還缺 enterprise 深度案例 |
 | Multimodal memory | 完全沒覆蓋 | Pengfei Du 列為 open challenge #5 |
 | Neuroscience integration | 完全沒覆蓋 | Spreading activation, Ebbinghaus curves |
 | Privacy & compliance | 只在 mem0 提到 | 需要獨立頁面 |

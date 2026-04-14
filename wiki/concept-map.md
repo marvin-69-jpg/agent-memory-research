@@ -90,6 +90,8 @@ tags: [architecture]
 | [[mem0]] | Agent memory 基礎設施，ECAI 2025 |
 | [[deep-agents]] | LangChain 開源 agent harness |
 | [[agemem]] | RL 訓練 agent 自己學 memory management |
+| [[chatgpt-memory]] | ChatGPT 四層靜態注入，no RAG |
+| [[coding-agent-memory]] | Cursor/Claude Code/Windsurf/Cline 比較 |
 | [[autoreason]] | A/B/AB tournament self-refinement |
 
 ## People
