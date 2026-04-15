@@ -36,6 +36,7 @@ tags: [architecture]
 | [[multi-scope-memory]] | 四層 scope：user / agent / session / org |
 | [[graph-memory]] | Knowledge graph 記憶，relationship-based |
 | [[compiled-truth-pattern]] | Compiled truth（可改寫）+ timeline（append-only） |
+| [[multimodal-memory]] | 非文字模態記憶：影像、音訊、影片、螢幕截圖 |
 
 ### 2b. 記憶生命週期
 
@@ -95,6 +96,7 @@ tags: [architecture]
 | [[coding-agent-memory]] | Cursor/Claude Code/Windsurf/Cline 比較 |
 | [[autoreason]] | A/B/AB tournament self-refinement |
 | [[helix]] | Self-healing runtime，Gene Map 用 Q-value RL |
+| [[mirix]] | 六種記憶 + Active Retrieval + 多模態原生支持 |
 
 ## People
 

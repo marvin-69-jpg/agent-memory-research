@@ -140,7 +140,7 @@ Sources: [[raw/pengfei-du-memory-survey-2026]], [[agemem]]
 | Gap | 狀態 | 需要什麼 |
 |---|---|---|
 | Production cases 太少 | **已部分解決** — ChatGPT Memory + 4 coding agents | 還缺 enterprise 深度案例 |
-| Multimodal memory | 完全沒覆蓋 | Pengfei Du 列為 open challenge #5 |
+| Multimodal memory | **已覆蓋** — [[multimodal-memory]] + [[mirix]] | MIRIX 六層記憶 + M3-Agent entity-centric graph |
 | Neuroscience integration | 完全沒覆蓋 | Spreading activation, Ebbinghaus curves |
 | Privacy & compliance | 只在 mem0 提到 | 需要獨立頁面 |
 | Cost-effectiveness | **已部分解決** — Helix 提供最具體的 memory ROI 數據（2,000× 加速、100% cost reduction） | 還缺 general memory 的 cost-effectiveness，Helix 只覆蓋 error recovery |

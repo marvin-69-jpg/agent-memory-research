@@ -33,4 +33,4 @@ tags: [product, memory, architecture]
 
 ## Related
 
-[[locomo]] [[graph-memory]] [[procedural-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[memory-staleness]] [[memgpt]] [[letta]] [[hybrid-search]] [[agent-memory]] [[memory-lock-in]] [[agemem]] [[compounding-memory]] [[filesystem-vs-database]] [[memory-arena]] [[yohei-nakajima]]
+[[locomo]] [[graph-memory]] [[procedural-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[memory-staleness]] [[memgpt]] [[letta]] [[hybrid-search]] [[agent-memory]] [[memory-lock-in]] [[agemem]] [[compounding-memory]] [[filesystem-vs-database]] [[memory-arena]] [[yohei-nakajima]] [[mirix]] [[multimodal-memory]]

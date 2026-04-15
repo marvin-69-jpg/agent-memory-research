@@ -15,7 +15,8 @@ Agent 記憶系統，讓 agent 能跨 session 累積知識、個人化體驗。M
   - **短期記憶**：對話中的 messages、tool call 結果 → harness 管理
   - **長期記憶**：跨 session 記憶 → harness 負責讀寫更新
 - 2026 年 memory 已從「nice-to-have」升級為 **first-class architectural component**，有標準 benchmark（[[locomo|LOCOMO]]）、專屬研究文獻、可量化的 performance gap
-- 記憶系統已分化出三種類型：**episodic**（what happened）、**semantic**（what is known）、**procedural**（how to do things）→ [[procedural-memory]]
+- 記憶系統已分化出三種類型：**episodic**（what happened）、**semantic**（what is known）、**procedural**（how to do things）→ [[procedural-memory]]。MIRIX 進一步擴展為六層（加 Core / Resource / Knowledge Vault）→ [[multimodal-memory]]
+- **多模態記憶**正在成為下一個前沿：現有系統幾乎都是純文字，但 agent 需要處理影像、音訊、影片。MIRIX 和 M3-Agent 分別從桌面助手和 embodied agent 角度解決 → [[multimodal-memory]]、[[mirix]]
 - Memory scope 需要多層設計：user / agent / session / org → [[multi-scope-memory]]
 - Multi-agent 場景需要 **actor-aware memory** — 追蹤每條記憶的來源 actor → [[actor-aware-memory]]
 - **Memory staleness** 是 open problem：高頻 retrieve 的記憶過時後變成 confidently wrong → [[memory-staleness]]
@@ -46,4 +47,4 @@ Agent 記憶系統，讓 agent 能跨 session 累積知識、個人化體驗。M
 
 ## Related
 
-[[agent-harness]] [[context-engineering]] [[memory-lock-in]] [[letta]] [[sarah-wooders]] [[gbrain]] [[compounding-memory]] [[compiled-truth-pattern]] [[experiential-memory]] [[bitter-lesson-search]] [[viv-trivedy]] [[mem0]] [[locomo]] [[procedural-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[memory-staleness]] [[graph-memory]] [[memory-failure-modes]] [[memory-evaluation]] [[chrysb]] [[yohei-nakajima]] [[agemem]] [[chatgpt-memory]] [[coding-agent-memory]] [[concept-map]] [[context-constitution]] [[filesystem-vs-database]] [[garry-tan]] [[harrison-chase]] [[hybrid-search]] [[leonie]] [[mece-resolver]] [[memgpt]] [[memory-arena]] [[open-questions]]
+[[agent-harness]] [[context-engineering]] [[memory-lock-in]] [[letta]] [[sarah-wooders]] [[gbrain]] [[compounding-memory]] [[compiled-truth-pattern]] [[experiential-memory]] [[bitter-lesson-search]] [[viv-trivedy]] [[mem0]] [[locomo]] [[procedural-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[memory-staleness]] [[graph-memory]] [[memory-failure-modes]] [[memory-evaluation]] [[chrysb]] [[yohei-nakajima]] [[agemem]] [[chatgpt-memory]] [[coding-agent-memory]] [[concept-map]] [[context-constitution]] [[filesystem-vs-database]] [[garry-tan]] [[harrison-chase]] [[hybrid-search]] [[leonie]] [[mece-resolver]] [[memgpt]] [[memory-arena]] [[open-questions]] [[multimodal-memory]] [[mirix]]

@@ -26,6 +26,7 @@ tags: [memory, architecture, retrieval]
 - **Graph 在 retrieval 中的角色**（[[chrysb]]）：Graph traversal 擅長「系統知道什麼關於這個 entity 以及所有相連的東西」。跟 semantic search（概念相似）和 full-text（精確詞組）互補，不是替代 → [[hybrid-search]]
 - **Forgetting propagation 問題**（[[chrysb]]）：刪除 source conversation 時，graph 中 extracted facts 變成 orphaned — 真正的 forgetting 需要 provenance tracking + cascade delete → [[memory-staleness]]
 - **Survey 定位**（Pengfei Du）：graph 屬於 Representational Substrate 中的 "structured stores" 分類。適合 complex entity relationships，但加了 ~1s latency overhead
+- **多模態延伸**（M3-Agent）：entity-centric multimodal graph — 同一 entity 的臉、聲音、文字知識相連。用 weight-based voting 解決衝突，外部工具做 face_id / voice_id 跨 clip 追蹤。Graph memory 從純文字 relationship 擴展到多模態 entity binding → [[multimodal-memory]]
 
 ## Key Sources
 
@@ -35,4 +36,4 @@ tags: [memory, architecture, retrieval]
 
 ## Related
 
-[[mem0]] [[hybrid-search]] [[agent-memory]] [[brain-first-lookup]] [[entity-detection]] [[chrysb]] [[yohei-nakajima]] [[memory-staleness]]
+[[mem0]] [[hybrid-search]] [[agent-memory]] [[brain-first-lookup]] [[entity-detection]] [[chrysb]] [[yohei-nakajima]] [[memory-staleness]] [[multimodal-memory]] [[mirix]]

@@ -29,4 +29,4 @@ tags: [memory, architecture]
 
 ## Related
 
-[[mem0]] [[agent-memory]] [[thin-harness-fat-skills]] [[compounding-memory]] [[autoreason]] [[helix]] [[gene-map]] [[agemem]] [[coding-agent-memory]] [[shl0ms]]
+[[mem0]] [[agent-memory]] [[thin-harness-fat-skills]] [[compounding-memory]] [[autoreason]] [[helix]] [[gene-map]] [[agemem]] [[coding-agent-memory]] [[shl0ms]] [[mirix]] [[multimodal-memory]]

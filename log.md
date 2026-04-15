@@ -2,6 +2,22 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-15] research | Multimodal Memory
+
+- Topic: Multimodal memory (RESEARCH-GAP — 完全沒覆蓋)
+- Sources: 2 arxiv papers
+  - raw/mirix-multiagent-memory-system.md (MIRIX, arxiv 2507.07957)
+  - raw/m3-agent-multimodal-long-term-memory.md (M3-Agent, arxiv 2508.09736)
+- Created: multimodal-memory.md, mirix.md
+- Updated: agent-memory.md, graph-memory.md, memory-evaluation.md, agemem.md, actor-aware-memory.md, open-questions.md, concept-map.md, index.md
+- Report: reports/2026-04-15-multimodal-memory.md
+- Key findings:
+  - MIRIX 六種記憶擴展傳統三分法，Active Retrieval 是 retrieval timing 的第四種策略
+  - M3-Agent entity-centric multimodal graph + RL 控制，semantic memory 最關鍵（ablation -17~19%）
+  - 多模態場景讓 raw vs derived 張力更尖銳：99.9% 儲存壓縮 + 35% 準確率提升
+  - 推進 open questions #1, #8, #10, #12
+- Insights: 多模態記憶不是「文字記憶 + 圖片」，而是需要根本不同的架構（entity-centric binding、多 agent 管理、抽取式壓縮）
+
 ## [2026-04-15] ingest | Garry Tan — GBrain v0.10.0
 
 - Source: raw/garry-tan-gbrain-v0.10.0.md (tweet, 16.8K views)

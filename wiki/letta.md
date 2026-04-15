@@ -34,4 +34,4 @@ Stateful agent 領域的先驅公司，CTO 是 [[sarah-wooders]]。前身為 Mem
 
 ## Related
 
-[[sarah-wooders]] [[memgpt]] [[agent-memory]] [[agent-harness]] [[context-constitution]] [[sleep-time-compute]] [[deep-agents]] [[harrison-chase]] [[yohei-nakajima]] [[memory-lock-in]] [[mem0]]
+[[sarah-wooders]] [[memgpt]] [[agent-memory]] [[agent-harness]] [[context-constitution]] [[sleep-time-compute]] [[deep-agents]] [[harrison-chase]] [[yohei-nakajima]] [[memory-lock-in]] [[mem0]] [[mirix]]

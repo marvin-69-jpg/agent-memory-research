@@ -28,4 +28,4 @@ tags: [benchmark, memory]
 
 ## Related
 
-[[locomo]] [[mem0]] [[agent-memory]] [[compounding-memory]] [[memory-evaluation]] [[chrysb]] [[agemem]]
+[[locomo]] [[mem0]] [[agent-memory]] [[compounding-memory]] [[memory-evaluation]] [[chrysb]] [[agemem]] [[mirix]] [[multimodal-memory]]
