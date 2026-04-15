@@ -2,6 +2,18 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-15] ingest | Nicholas — AI Agents Have No Memory for Failure (Helix)
+
+- Source: raw/nicholas-helix-self-healing-agents.md (159K views, X long-form article)
+- Created: helix.md, gene-map.md, nicholas-dapanji.md
+- Updated: procedural-memory.md (Gene Map as error-specific procedural memory), experiential-memory.md (shared Gene Map = cross-agent experiential sharing), compounding-memory.md (Q-value RL compounding), memory-evaluation.md (Helix benchmark data)
+- New cross-links: helix ↔ gene-map ↔ procedural-memory ↔ experiential-memory ↔ compounding-memory ↔ memory-evaluation
+- Key findings:
+  - Gene Map = procedural memory + RL ranking，首次 2,140ms → 再次 1.1ms（2,000×）
+  - 目前看到最具體的 memory ROI 數據（50 場景，量化 LLM call / cost / latency）
+  - Shared Gene Map 願景 = experiential memory 跨 agent 共享的工程實踐
+  - Doctor vs Immune System 類比：routine failures 用 pattern match，novel failures 才用 LLM
+
 ## [2026-04-14] ingest | Phase 3 — 產業視角（ChatGPT Memory + Coding Agents）
 
 - Source: raw/manthan-gupta-chatgpt-memory-reverse-engineered.md (ChatGPT 四層靜態注入逆向工程)

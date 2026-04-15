@@ -61,6 +61,9 @@
 | [[wiki/chatgpt-memory\|ChatGPT Memory]] | 四層靜態注入架構，no RAG no vector DB | product, memory | 2026-04-14 |
 | [[wiki/coding-agent-memory\|Coding Agent Memory]] | Cursor/Claude Code/Windsurf/Cline 記憶架構比較 | product, memory, architecture | 2026-04-14 |
 | [[wiki/concept-map\|Concept Map]] | 三層架構 + 跨層主題 + 人物/產品索引 | architecture | 2026-04-14 |
+| [[wiki/helix\|Helix]] | Self-healing runtime，Gene Map 用 Q-value RL 記住修復策略 | product, memory, architecture | 2026-04-15 |
+| [[wiki/gene-map\|Gene Map]] | Helix 核心概念，Q-value 排序的修復策略知識庫 | memory, architecture, retrieval | 2026-04-15 |
+| [[wiki/nicholas-dapanji\|Nicholas (@dapanji_eth)]] | Helix 共同創作者，Harvard/Princeton 校友 | people | 2026-04-15 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-14 |
 
 ## Raw Sources
@@ -84,4 +87,5 @@
 | 2026-03-08 | [[raw/pengfei-du-memory-survey-2026]] | Memory for Autonomous LLM Agents: Survey (arxiv 2603.07670) |
 | 2025-08-28 | [[raw/yohei-nakajima-rise-of-ai-memory]] | The Rise of AI Memory (24.6K views) |
 | 2025-12-09 | [[raw/manthan-gupta-chatgpt-memory-reverse-engineered]] | ChatGPT Memory Reverse Engineered (四層靜態注入) |
+| 2026-04-14 | [[raw/nicholas-helix-self-healing-agents]] | AI Agents Have No Memory for Failure — Helix Self-Healing Runtime |
 | 2026-04-14 | [[raw/coding-agents-memory-comparison]] | Coding Agent Memory Comparison (Cursor/Claude Code/Windsurf/Cline) |
