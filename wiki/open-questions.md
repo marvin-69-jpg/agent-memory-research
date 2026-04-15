@@ -1,7 +1,7 @@
 ---
 aliases: [open questions, 未解問題, open problems]
 first_seen: 2026-04-14
-last_updated: 2026-04-15
+last_updated: 2026-04-16
 tags: [memory, architecture]
 ---
 
@@ -93,6 +93,20 @@ Sources: [[raw/pengfei-du-memory-survey-2026]]
 
 Sources: [[chrysb]], [[brain-first-lookup]]
 
+### 10. Multi-Agent Memory Consistency & Governance
+
+多 agent 共享記憶時的一致性、存取控制、provenance tracking、conflict resolution。Yu et al. 2026 認為這是 multi-agent memory **最大的未解問題**。
+
+**兩個面向**：
+- **Consistency**：read-time conflict handling（stale versions）+ update-time visibility/ordering（concurrent writes）。比經典 DB 難因為 artifacts 是 heterogeneous 且 conflicts 是 semantic
+- **Access Control**：Collaborative Memory 2025 用 dynamic bipartite graphs + two-tier memory（private/shared）提供了第一個完整實作，resource usage 降 61%
+
+**Pengfei Du survey 排名**：10 大 open challenges 第 6。
+
+**為什麼升級到 Tier 2**：有了 architecture framing（Yu et al.）和第一個實作（Collaborative Memory），問題不再是 "剛開始有人想"。但 consistency model 仍然沒有 principled solution。
+
+Sources: [[multi-agent-memory]], [[memory-consistency]], [[collaborative-memory-system]], [[actor-aware-memory]], [[multi-scope-memory]]
+
 ---
 
 ## Tier 3: Emerging — 剛開始有人想
@@ -104,14 +118,6 @@ File interface 讓 agent 用熟悉的工具（grep、cat）存取記憶。Databa
 **目前沒有明確贏家**。GBrain 用 filesystem（14,700+ files），Mem0 用 database，兩者都 production-viable。
 
 Sources: [[filesystem-vs-database]], [[leonie]]
-
-### 10. Multi-Agent Memory Governance
-
-多 agent 共享記憶時的存取控制、provenance tracking、conflict resolution。
-
-**Pengfei Du survey 排名**：10 大 open challenges 第 6。
-
-Sources: [[actor-aware-memory]], [[multi-scope-memory]]
 
 ### 11. Scaffolding When to Remove
 

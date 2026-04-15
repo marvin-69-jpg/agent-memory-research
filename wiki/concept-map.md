@@ -1,7 +1,7 @@
 ---
 aliases: [concept map, 概念地圖, architecture overview]
 first_seen: 2026-04-14
-last_updated: 2026-04-15
+last_updated: 2026-04-16
 tags: [architecture]
 ---
 
@@ -59,6 +59,8 @@ tags: [architecture]
 | [[brain-first-lookup]] | 永遠先查 brain，external API 是 fallback |
 | [[mece-resolver]] | 每塊知識有唯一 primary home |
 | [[context-constitution]] | Letta 的原則集，定義 agent 如何管理 context |
+| [[multi-agent-memory]] | Multi-agent memory 核心頁：paradigm + hierarchy + protocols |
+| [[memory-consistency]] | Multi-agent memory 一致性問題 |
 | [[actor-aware-memory]] | Multi-agent 記憶來源追蹤 |
 | [[filesystem-vs-database]] | File interface vs DB 辯論 |
 | [[gene-map]] | Q-value RL 排序的修復策略知識庫（Helix 核心概念） |
@@ -101,6 +103,7 @@ tags: [architecture]
 | [[helix]] | Self-healing runtime，Gene Map 用 Q-value RL |
 | [[mirix]] | 六種記憶 + Active Retrieval + 多模態原生支持 |
 | [[synapse]] | Spreading activation 記憶檢索，LoCoMo SOTA |
+| [[collaborative-memory-system]] | Multi-user memory sharing + dynamic access control |
 | [[a-mem]] | Zettelkasten-inspired memory evolution |
 | [[ssgm]] | 記憶進化 governance，drift 理論保證 |
 

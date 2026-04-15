@@ -2,6 +2,24 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-16] research | Multi-Agent Memory
+
+- Topic: Multi-Agent Memory — multi-agent tag 嚴重不足（1 page vs avg 13），直接影響 openab-bot 架構
+- Sources: 2 papers
+  - raw/yu-multi-agent-memory-architecture.md (Yu et al. 2026, arxiv 2603.10062, position paper)
+  - raw/rezazadeh-collaborative-memory.md (Rezazadeh et al. 2025, arxiv 2505.18279, Accenture)
+- Created: multi-agent-memory.md, memory-consistency.md, collaborative-memory-system.md
+- Updated: actor-aware-memory.md, open-questions.md (promoted #10 from Tier 3 → Tier 2), concept-map.md, index.md
+- Report: reports/2026-04-16-multi-agent-memory.md
+- Key findings:
+  - Yu et al. 框定 multi-agent memory 為電腦架構問題：shared vs distributed paradigm + 三層 hierarchy（I/O/cache/memory）
+  - 兩個缺失 protocol：cache sharing + memory access control
+  - Memory consistency 是最大未解問題（read-time conflict + update-time visibility）
+  - Collaborative Memory 是第一個帶動態 access control 的完整實作，resource usage 降 61%
+  - openab-bot 目前是 shared memory + last-write-wins 弱 consistency
+- Insights: actor-aware memory 是 consistency 的子集；filesystem shared memory 天然缺 access control
+- Wiki: 61 → 64 pages
+
 ## [2026-04-15] research | Reconsolidation: 檢索即改寫
 
 - Topic: Reconsolidation — 神經科學啟發，retrieval 不應是 read-only（自選主題）
