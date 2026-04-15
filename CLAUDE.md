@@ -89,6 +89,16 @@ log.md         ← 操作記錄
 .claude/skills/ ← browser, ingest, arxiv skills
 ```
 
+### Skills
+
+| 觸發詞 | Skill 路徑 | 用途 |
+|---|---|---|
+| URL、讀網頁、開連結 | `.claude/skills/browser/SKILL.md` | agent-browser 抓網頁（X/Twitter 連結必用） |
+| 整理這篇、讀這個連結 | `.claude/skills/ingest/SKILL.md` | 研究文章讀取 + wiki 整理 |
+| arxiv、論文 | `.claude/skills/arxiv/SKILL.md` | alphaxiv 論文查詢 |
+
+**收到 URL 時的流程**：先讀 browser skill → 用 agent-browser 開頁面讀內容。X/Twitter 連結只能用 agent-browser（JS 渲染），curl/WebFetch 拿不到內容。
+
 ## 工作方式
 
 - 使用者丟 URL / paper → bot 用 agent-browser 或 alphaxiv 讀取 → 存 raw → 拆 wiki pages → cross-link → commit & push
