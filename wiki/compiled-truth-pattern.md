@@ -17,6 +17,8 @@ tags: [memory, architecture]
 - 這個 pattern 跟 boba-wiki 的做法高度一致：wiki page 的「Current Status」= compiled truth，「Key Events」= timeline
 - 也呼應 [[harrison-chase]] 的觀點：memory 應該是 rewrite 而非 append，才能保持 wiki 的可讀性
 - GBrain 用 page_versions table 保存 compiled_truth 的歷史快照，確保改寫不會丟失資訊
+- **與 [[reconsolidation]] 的關係**：compiled truth 的 rewrite 是 **manual reconsolidation** — 有人觸發才會改寫。[[a-mem]] 的 Memory Evolution 把這個過程自動化了：新記憶寫入時自動更新舊記憶的 context
+- **[[ssgm]] 的 Dual Storage** 就是 compiled truth pattern 的形式化版本：Mutable Active Graph ≈ compiled truth，Immutable Episodic Log ≈ timeline
 
 ## Key Sources
 
@@ -24,4 +26,4 @@ tags: [memory, architecture]
 
 ## Related
 
-[[gbrain]] [[agent-memory]] [[garry-tan]] [[enrichment-pipeline]] [[mece-resolver]] [[memory-staleness]] [[multimodal-memory]] [[neuroscience-memory]]
+[[gbrain]] [[agent-memory]] [[garry-tan]] [[enrichment-pipeline]] [[mece-resolver]] [[memory-staleness]] [[multimodal-memory]] [[neuroscience-memory]] [[reconsolidation]] [[a-mem]] [[ssgm]]

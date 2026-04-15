@@ -22,6 +22,8 @@ tags: [memory, architecture]
 - **Stale context dominance**（[[chrysb]]）：舊的、被高頻引用的記憶擠掉新的。系統不斷 surface 過時 context — staleness 不只是「不正確」，還會主動壓制正確的新資訊
 - **Forgetting propagation**（[[chrysb]]）：刪除 raw turns 不會刪除從中衍生的 summaries。Knowledge graph 中刪除 source conversation 留下 orphaned facts。真正的 forgetting 需要 provenance tracking + cascade delete，或定期 re-derive（昂貴）
 - **Survey 觀點**（Pengfei Du 2026）：selective forgetting 嚴重被低估，幾乎沒有系統被明確評估。10 大 open challenges 中排第 4 — "learned selective forgetting"
+- **[[reconsolidation]] 是 staleness 的天然解法**：如果記憶每次被 retrieve 都有機會被更新，就不容易變 stale。[[a-mem]] 的 Memory Evolution 讓舊記憶因新資訊而自動更新 context/tags
+- **[[ssgm]] 的 Weibull decay**：比 exponential decay 更好建模 memory 衰減（先快後慢），是 temporal obsolescence 的理論基礎。Weibull distribution 同時建模了 staleness 和 forgetting
 
 ## Key Sources
 
@@ -31,4 +33,4 @@ tags: [memory, architecture]
 
 ## Related
 
-[[mem0]] [[compounding-memory]] [[compiled-truth-pattern]] [[sleep-time-compute]] [[agent-memory]] [[chrysb]] [[memory-failure-modes]] [[actor-aware-memory]] [[autoreason]] [[gene-map]] [[graph-memory]] [[memory-evaluation]] [[neuroscience-memory]] [[synapse]]
+[[mem0]] [[compounding-memory]] [[compiled-truth-pattern]] [[sleep-time-compute]] [[agent-memory]] [[chrysb]] [[memory-failure-modes]] [[actor-aware-memory]] [[autoreason]] [[gene-map]] [[graph-memory]] [[memory-evaluation]] [[neuroscience-memory]] [[synapse]] [[reconsolidation]] [[a-mem]] [[ssgm]]

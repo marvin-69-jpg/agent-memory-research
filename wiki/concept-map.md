@@ -7,7 +7,7 @@ tags: [architecture]
 
 # Concept Map
 
-本 wiki 54 個頁面的結構關係。三層架構 + 跨層主題 + 人物/產品索引。
+本 wiki 61 個頁面的結構關係。三層架構 + 跨層主題 + 人物/產品索引。
 
 ## Layer 1: Infrastructure — Agent 怎麼運作
 
@@ -38,6 +38,7 @@ tags: [architecture]
 | [[compiled-truth-pattern]] | Compiled truth（可改寫）+ timeline（append-only） |
 | [[multimodal-memory]] | 非文字模態記憶：影像、音訊、影片、螢幕截圖 |
 | [[neuroscience-memory]] | 認知神經科學 ↔ agent memory 對照 |
+| [[reconsolidation]] | 檢索即改寫：retrieval 不應是 read-only |
 
 ### 2b. 記憶生命週期
 
@@ -61,6 +62,7 @@ tags: [architecture]
 | [[actor-aware-memory]] | Multi-agent 記憶來源追蹤 |
 | [[filesystem-vs-database]] | File interface vs DB 辯論 |
 | [[gene-map]] | Q-value RL 排序的修復策略知識庫（Helix 核心概念） |
+| [[ssgm]] | 記憶進化的 governance framework，drift 理論保證 |
 
 ## Layer 3: Retrieval & Evaluation — Agent 怎麼找、怎麼驗
 
@@ -99,6 +101,8 @@ tags: [architecture]
 | [[helix]] | Self-healing runtime，Gene Map 用 Q-value RL |
 | [[mirix]] | 六種記憶 + Active Retrieval + 多模態原生支持 |
 | [[synapse]] | Spreading activation 記憶檢索，LoCoMo SOTA |
+| [[a-mem]] | Zettelkasten-inspired memory evolution |
+| [[ssgm]] | 記憶進化 governance，drift 理論保證 |
 
 ## People
 

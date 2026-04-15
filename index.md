@@ -68,7 +68,10 @@
 | [[wiki/mirix\|MIRIX]] | 六種記憶 + Active Retrieval + 多模態原生支持 | product, memory, architecture | 2026-04-15 |
 | [[wiki/neuroscience-memory\|Neuroscience Memory]] | 認知神經科學 ↔ agent memory 對照 | memory, architecture | 2026-04-15 |
 | [[wiki/synapse\|SYNAPSE]] | Spreading activation 記憶檢索，LoCoMo SOTA | product, memory, retrieval | 2026-04-15 |
-| [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-14 |
+| [[wiki/reconsolidation\|Reconsolidation]] | 檢索即改寫：retrieval 不應是 read-only | memory, architecture | 2026-04-15 |
+| [[wiki/a-mem\|A-Mem]] | Zettelkasten-inspired memory evolution | product, memory, architecture | 2026-04-15 |
+| [[wiki/ssgm\|SSGM]] | 記憶進化 governance framework，drift 理論保證 | product, memory, architecture | 2026-04-15 |
+| [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-15 |
 
 ## Raw Sources
 
@@ -98,3 +101,5 @@
 | 2025-08 | [[raw/m3-agent-multimodal-long-term-memory]] | M3-Agent: Multimodal Agent with Long-Term Memory (arxiv 2508.09736) |
 | 2025-12-29 | [[raw/ai-meets-brain-memory-survey]] | AI Meets Brain: Cognitive Neuroscience ↔ Agent Memory Survey (arxiv 2512.23343) |
 | 2026-01-06 | [[raw/synapse-spreading-activation-memory]] | SYNAPSE: Spreading Activation Memory for LLM Agents (arxiv 2601.02744) |
+| 2025-02-17 | [[raw/a-mem-agentic-memory]] | A-Mem: Agentic Memory for LLM Agents (arxiv 2502.12110) |
+| 2026-03-14 | [[raw/ssgm-stability-safety-governed-memory]] | SSGM: Stability and Safety Governed Memory (arxiv 2603.11768) |

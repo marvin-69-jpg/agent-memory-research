@@ -2,6 +2,23 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-15] research | Reconsolidation: 檢索即改寫
+
+- Topic: Reconsolidation — 神經科學啟發，retrieval 不應是 read-only（自選主題）
+- Sources: 2 arxiv papers
+  - raw/a-mem-agentic-memory.md (A-Mem, arxiv 2502.12110)
+  - raw/ssgm-stability-safety-governed-memory.md (SSGM, arxiv 2603.11768)
+- Created: reconsolidation.md, a-mem.md, ssgm.md
+- Updated: compiled-truth-pattern.md, memory-staleness.md, memory-failure-modes.md, neuroscience-memory.md, agent-memory.md, agemem.md, concept-map.md, open-questions.md, index.md, README.md
+- Report: reports/2026-04-15-reconsolidation.md
+- Key findings:
+  - A-Mem Memory Evolution = write-triggered reconsolidation（新記憶自動更新舊記憶的 context/tags）
+  - SSGM = reconsolidation 的 safety wrapper（Write Validation Gate + Dual Storage + drift bound）
+  - SSGM Dual Storage 與 compiled-truth-pattern 高度呼應（Mutable Active Graph ≈ compiled truth）
+  - SSGM 識別了 reconsolidation 特有的三種 drift：semantic/procedural/goal
+  - Read-triggered reconsolidation（每次 retrieve 都 reconsolidate）目前仍無系統實現
+- Wiki: 58 → 61 pages
+
 ## [2026-04-15] research | Neuroscience Integration
 
 - Topic: Neuroscience integration (RESEARCH-GAP — 完全沒覆蓋，最後一個)
