@@ -90,12 +90,21 @@ Triggered when a new source article is added to `raw/`.
   - Patterns/techniques (memory-as-harness, stateful API, encrypted compaction...)
 - For each entity, note what the source says about it
 
+#### Step 2.5: Match (CLI)
+- Run `wiki match` with extracted entities to find related pages:
+  ```bash
+  cd /home/node/agent-memory-research && export PATH="/home/node/.local/bin:$PATH" && uv run python3 tools/wiki.py match <keyword1> <keyword2> ...
+  ```
+- CLI returns ranked list of related pages with scores
+- Use this instead of manually scanning `index.md` — scales to hundreds of pages
+
 #### Step 3: Plan
-- For each extracted entity, check `index.md`:
-  - **Exists** → will update (load the page)
+- Using match results + extracted entities:
+  - **Exists (match score > 0)** → will update (load the page)
   - **Doesn't exist** → will create (use template above)
 - Identify cross-links between entities
 - Identify contradictions with existing pages
+- **Micro-source gate**: if source is < 500 words (single tweet, short post), only update existing pages — don't create new concept pages for thin content
 - Write out the plan before executing
 
 #### Step 4: Execute
@@ -113,6 +122,14 @@ For new pages:
 3. Add cross-links to related existing pages
 4. Go to those related pages and add backlinks
 
+#### Step 4.5: Verify (CLI)
+- Run `wiki lint` to check bidirectional links:
+  ```bash
+  cd /home/node/agent-memory-research && export PATH="/home/node/.local/bin:$PATH" && uv run python3 tools/wiki.py lint
+  ```
+- Fix all errors (missing backlinks in Related sections) before continuing
+- Check warnings (concept-map/open-questions staleness)
+
 #### Step 5: Update Meta
 1. **index.md**: add new pages, update summaries for modified pages
 2. **log.md**: append one entry:
@@ -122,7 +139,10 @@ For new pages:
    - Created: page1.md, page2.md
    - Updated: page3.md, page4.md
    - New cross-links: page1 ↔ page3
+   - Insights: <cross-source insights — connections discovered during this ingest>
    ```
+3. **concept-map.md**: if new pages were created, add them to the appropriate layer/section
+4. **open-questions.md**: if the new source addresses any open question, update it
 
 ### 2. Query
 
@@ -132,14 +152,20 @@ When asked a question:
 3. Synthesize an answer with `[[citations]]`
 4. If the answer produces a valuable new synthesis, save it as a new wiki page
 
-### 3. Lint
+### 3. Lint (CLI)
 
-Periodic health check:
-- Orphan pages (no inbound links)
-- Missing pages (referenced but don't exist)
-- Stale content (not updated in 30+ days)
-- Missing cross-links
-- Write findings to `wiki/_lint-report.md`
+Use the wiki CLI for health checks:
+```bash
+cd /home/node/agent-memory-research && export PATH="/home/node/.local/bin:$PATH" && uv run python3 tools/wiki.py lint
+```
+
+Checks: bidirectional links in Related, orphan pages, dangling links, index sync, concept-map/open-questions staleness, frontmatter fields.
+
+Other useful commands:
+```bash
+uv run python3 tools/wiki.py status    # quick overview
+uv run python3 tools/wiki.py match <keywords>  # find related pages
+```
 
 ## Wiki Page Format — Implementation Section
 
@@ -184,3 +210,5 @@ Periodic health check:
 10. **Log every operation.** No silent changes.
 11. **Use agent-browser to read URLs.** Never curl hack or WebFetch.
 12. **Implementation 回流**。實作了某個 concept 就更新該 wiki page 的 Implementation section。
+13. **Micro-source gate.** < 500 字的來源（單則推文、短 post）= micro-source。Ingest 時只更新已有 page，不為薄內容建新 concept page。
+14. **Verify before commit.** Execute 後跑 `wiki lint`，修完 errors 才進 Step 5。
