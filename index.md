@@ -66,6 +66,8 @@
 | [[wiki/nicholas-dapanji\|Nicholas (@dapanji_eth)]] | Helix 共同創作者，Harvard/Princeton 校友 | people | 2026-04-15 |
 | [[wiki/multimodal-memory\|Multimodal Memory]] | 非文字模態記憶（影像、音訊、影片、螢幕截圖） | memory, architecture | 2026-04-15 |
 | [[wiki/mirix\|MIRIX]] | 六種記憶 + Active Retrieval + 多模態原生支持 | product, memory, architecture | 2026-04-15 |
+| [[wiki/neuroscience-memory\|Neuroscience Memory]] | 認知神經科學 ↔ agent memory 對照 | memory, architecture | 2026-04-15 |
+| [[wiki/synapse\|SYNAPSE]] | Spreading activation 記憶檢索，LoCoMo SOTA | product, memory, retrieval | 2026-04-15 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-14 |
 
 ## Raw Sources
@@ -94,3 +96,5 @@
 | 2026-04-14 | [[raw/coding-agents-memory-comparison]] | Coding Agent Memory Comparison (Cursor/Claude Code/Windsurf/Cline) |
 | 2025-07-10 | [[raw/mirix-multiagent-memory-system]] | MIRIX: Multi-Agent Memory System for LLM-Based Agents (arxiv 2507.07957) |
 | 2025-08 | [[raw/m3-agent-multimodal-long-term-memory]] | M3-Agent: Multimodal Agent with Long-Term Memory (arxiv 2508.09736) |
+| 2025-12-29 | [[raw/ai-meets-brain-memory-survey]] | AI Meets Brain: Cognitive Neuroscience ↔ Agent Memory Survey (arxiv 2512.23343) |
+| 2026-01-06 | [[raw/synapse-spreading-activation-memory]] | SYNAPSE: Spreading Activation Memory for LLM Agents (arxiv 2601.02744) |

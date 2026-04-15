@@ -27,6 +27,7 @@ tags: [memory, architecture, retrieval]
 - **Forgetting propagation 問題**（[[chrysb]]）：刪除 source conversation 時，graph 中 extracted facts 變成 orphaned — 真正的 forgetting 需要 provenance tracking + cascade delete → [[memory-staleness]]
 - **Survey 定位**（Pengfei Du）：graph 屬於 Representational Substrate 中的 "structured stores" 分類。適合 complex entity relationships，但加了 ~1s latency overhead
 - **多模態延伸**（M3-Agent）：entity-centric multimodal graph — 同一 entity 的臉、聲音、文字知識相連。用 weight-based voting 解決衝突，外部工具做 face_id / voice_id 跨 clip 追蹤。Graph memory 從純文字 relationship 擴展到多模態 entity binding → [[multimodal-memory]]
+- **Spreading Activation**（SYNAPSE）：受 Collins & Loftus 1975 啟發，記憶檢索 = graph 上的 energy propagation。加入 fan effect（出度 dilute）、lateral inhibition（注意力選擇）、temporal decay（Ebbinghaus）。LoCoMo F1 40.5 SOTA，multi-hop +8.7。graph 不只是 static structure，加入 cognitive dynamics 後成為 active reasoning mechanism → [[synapse]]、[[neuroscience-memory]]
 
 ## Key Sources
 
@@ -36,4 +37,4 @@ tags: [memory, architecture, retrieval]
 
 ## Related
 
-[[mem0]] [[hybrid-search]] [[agent-memory]] [[brain-first-lookup]] [[entity-detection]] [[chrysb]] [[yohei-nakajima]] [[memory-staleness]] [[multimodal-memory]] [[mirix]]
+[[mem0]] [[hybrid-search]] [[agent-memory]] [[brain-first-lookup]] [[entity-detection]] [[chrysb]] [[yohei-nakajima]] [[memory-staleness]] [[multimodal-memory]] [[mirix]] [[neuroscience-memory]] [[synapse]]

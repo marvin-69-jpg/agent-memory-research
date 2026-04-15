@@ -24,4 +24,4 @@ tags: [memory, architecture]
 
 ## Related
 
-[[gbrain]] [[agent-memory]] [[garry-tan]] [[enrichment-pipeline]] [[mece-resolver]] [[memory-staleness]] [[multimodal-memory]]
+[[gbrain]] [[agent-memory]] [[garry-tan]] [[enrichment-pipeline]] [[mece-resolver]] [[memory-staleness]] [[multimodal-memory]] [[neuroscience-memory]]

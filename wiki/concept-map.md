@@ -37,6 +37,7 @@ tags: [architecture]
 | [[graph-memory]] | Knowledge graph 記憶，relationship-based |
 | [[compiled-truth-pattern]] | Compiled truth（可改寫）+ timeline（append-only） |
 | [[multimodal-memory]] | 非文字模態記憶：影像、音訊、影片、螢幕截圖 |
+| [[neuroscience-memory]] | 認知神經科學 ↔ agent memory 對照 |
 
 ### 2b. 記憶生命週期
 
@@ -97,6 +98,7 @@ tags: [architecture]
 | [[autoreason]] | A/B/AB tournament self-refinement |
 | [[helix]] | Self-healing runtime，Gene Map 用 Q-value RL |
 | [[mirix]] | 六種記憶 + Active Retrieval + 多模態原生支持 |
+| [[synapse]] | Spreading activation 記憶檢索，LoCoMo SOTA |
 
 ## People
 

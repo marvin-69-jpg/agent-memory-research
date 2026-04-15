@@ -2,6 +2,24 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-15] research | Neuroscience Integration
+
+- Topic: Neuroscience integration (RESEARCH-GAP — 完全沒覆蓋，最後一個)
+- Sources: 2 arxiv papers
+  - raw/ai-meets-brain-memory-survey.md (AI Meets Brain, arxiv 2512.23343)
+  - raw/synapse-spreading-activation-memory.md (SYNAPSE, arxiv 2601.02744)
+- Created: neuroscience-memory.md, synapse.md
+- Updated: agent-memory.md, graph-memory.md, memory-staleness.md, memory-evaluation.md, + 8 backlink pages, open-questions.md, concept-map.md, index.md
+- Report: reports/2026-04-15-neuroscience-integration.md
+- Key findings:
+  - Hippocampal replay = sleep-time compute 的生物學基礎
+  - Spreading activation（SYNAPSE）是 causally grounded retrieval 的第一個具體解法
+  - Ebbinghaus decay ablation：移除 temporal decay → F1 50.1→14.2
+  - Reconsolidation 啟示：retrieval 不應是 read-only
+  - 推進 open questions #3, #4, #7 + Privacy gap
+- Insights: neuroscience 不只是 metaphor，SYNAPSE 證明精確實作認知機制能獲得 SOTA + 11x cost reduction
+- **所有 RESEARCH-GAP 已清零** — multimodal memory 和 neuroscience integration 都已覆蓋
+
 ## [2026-04-15] research | Multimodal Memory
 
 - Topic: Multimodal memory (RESEARCH-GAP — 完全沒覆蓋)

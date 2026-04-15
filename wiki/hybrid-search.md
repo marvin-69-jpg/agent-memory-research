@@ -33,4 +33,4 @@ tags: [retrieval, architecture]
 
 ## Related
 
-[[gbrain]] [[agent-memory]] [[context-engineering]] [[mem0]] [[graph-memory]] [[bitter-lesson-search]] [[brain-first-lookup]] [[chrysb]] [[experiential-memory]] [[filesystem-vs-database]] [[memory-failure-modes]]
+[[gbrain]] [[agent-memory]] [[context-engineering]] [[mem0]] [[graph-memory]] [[bitter-lesson-search]] [[brain-first-lookup]] [[chrysb]] [[experiential-memory]] [[filesystem-vs-database]] [[memory-failure-modes]] [[neuroscience-memory]] [[synapse]]
