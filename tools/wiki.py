@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 """
-wiki — CLI for wiki health checks and entity matching.
+wiki — CLI for wiki health checks, entity matching, and research tools.
 
 Subcommands:
-  lint     Check bidirectional links, orphans, dangling refs, meta-page staleness
-  match    Match keywords against wiki page names + aliases (for ingest planning)
-  status   Quick wiki overview
+  lint          Check bidirectional links, orphans, dangling refs, meta-page staleness
+  match         Match keywords against wiki page names + aliases (for ingest planning)
+  status        Quick wiki overview
+  gaps          Find research opportunities (single-source, open questions, tag gaps)
+  research-log  List past research reports (for dedup)
+  arxiv         Search arxiv for papers (official API, no key needed)
 
 Usage:
   wiki lint
   wiki match <keyword> [<keyword> ...]
   wiki status
+  wiki gaps
+  wiki research-log
+  wiki arxiv "agent memory" multimodal [-n 5]
 
 Global options:
   --wiki-dir PATH   Wiki directory (default: /home/node/agent-memory-research/wiki/)
@@ -522,6 +528,78 @@ def cmd_gaps(wiki_dir: Path, index_path: Path, log_path: Path, **_):
     return 0
 
 
+def cmd_arxiv(keywords: list[str], max_results: int = 10, **_):
+    """Search arxiv for papers matching keywords."""
+    import urllib.request
+    import urllib.parse
+    import xml.etree.ElementTree as ET
+
+    # Build query: first keyword as title phrase, rest as AND terms in all fields
+    # If only one keyword, search in all fields
+    if len(keywords) == 1:
+        query = f'all:"{keywords[0]}"'
+    else:
+        # First keyword as title search, rest as all-field AND
+        parts = []
+        for kw in keywords:
+            if " " in kw:
+                parts.append(f'all:"{kw}"')
+            else:
+                parts.append(f"all:{kw}")
+        query = " AND ".join(parts)
+
+    url = (
+        f"http://export.arxiv.org/api/query?"
+        f"search_query={urllib.parse.quote(query)}"
+        f"&max_results={max_results}"
+        f"&sortBy=submittedDate&sortOrder=descending"
+    )
+
+    try:
+        with urllib.request.urlopen(url, timeout=15) as resp:
+            xml_data = resp.read()
+    except Exception as e:
+        print(f"arxiv search failed: {e}")
+        return 1
+
+    root = ET.fromstring(xml_data)
+    ns = {"a": "http://www.w3.org/2005/Atom"}
+    os_ns = "http://a9.com/-/spec/opensearch/1.1/"
+
+    total_el = root.find(f"{{{os_ns}}}totalResults")
+    total = total_el.text if total_el is not None else "?"
+
+    entries = root.findall("a:entry", ns)
+    print(f"arxiv search: \"{' '.join(keywords)}\" — {total} results (showing {len(entries)})\n")
+
+    if not entries:
+        print("(no results)")
+        return 0
+
+    for entry in entries:
+        paper_id = entry.find("a:id", ns).text.split("/")[-1]
+        title = entry.find("a:title", ns).text.strip().replace("\n", " ")
+        published = entry.find("a:published", ns).text[:10]
+        summary = entry.find("a:summary", ns).text.strip().replace("\n", " ")
+        authors = [a.find("a:name", ns).text for a in entry.findall("a:author", ns)]
+        author_str = ", ".join(authors[:3])
+        if len(authors) > 3:
+            author_str += f" +{len(authors)-3}"
+
+        # Truncate summary
+        if len(summary) > 200:
+            summary = summary[:197] + "..."
+
+        print(f"  {published} | {paper_id}")
+        print(f"  {title}")
+        print(f"  {author_str}")
+        print(f"  {summary}")
+        print(f"  alphaxiv: https://www.alphaxiv.org/overview/{paper_id.split('v')[0]}")
+        print()
+
+    return 0
+
+
 def cmd_research_log(wiki_dir: Path, **_):
     reports_dir = wiki_dir.parent / "reports"
     if not reports_dir.exists() or not list(reports_dir.glob("*.md")):
@@ -574,6 +652,9 @@ def main():
     sub.add_parser("status", help="Quick wiki overview")
     sub.add_parser("gaps", help="Find research opportunities (single-source, open questions, tag gaps)")
     sub.add_parser("research-log", help="List past research reports (for dedup)")
+    p_arxiv = sub.add_parser("arxiv", help="Search arxiv for papers")
+    p_arxiv.add_argument("keywords", nargs="+", help="Search keywords (AND logic)")
+    p_arxiv.add_argument("-n", "--max-results", type=int, default=10, help="Max results (default 10)")
 
     args = parser.parse_args()
     if not args.command:
@@ -587,12 +668,16 @@ def main():
     }
     if args.command == "match":
         kwargs["keywords"] = args.keywords
+    if args.command == "arxiv":
+        kwargs["keywords"] = args.keywords
+        kwargs["max_results"] = args.max_results
     cmds = {
         "lint": cmd_lint,
         "match": cmd_match,
         "status": cmd_status,
         "gaps": cmd_gaps,
         "research-log": cmd_research_log,
+        "arxiv": cmd_arxiv,
     }
     sys.exit(cmds[args.command](**kwargs))
 

@@ -37,14 +37,25 @@ CLI 回傳 ranked gaps（research-gap > single-source > tag-imbalance > stale）
 
 ### Step 2: Search — 搜尋素材
 
-用 WebSearch 搜尋 2-3 篇相關來源：
+搜尋 2-3 篇相關來源，用兩種工具：
 
+**工具 1：arxiv CLI（論文優先）**
+```bash
+uv run python3 tools/wiki.py arxiv "<主題關鍵字>" "<相關概念>" -n 5
+```
+例如：`wiki.py arxiv "agent memory" multimodal -n 5`
+
+找到感興趣的論文後，用 alphaxiv 讀全文：
+```bash
+curl -sL "https://www.alphaxiv.org/overview/{PAPER_ID}.md"
+```
+
+**工具 2：WebSearch（補充非論文來源）**
 ```
 優先順序：
 1. X/Twitter（搜 agent memory 相關的有影響力的人的貼文）
 2. GitHub repo（README、docs）
 3. Blog posts / 技術文章
-4. arxiv 論文（用 alphaxiv skill）
 ```
 
 **搜尋關鍵字**：用選定主題 + 相關的 wiki 概念名稱組合搜尋。
@@ -138,6 +149,7 @@ git push
 | 指令 | 何時用 |
 |---|---|
 | `wiki.py gaps` | Step 1 — 找研究缺口和建議主題 |
+| `wiki.py arxiv <keywords> [-n N]` | Step 2 — 搜尋 arxiv 論文（官方 API） |
 | `wiki.py research-log` | 任何時候 — 看過去研究了什麼（防重複） |
 | `wiki.py match <keywords>` | Step 4 — 確認新發現跟哪些 wiki 概念相關 |
 | `wiki.py lint` | Step 5 — ingest 後驗證 |
