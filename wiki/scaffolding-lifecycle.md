@@ -35,4 +35,4 @@ Agent scaffolding 不是永久建設 — 它有生命週期。模型變強時，
 
 ## Related
 
-[[agent-harness]] [[harness-engineering]] [[thin-harness-fat-skills]] [[context-engineering]] [[autoreason]]
+[[agent-harness]] [[harness-engineering]] [[thin-harness-fat-skills]] [[context-engineering]] [[autoreason]] [[aaron-levie]]

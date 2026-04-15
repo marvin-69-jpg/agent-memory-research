@@ -46,4 +46,4 @@ Agent 記憶系統，讓 agent 能跨 session 累積知識、個人化體驗。M
 
 ## Related
 
-[[agent-harness]] [[context-engineering]] [[memory-lock-in]] [[letta]] [[sarah-wooders]] [[gbrain]] [[compounding-memory]] [[compiled-truth-pattern]] [[experiential-memory]] [[bitter-lesson-search]] [[viv-trivedy]] [[mem0]] [[locomo]] [[procedural-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[memory-staleness]] [[graph-memory]] [[memory-failure-modes]] [[memory-evaluation]] [[chrysb]] [[yohei-nakajima]]
+[[agent-harness]] [[context-engineering]] [[memory-lock-in]] [[letta]] [[sarah-wooders]] [[gbrain]] [[compounding-memory]] [[compiled-truth-pattern]] [[experiential-memory]] [[bitter-lesson-search]] [[viv-trivedy]] [[mem0]] [[locomo]] [[procedural-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[memory-staleness]] [[graph-memory]] [[memory-failure-modes]] [[memory-evaluation]] [[chrysb]] [[yohei-nakajima]] [[agemem]] [[chatgpt-memory]] [[coding-agent-memory]] [[concept-map]] [[context-constitution]] [[filesystem-vs-database]] [[garry-tan]] [[harrison-chase]] [[hybrid-search]] [[leonie]] [[mece-resolver]] [[memgpt]] [[memory-arena]] [[open-questions]]

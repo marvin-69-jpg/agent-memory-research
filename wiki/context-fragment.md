@@ -24,4 +24,4 @@ Context window 中每個被載入的物件（CLAUDE.md、memory、tool schema、
 
 ## Related
 
-[[context-engineering]] [[agent-harness]] [[thin-harness-fat-skills]] [[garry-tan]] [[viv-trivedy]]
+[[context-engineering]] [[agent-harness]] [[thin-harness-fat-skills]] [[garry-tan]] [[viv-trivedy]] [[harness-engineering]]

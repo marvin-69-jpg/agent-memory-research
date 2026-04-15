@@ -46,4 +46,4 @@ Agent memory 系統的常見失敗模式。每個記憶系統都會失敗 — �
 
 ## Related
 
-[[agent-memory]] [[memory-staleness]] [[chrysb]] [[hybrid-search]] [[actor-aware-memory]] [[entity-detection]] [[autoreason]] [[compounding-memory]]
+[[agent-memory]] [[memory-staleness]] [[chrysb]] [[hybrid-search]] [[actor-aware-memory]] [[entity-detection]] [[autoreason]] [[compounding-memory]] [[chatgpt-memory]] [[coding-agent-memory]] [[memory-evaluation]] [[open-questions]]

@@ -41,4 +41,4 @@ tags: [memory, architecture]
 
 ## Related
 
-[[agent-memory]] [[hybrid-search]] [[brain-first-lookup]] [[gbrain]] [[mem0]] [[bitter-lesson-search]]
+[[agent-memory]] [[hybrid-search]] [[brain-first-lookup]] [[gbrain]] [[mem0]] [[bitter-lesson-search]] [[coding-agent-memory]] [[leonie]]

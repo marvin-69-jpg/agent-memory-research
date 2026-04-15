@@ -1,7 +1,7 @@
 ---
 aliases: [open questions, 未解問題, open problems]
 first_seen: 2026-04-14
-last_updated: 2026-04-14
+last_updated: 2026-04-15
 tags: [memory, architecture]
 ---
 
@@ -143,7 +143,7 @@ Sources: [[raw/pengfei-du-memory-survey-2026]], [[agemem]]
 | Multimodal memory | 完全沒覆蓋 | Pengfei Du 列為 open challenge #5 |
 | Neuroscience integration | 完全沒覆蓋 | Spreading activation, Ebbinghaus curves |
 | Privacy & compliance | 只在 mem0 提到 | 需要獨立頁面 |
-| Cost-effectiveness | 散落各處 | 需要彙整 |
+| Cost-effectiveness | **已部分解決** — Helix 提供最具體的 memory ROI 數據（2,000× 加速、100% cost reduction） | 還缺 general memory 的 cost-effectiveness，Helix 只覆蓋 error recovery |
 
 ## Related
 

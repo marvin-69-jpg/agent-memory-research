@@ -1,13 +1,13 @@
 ---
 aliases: [concept map, 概念地圖, architecture overview]
 first_seen: 2026-04-14
-last_updated: 2026-04-14
+last_updated: 2026-04-15
 tags: [architecture]
 ---
 
 # Concept Map
 
-本 wiki 47 個頁面的結構關係。三層架構 + 跨層主題 + 人物/產品索引。
+本 wiki 54 個頁面的結構關係。三層架構 + 跨層主題 + 人物/產品索引。
 
 ## Layer 1: Infrastructure — Agent 怎麼運作
 
@@ -58,6 +58,7 @@ tags: [architecture]
 | [[context-constitution]] | Letta 的原則集，定義 agent 如何管理 context |
 | [[actor-aware-memory]] | Multi-agent 記憶來源追蹤 |
 | [[filesystem-vs-database]] | File interface vs DB 辯論 |
+| [[gene-map]] | Q-value RL 排序的修復策略知識庫（Helix 核心概念） |
 
 ## Layer 3: Retrieval & Evaluation — Agent 怎麼找、怎麼驗
 
@@ -93,6 +94,7 @@ tags: [architecture]
 | [[chatgpt-memory]] | ChatGPT 四層靜態注入，no RAG |
 | [[coding-agent-memory]] | Cursor/Claude Code/Windsurf/Cline 比較 |
 | [[autoreason]] | A/B/AB tournament self-refinement |
+| [[helix]] | Self-healing runtime，Gene Map 用 Q-value RL |
 
 ## People
 
@@ -107,6 +109,7 @@ tags: [architecture]
 | [[philipp-schmid]] | HuggingFace | "2026 = Agent Harnesses" |
 | [[aaron-levie]] | Box CEO | Scaffolding lifecycle |
 | [[shl0ms]] | Autoreason 作者 | Memory isolation by design |
+| [[nicholas-dapanji]] | Helix 共同創作者 | Gene Map, self-healing agents |
 | [[leonie]] | ML 技術作者 | Filesystem vs database 辯論 |
 
 ## Related

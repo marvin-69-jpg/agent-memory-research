@@ -25,4 +25,4 @@ LangChain CEO。主張 agent harness 與 memory 綁定，memory 應該 open。
 
 ## Related
 
-[[deep-agents]] [[agent-harness]] [[agent-memory]] [[memory-lock-in]] [[sarah-wooders]]
+[[deep-agents]] [[agent-harness]] [[agent-memory]] [[memory-lock-in]] [[sarah-wooders]] [[compounding-memory]] [[letta]]

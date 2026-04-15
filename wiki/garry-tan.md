@@ -30,4 +30,4 @@ Y Combinator CEO。開發了 [[gbrain|GBrain]] — 個人 AI agent 知識庫系�
 
 ## Related
 
-[[gbrain]] [[compounding-memory]] [[agent-memory]] [[thin-harness-fat-skills]] [[brain-agent-loop]]
+[[gbrain]] [[compounding-memory]] [[agent-memory]] [[thin-harness-fat-skills]] [[brain-agent-loop]] [[compiled-truth-pattern]] [[context-engineering]] [[context-fragment]]

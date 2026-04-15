@@ -29,4 +29,4 @@ tags: [memory, architecture]
 
 ## Related
 
-[[gbrain]] [[compounding-memory]] [[brain-first-lookup]] [[entity-detection]] [[garry-tan]]
+[[gbrain]] [[compounding-memory]] [[brain-first-lookup]] [[entity-detection]] [[garry-tan]] [[enrichment-pipeline]] [[sleep-time-compute]] [[thin-harness-fat-skills]]

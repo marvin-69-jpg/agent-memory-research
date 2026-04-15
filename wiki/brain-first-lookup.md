@@ -50,4 +50,4 @@ GBrain 的查詢優先級：永遠先查 brain，external API 是 fallback。
 
 ## Related
 
-[[gbrain]] [[hybrid-search]] [[brain-agent-loop]] [[compounding-memory]]
+[[gbrain]] [[hybrid-search]] [[brain-agent-loop]] [[compounding-memory]] [[experiential-memory]] [[filesystem-vs-database]] [[gene-map]] [[graph-memory]] [[helix]]

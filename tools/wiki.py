@@ -59,15 +59,15 @@ def parse_aliases(raw: str) -> list[str]:
 
 
 def extract_links(text: str) -> set[str]:
-    """Extract all [[target]] and [[target|display]] wiki-links, normalized to stems."""
-    raw_links = re.findall(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", text)
+    """Extract all [[target]] and [[target|display]] wiki-links, normalized to stems.
+    Preserves raw/ prefix so callers can distinguish raw refs from wiki refs."""
+    raw_links = re.findall(r"\[\[([^\]|\\]+)(?:[|\\][^\]]+)?\]\]", text)
     stems = set()
     for link in raw_links:
         stem = link.strip()
-        # Strip wiki/ or raw/ prefix
-        for prefix in ("wiki/", "raw/"):
-            if stem.startswith(prefix):
-                stem = stem[len(prefix) :]
+        # Strip wiki/ prefix (wiki pages are referenced by stem)
+        if stem.startswith("wiki/"):
+            stem = stem[len("wiki/") :]
         # Strip .md suffix
         if stem.endswith(".md"):
             stem = stem[:-3]
@@ -173,9 +173,7 @@ def cmd_lint(wiki_dir: Path, index_path: Path, **_):
     #    Links in Current Understanding / Key Sources don't require backlinks.
     for stem, page in pages.items():
         for target in page["related_links"]:
-            if target == stem:
-                continue
-            if target.startswith("raw/") or target.startswith("raw\\"):
+            if target == stem or target.startswith("raw/"):
                 continue
             if target in all_stems and target not in {s.replace(".md", "") for s in META_PAGES}:
                 target_page = pages.get(target)
@@ -192,11 +190,11 @@ def cmd_lint(wiki_dir: Path, index_path: Path, **_):
         if count == 0 and stem not in {s.replace(".md", "") for s in META_PAGES}:
             add("warn", stem, "orphan page (0 inbound links)")
 
-    # 3. Dangling links
+    # 3. Dangling links (skip raw/ refs — those point to raw/ directory, not wiki pages)
     alias_index = build_alias_index(pages)
     for stem, page in pages.items():
         for target in page["links"]:
-            if target.startswith("raw/") or target.startswith("raw\\"):
+            if target.startswith("raw/"):
                 continue
             if target not in all_stems and target not in alias_index:
                 add("error", stem, f"dangling link [[{target}]]")
@@ -366,7 +364,7 @@ def cmd_status(wiki_dir: Path, index_path: Path, log_path: Path, **_):
     errors = 0
     warnings = 0
 
-    # Quick backlink check (Related section only)
+    # Quick backlink check (Related section only, skip raw/ refs)
     for stem, page in pages.items():
         for target in page["related_links"]:
             if target == stem or target.startswith("raw/"):
