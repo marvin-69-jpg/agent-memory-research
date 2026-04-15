@@ -394,6 +394,167 @@ def cmd_status(wiki_dir: Path, index_path: Path, log_path: Path, **_):
     return 0
 
 
+# ── gaps ──────────────────────────────────────────────────
+
+REPORTS_DIR = Path("/home/node/agent-memory-research/reports/")
+
+
+def cmd_gaps(wiki_dir: Path, index_path: Path, log_path: Path, **_):
+    pages = load_wiki_pages(wiki_dir)
+    reports_dir = wiki_dir.parent / "reports"
+    gaps = []  # (priority, category, description, details)
+
+    # Load past research topics to avoid repeats
+    past_topics = set()
+    if reports_dir.exists():
+        for f in reports_dir.glob("*.md"):
+            try:
+                text = f.read_text("utf-8")
+                fm, _ = parse_frontmatter(text)
+                if fm and "topic" in fm:
+                    past_topics.add(fm["topic"].lower())
+            except Exception:
+                pass
+
+    # 1. Single-source pages (only 1 Key Sources entry → needs more evidence)
+    for stem, page in pages.items():
+        if stem in {s.replace(".md", "") for s in META_PAGES}:
+            continue
+        source_count = len(re.findall(r"^\- \*\*\d{4}", page["body"], re.MULTILINE))
+        if source_count <= 1:
+            # Get page title
+            title = stem
+            for line in page["text"].splitlines():
+                if line.startswith("# "):
+                    title = line[2:].strip()
+                    break
+            if stem.lower() not in past_topics and title.lower() not in past_topics:
+                gaps.append((1, "SINGLE-SOURCE", title, f"{stem}.md — only {source_count} source(s)"))
+
+    # 2. Open questions with no progress
+    oq_stem = OPEN_QUESTIONS.replace(".md", "")
+    if oq_stem in pages:
+        oq_text = pages[oq_stem]["body"]
+        # Find research gaps table
+        in_gaps_table = False
+        for line in oq_text.splitlines():
+            if "Research Gaps" in line:
+                in_gaps_table = True
+                continue
+            if in_gaps_table and line.startswith("|") and "---" not in line and "Gap" not in line:
+                cells = [c.strip() for c in line.split("|") if c.strip()]
+                if len(cells) >= 2:
+                    gap_name = cells[0]
+                    status = cells[1] if len(cells) > 1 else ""
+                    if "完全沒覆蓋" in status:
+                        if gap_name.lower() not in past_topics:
+                            gaps.append((0, "RESEARCH-GAP", gap_name, f"完全沒覆蓋 — from open-questions.md"))
+            if in_gaps_table and line.startswith("##"):
+                break
+
+    # 3. Tag imbalance (tags with very few pages)
+    tag_counts: dict[str, int] = {}
+    for page in pages.values():
+        if page["fields"] and "tags" in page["fields"]:
+            raw_tags = page["fields"]["tags"]
+            if raw_tags.startswith("[") and raw_tags.endswith("]"):
+                tags = [t.strip() for t in raw_tags[1:-1].split(",") if t.strip()]
+            else:
+                tags = [raw_tags.strip()] if raw_tags.strip() else []
+            for t in tags:
+                tag_counts[t] = tag_counts.get(t, 0) + 1
+    avg_count = sum(tag_counts.values()) / max(len(tag_counts), 1)
+    for tag, count in sorted(tag_counts.items()):
+        if count <= avg_count * 0.3 and tag not in past_topics:
+            gaps.append((2, "TAG-IMBALANCE", tag, f"only {count} page(s), avg is {avg_count:.0f}"))
+
+    # 4. Stale pages (not updated in 7+ days relative to newest)
+    newest_date = ""
+    for page in pages.values():
+        if page["fields"]:
+            d = page["fields"].get("last_updated", "")
+            if d > newest_date:
+                newest_date = d
+    if newest_date:
+        for stem, page in pages.items():
+            if stem in {s.replace(".md", "") for s in META_PAGES}:
+                continue
+            if page["fields"]:
+                d = page["fields"].get("last_updated", "")
+                if d and d < newest_date[:8]:  # compare YYYY-MM prefix
+                    title = stem
+                    for line in page["text"].splitlines():
+                        if line.startswith("# "):
+                            title = line[2:].strip()
+                            break
+                    if stem.lower() not in past_topics:
+                        gaps.append((3, "STALE", title, f"{stem}.md — last updated {d}"))
+
+    # Report
+    gaps.sort(key=lambda x: x[0])
+    print(f"wiki gaps — {len(gaps)} opportunities found (excluding {len(past_topics)} past topics)\n")
+
+    if not gaps:
+        print("✓ no gaps found")
+        return 0
+
+    for cat in ("RESEARCH-GAP", "SINGLE-SOURCE", "TAG-IMBALANCE", "STALE"):
+        items = [(p, c, t, d) for p, c, t, d in gaps if c == cat]
+        if items:
+            labels = {
+                "RESEARCH-GAP": "🔴 Research gaps (completely uncovered)",
+                "SINGLE-SOURCE": "🟡 Single-source pages (need more evidence)",
+                "TAG-IMBALANCE": "🔵 Underrepresented tags",
+                "STALE": "⚪ Stale pages",
+            }
+            print(f"{labels[cat]} ({len(items)}):")
+            for _, _, title, detail in items:
+                print(f"  {title} — {detail}")
+            print()
+
+    # Suggest top 3
+    top = gaps[:3]
+    if top:
+        print("── Suggested research topics (top 3) ──")
+        for i, (_, cat, title, detail) in enumerate(top, 1):
+            print(f"  {i}. [{cat}] {title}")
+
+    return 0
+
+
+def cmd_research_log(wiki_dir: Path, **_):
+    reports_dir = wiki_dir.parent / "reports"
+    if not reports_dir.exists() or not list(reports_dir.glob("*.md")):
+        print("research-log: no reports yet")
+        return 0
+
+    entries = []
+    for f in sorted(reports_dir.glob("*.md"), reverse=True):
+        try:
+            text = f.read_text("utf-8")
+            fm, _ = parse_frontmatter(text)
+            if fm:
+                entries.append({
+                    "file": f.name,
+                    "date": fm.get("date", "?"),
+                    "topic": fm.get("topic", "?"),
+                    "gap_type": fm.get("gap_type", "?"),
+                    "sources_found": fm.get("sources_found", "?"),
+                    "pages_updated": fm.get("wiki_pages_updated", "?"),
+                    "pages_created": fm.get("wiki_pages_created", "?"),
+                })
+        except Exception:
+            pass
+
+    print(f"research-log — {len(entries)} reports\n")
+    for e in entries:
+        print(f"  {e['date']}  [{e['gap_type']}] {e['topic']}")
+        print(f"           sources:{e['sources_found']} updated:{e['pages_updated']} created:{e['pages_created']}")
+        print()
+
+    return 0
+
+
 # ── Main ──────────────────────────────────────────────────
 
 
@@ -411,6 +572,8 @@ def main():
     p_match = sub.add_parser("match", help="Match keywords against wiki pages")
     p_match.add_argument("keywords", nargs="+", help="Keywords to match")
     sub.add_parser("status", help="Quick wiki overview")
+    sub.add_parser("gaps", help="Find research opportunities (single-source, open questions, tag gaps)")
+    sub.add_parser("research-log", help="List past research reports (for dedup)")
 
     args = parser.parse_args()
     if not args.command:
@@ -428,6 +591,8 @@ def main():
         "lint": cmd_lint,
         "match": cmd_match,
         "status": cmd_status,
+        "gaps": cmd_gaps,
+        "research-log": cmd_research_log,
     }
     sys.exit(cmds[args.command](**kwargs))
 

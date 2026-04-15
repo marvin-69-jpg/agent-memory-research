@@ -82,11 +82,12 @@ cd /home/node/agent-memory-research && export PATH="/home/node/.local/bin:$PATH"
 ```
 raw/           ← 原始文章全文（immutable）
 wiki/          ← LLM 維護的 entity pages（Obsidian 格式）
+reports/       ← 自主研究報告（每日一篇）
 schema/        ← wiki ingest/query/lint 規則
-tools/          ← CLI 工具（memory.py）
+tools/          ← CLI 工具（memory.py, wiki.py）
 index.md       ← wiki 目錄
 log.md         ← 操作記錄
-.claude/skills/ ← browser, ingest, arxiv skills
+.claude/skills/ ← browser, ingest, arxiv, research skills
 ```
 
 ### Skills
@@ -96,6 +97,7 @@ log.md         ← 操作記錄
 | URL、讀網頁、開連結 | `.claude/skills/browser/SKILL.md` | agent-browser 抓網頁（X/Twitter 連結必用） |
 | 整理這篇、讀這個連結 | `.claude/skills/ingest/SKILL.md` | 研究文章讀取 + wiki 整理 |
 | arxiv、論文 | `.claude/skills/arxiv/SKILL.md` | alphaxiv 論文查詢 |
+| 跑研究、daily research、自主研究、explore | `.claude/skills/research/SKILL.md` | 自主研究：找缺口 → 搜素材 → 讀取 → 分析 → 融入 wiki |
 
 **收到 URL 時的流程**：先讀 browser skill → 用 agent-browser 開頁面讀內容。X/Twitter 連結只能用 agent-browser（JS 渲染），curl/WebFetch 拿不到內容。
 
