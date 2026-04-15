@@ -2,6 +2,20 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-16] ingest | Garry Tan — Resolvers: The Routing Table for Intelligence
+
+- Source: https://x.com/garrytan/status/2044479509874020852 (46.1K views)
+- Raw: raw/garry-tan-resolvers-routing-table.md
+- Created: context-rot.md
+- Updated: mece-resolver.md (大幅擴充 — trigger evals, check-resolvable, fractal resolvers, resolver as management), garry-tan.md, gbrain.md, thin-harness-fat-skills.md, scaffolding-lifecycle.md, concept-map.md, index.md
+- Key insights:
+  - Resolver = context routing table（20K→200 行 CLAUDE.md）
+  - Audit: 13 skills 只有 3 個查 resolver，check-resolvable 找到 15% dark skills
+  - Context rot: resolver 在 90 天內自然衰敗 — memory-staleness 在 infrastructure 層的對應物
+  - Self-healing resolver（RLM loop）是 agent governance 的 endgame
+  - GStack: 72K+ stars coding layer，與 GBrain 組成完整架構
+- Wiki: 64 → 65 pages
+
 ## [2026-04-16] research | Multi-Agent Memory
 
 - Topic: Multi-Agent Memory — multi-agent tag 嚴重不足（1 page vs avg 13），直接影響 openab-bot 架構

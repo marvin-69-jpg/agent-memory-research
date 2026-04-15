@@ -59,4 +59,4 @@ CLAUDE.md 規則和 feedback memory 都沒能讓 agent 在 session 開頭跑 `me
 
 ## Related
 
-[[context-constitution]] [[letta]] [[gbrain]] [[compounding-memory]] [[brain-agent-loop]] [[agemem]] [[bitter-lesson-search]] [[experiential-memory]] [[memory-staleness]] [[neuroscience-memory]] [[reconsolidation]]
+[[context-constitution]] [[letta]] [[gbrain]] [[compounding-memory]] [[brain-agent-loop]] [[agemem]] [[bitter-lesson-search]] [[experiential-memory]] [[memory-staleness]] [[neuroscience-memory]] [[reconsolidation]] [[context-rot]] [[mece-resolver]]

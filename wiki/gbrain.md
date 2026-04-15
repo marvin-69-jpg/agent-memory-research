@@ -31,15 +31,18 @@ Garry Tan（Y Combinator CEO）開發的個人知識庫系統。核心理念：a
   - **Multi-user brain access** — ACL 機制讓多人共用同一個 brain
   - 個人 OpenClaw setup 公開，讓其他人可以直接使用 Garry 的配置
 - **Dream cycle**：agent 在使用者睡覺時自動跑 enrichment、修 citation、consolidate memory
+- **Resolvers 深化（2026-04-16）**：Garry 發表 Resolver 長文，完整闡述 resolver = context routing table。20K→200 行 CLAUDE.md 瘦身、trigger evals（50 test cases）、check-resolvable meta-skill（找到 15% unreachable skills）、[[context-rot]] 衰敗時間線、self-healing resolver 方向
+- **GStack**：coding layer，fat skills in markdown，72K+ GitHub stars。Skills call GBrain knowledge，together = full architecture
 - 設計給 OpenClaw / Hermes Agent，但也支援任何 MCP client（Claude Code、Cursor 等）
 - MIT 授權
 
 ## Key Sources
 
+- **2026-04-16** — Resolver 長文：routing table for intelligence、trigger evals、check-resolvable、context rot。Source: [[raw/garry-tan-resolvers-routing-table]]
 - **2026-04-15** — v0.10.0 發布：24 fat skills、perfected RESOLVER.md/SOUL.md、multi-user ACLs。Source: [[raw/garry-tan-gbrain-v0.10.0]]
 - **2026-04-12** — Deep dive: Skillpack, schema, ethos docs。Source: [[raw/garry-tan-gbrain-deep]]
 - **2026-04-12** — GitHub README 完整架構文件。Source: [[raw/garry-tan-gbrain]]
 
 ## Related
 
-[[garry-tan]] [[compiled-truth-pattern]] [[hybrid-search]] [[compounding-memory]] [[agent-memory]] [[agent-harness]] [[thin-harness-fat-skills]] [[brain-agent-loop]] [[brain-first-lookup]] [[entity-detection]] [[enrichment-pipeline]] [[mece-resolver]] [[filesystem-vs-database]] [[multi-scope-memory]] [[sleep-time-compute]]
+[[garry-tan]] [[compiled-truth-pattern]] [[hybrid-search]] [[compounding-memory]] [[agent-memory]] [[agent-harness]] [[thin-harness-fat-skills]] [[brain-agent-loop]] [[brain-first-lookup]] [[entity-detection]] [[enrichment-pipeline]] [[mece-resolver]] [[filesystem-vs-database]] [[multi-scope-memory]] [[sleep-time-compute]] [[context-rot]]
