@@ -1,7 +1,7 @@
 ---
 aliases: [thin harness fat skills, fat skills thin harness, skill file architecture]
 first_seen: 2026-04-12
-last_updated: 2026-04-12
+last_updated: 2026-04-15
 tags: [architecture, harness]
 ---
 
@@ -21,6 +21,8 @@ tags: [architecture, harness]
 - **Resolver 是關鍵**：context 的 routing table，task X 出現時自動載入 document Y。Garry 的 CLAUDE.md 從 20,000 行瘦身到 200 行 pointer — attention degradation 問題解決
 - **Self-learning loop**：skill 讀 feedback → 改寫自己的 rules → 下次自動更好（YC Startup School: OK ratings 12% → 4%）
 - 跟 [[harrison-chase]] 的 harness 觀點對比：Chase 強調 harness 與 memory 綁定；Garry 強調 harness 要 thin，intelligence 在 skills 裡
+- **v0.10.0 實證（2026-04-15）**：GBrain 現有 24 個 fat skills，全部有 e2e tests、evals、unit tests。Garry 稱 RESOLVER.md 和 SOUL.md 已「perfected」— 這代表 fat skill 架構經過數月迭代已穩定收斂
+- **Multi-user 擴展**：ACL 機制讓多人共用同一個 brain，thin harness 的設計讓權限控制在 harness 層處理，skills 不需要改動
 
 ### 關鍵引言
 
@@ -30,6 +32,7 @@ tags: [architecture, harness]
 
 ## Key Sources
 
+- **2026-04-15** — GBrain v0.10.0: 24 fat skills with full test coverage，perfected resolver。Source: [[raw/garry-tan-gbrain-v0.10.0]]
 - **2026-04-12** — "Thin Harness, Fat Skills" essay + YC Spring 2026 talk。Source: [[raw/garry-tan-gbrain-deep]]
 
 ## Related

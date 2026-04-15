@@ -2,6 +2,16 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-15] ingest | Garry Tan — GBrain v0.10.0
+
+- Source: raw/garry-tan-gbrain-v0.10.0.md (tweet, 16.8K views)
+- Updated: gbrain.md (v0.10.0 details, multi-user ACLs), thin-harness-fat-skills.md (24 skills 實證, multi-user), garry-tan.md (v0.10.0 update)
+- Key findings:
+  - 24 fat skills with full e2e/eval/unit test coverage — fat skill 架構已穩定收斂
+  - RESOLVER.md + SOUL.md "perfected" — resolver routing 機制成熟
+  - Multi-user brain access via ACLs — brain 從個人工具擴展到團隊共用
+  - 個人 OpenClaw setup 公開 — 降低其他人的 adoption barrier
+
 ## [2026-04-15] ingest | Nicholas — AI Agents Have No Memory for Failure (Helix)
 
 - Source: raw/nicholas-helix-self-healing-agents.md (159K views, X long-form article)

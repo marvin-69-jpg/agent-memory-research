@@ -87,5 +87,6 @@
 | 2026-03-08 | [[raw/pengfei-du-memory-survey-2026]] | Memory for Autonomous LLM Agents: Survey (arxiv 2603.07670) |
 | 2025-08-28 | [[raw/yohei-nakajima-rise-of-ai-memory]] | The Rise of AI Memory (24.6K views) |
 | 2025-12-09 | [[raw/manthan-gupta-chatgpt-memory-reverse-engineered]] | ChatGPT Memory Reverse Engineered (四層靜態注入) |
+| 2026-04-15 | [[raw/garry-tan-gbrain-v0.10.0]] | GBrain v0.10.0 — 24 fat skills, perfected resolver, multi-user ACLs |
 | 2026-04-14 | [[raw/nicholas-helix-self-healing-agents]] | AI Agents Have No Memory for Failure — Helix Self-Healing Runtime |
 | 2026-04-14 | [[raw/coding-agents-memory-comparison]] | Coding Agent Memory Comparison (Cursor/Claude Code/Windsurf/Cline) |
