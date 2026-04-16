@@ -3,12 +3,13 @@
 memory — Unified CLI for auto-memory management.
 
 Subcommands:
-  lint         Check memory file format and structural integrity
-  consolidate  Semantic analysis: duplicates, staleness, promotion candidates
-  improve      Combined lint + consolidate (designed for session startup)
-  stats        Quick overview of memory distribution
-  recall       Search across memory/ + wiki/ for a query (brain-first lookup)
-  brief        Session startup briefing — compressed overview of everything the agent knows
+  lint            Check memory file format and structural integrity
+  consolidate     Semantic analysis: duplicates, staleness, promotion candidates
+  improve         Combined lint + consolidate (designed for session startup)
+  stats           Quick overview of memory distribution
+  recall          Search across memory/ + wiki/ for a query (brain-first lookup)
+  brief           Session startup briefing — compressed overview of everything the agent knows
+  reconsolidate   Check recalled memories for staleness signals (retrieval-triggered update)
 
 Usage:
   memory lint
@@ -17,6 +18,7 @@ Usage:
   memory stats
   memory recall <query> [<query> ...]
   memory brief
+  memory reconsolidate <file> [<file> ...]
 
 Global options:
   --memory-dir PATH   Memory directory (default: /home/node/.claude/projects/-home-node/memory/)
@@ -784,6 +786,108 @@ def cmd_brief(memory_dir: Path, wiki_dir: Path, **_):
     return 0
 
 
+# ── reconsolidate ────────────────────────────────────────
+
+
+def cmd_reconsolidate(memory_dir: Path, files: list[str], **_):
+    """Check recalled memories for staleness signals.
+
+    Inspired by neuroscience reconsolidation: retrieval is not read-only.
+    Each time a memory is recalled, check if it needs updating.
+
+    Signals checked:
+    - Age: how long since last modified
+    - Description freshness: does it still match the content
+    - Body staleness: project/reference memories over STALE_DAYS
+    - Content length: suspiciously short memories may need enrichment
+    """
+    mems = load_memories(memory_dir)
+    now = datetime.now()
+    suggestions = []
+
+    for fname in files:
+        # Normalize filename
+        if not fname.endswith(".md"):
+            fname += ".md"
+        if fname not in mems:
+            suggestions.append(("SKIP", fname, "file not found"))
+            continue
+
+        m = mems[fname]
+        if m["fields"] is None:
+            suggestions.append(("FIX", fname, "missing frontmatter — can't reconsolidate"))
+            continue
+
+        mtype = m["fields"].get("type", "")
+        name = m["fields"].get("name", fname)
+        desc = m["fields"].get("description", "")
+        body = m["body"]
+        age_days = (now - m["mtime"]).days
+
+        # Signal 1: Age-based staleness
+        if mtype == "project" and age_days > STALE_DAYS:
+            suggestions.append(("STALE", fname,
+                f"project memory {age_days}d old — verify '{name}' is still current"))
+        elif mtype == "reference" and age_days > 60:
+            suggestions.append(("CHECK", fname,
+                f"reference {age_days}d old — verify resource still exists"))
+
+        # Signal 2: Description-body drift
+        # Only check ASCII words (4+ chars) to avoid CJK tokenization noise
+        desc_words = set(re.findall(r'[a-zA-Z]{4,}', desc.lower()))
+        body_words = set(re.findall(r'[a-zA-Z]{4,}', body.lower()))
+        if desc_words and body_words:
+            desc_only = desc_words - body_words
+            if len(desc_only) > len(desc_words) * 0.5 and len(desc_only) >= 2:
+                suggestions.append(("DRIFT", fname,
+                    f"description has words not in body: {', '.join(sorted(desc_only)[:5])}"))
+
+        # Signal 3: Thin content
+        body_lines = [l for l in body.splitlines() if l.strip()]
+        if len(body_lines) < 2 and mtype in ("feedback", "project"):
+            suggestions.append(("THIN", fname,
+                f"only {len(body_lines)} line(s) — consider enriching"))
+
+        # Signal 4: Missing Why/How for feedback/project
+        if mtype in ("feedback", "project"):
+            if "**Why:**" not in body and "**Why**" not in body:
+                suggestions.append(("ENRICH", fname,
+                    f"{mtype} missing **Why:** — add reasoning for better edge-case judgment"))
+            if "**How to apply:**" not in body and "**How to apply**" not in body:
+                suggestions.append(("ENRICH", fname,
+                    f"{mtype} missing **How to apply:** — add application guidance"))
+
+    # Report
+    print(f"reconsolidate — checking {len(files)} recalled memories\n")
+
+    if not suggestions:
+        print("✓ all recalled memories look fresh — no reconsolidation needed")
+        return 0
+
+    for sev in ("FIX", "STALE", "DRIFT", "CHECK", "THIN", "ENRICH", "SKIP"):
+        items = [(f, msg) for s, f, msg in suggestions if s == sev]
+        if not items:
+            continue
+        icons = {
+            "FIX": "✗", "STALE": "⏰", "DRIFT": "↔",
+            "CHECK": "?", "THIN": "△", "ENRICH": "＋", "SKIP": "·"
+        }
+        labels = {
+            "FIX": "Needs fix", "STALE": "Possibly stale",
+            "DRIFT": "Description-body drift", "CHECK": "Verify resource",
+            "THIN": "Thin content", "ENRICH": "Missing structure",
+            "SKIP": "Skipped",
+        }
+        print(f"{labels[sev]}:")
+        for f, msg in items:
+            print(f"  {icons[sev]} {f}: {msg}")
+        print()
+
+    actionable = sum(1 for s, _, _ in suggestions if s not in ("SKIP",))
+    print(f"{actionable} reconsolidation suggestions — update these memories if current context confirms they're stale")
+    return 0
+
+
 # ── Main ──────────────────────────────────────────────────
 
 
@@ -804,6 +908,8 @@ def main():
     p_recall = sub.add_parser("recall", help="Search memory/ + wiki/ for a query")
     p_recall.add_argument("query", nargs="+", help="Search keywords")
     sub.add_parser("brief", help="Session startup briefing — what you currently know")
+    p_recon = sub.add_parser("reconsolidate", help="Check recalled memories for staleness signals")
+    p_recon.add_argument("files", nargs="+", help="Memory filenames to check")
 
     args = parser.parse_args()
     if not args.command:
@@ -817,6 +923,8 @@ def main():
     }
     if args.command == "recall":
         kwargs["query"] = args.query
+    if args.command == "reconsolidate":
+        kwargs["files"] = args.files
     cmds = {
         "lint": cmd_lint,
         "consolidate": cmd_consolidate,
@@ -824,6 +932,7 @@ def main():
         "stats": cmd_stats,
         "recall": cmd_recall,
         "brief": cmd_brief,
+        "reconsolidate": cmd_reconsolidate,
     }
     sys.exit(cmds[args.command](**kwargs))
 

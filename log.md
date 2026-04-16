@@ -2,6 +2,17 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-16] impl | Reconsolidation — retrieval-triggered memory update
+
+- Pattern: Reconsolidation (from A-Mem + SSGM + neuroscience research)
+- Changes:
+  - `tools/memory.py`: 新增 `reconsolidate` subcommand — 對 recalled memories 做 staleness 檢查
+  - `CLAUDE.md`: Brain-First Lookup 規則新增 reconsolidation 步驟
+  - `wiki/reconsolidation.md`: 新增 Implementation section
+- Signals checked: age staleness, description-body drift, thin content, missing Why/How
+- Safety: 受 SSGM 啟發，不改核心事實，只改可能過時的描述
+- This is the first research→implementation cycle for reconsolidation
+
 ## [2026-04-16] ingest | Stanford IRIS Lab — Meta-Harness
 
 - Source: https://github.com/stanford-iris-lab/meta-harness + arxiv 2603.28052
