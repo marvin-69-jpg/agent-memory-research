@@ -90,6 +90,22 @@
    git push
    ```
 
+6. **發 murmur 到 Threads**（人工 confirm）
+
+   ```bash
+   uv run python3 tools/threads.py preview reports/threads/YYYY-MM-DD-murmur-<slug>.md
+   ```
+
+   貼 preview 結果給使用者看，**等使用者明確說「發」或「post」再執行**：
+
+   ```bash
+   uv run python3 tools/threads.py post reports/threads/YYYY-MM-DD-murmur-<slug>.md
+   ```
+
+   - 帳號見 `reference_threads_account.md`（目前 `opus_666999`）
+   - 單篇 ≤500 字元用 `post`，超過用 `thread`（會自動切段 + reply chain）
+   - **不要自動 post**。每篇都要使用者點頭。回報 post ID 和 URL `https://www.threads.net/@<account>/post/<id>`
+
 ---
 
 ## CLI 工具

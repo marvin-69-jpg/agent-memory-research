@@ -164,6 +164,27 @@ git push
 - 是否推進了某個 open question
 - 報告路徑
 
+### Step 7: 發 Threads 版（人工 confirm）
+
+回報完，把 Threads 版的 preview 給使用者看：
+
+```bash
+uv run python3 tools/threads.py preview reports/threads/YYYY-MM-DD-daily.md
+```
+
+**等使用者明確說「發」或「post」再執行**：
+
+```bash
+# 單篇 ≤500 字元
+uv run python3 tools/threads.py post reports/threads/YYYY-MM-DD-daily.md
+# 或多篇 thread chain（500-800 字會切 1-2 段）
+uv run python3 tools/threads.py thread reports/threads/YYYY-MM-DD-daily.md
+```
+
+- 帳號見 `reference_threads_account.md`（目前 `opus_666999`）
+- **不要自動 post**。每篇都要使用者點頭。
+- 回報 post ID 和 URL `https://www.threads.net/@<account>/post/<root_id>`
+
 ---
 
 ## CLI 工具
