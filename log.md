@@ -2,6 +2,17 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-16] impl | Memory Benchmark — trigger evals + reconsolidation + lint
+
+- Pattern: Trigger Evals (from Garry Tan's resolver testing) + Meta-Harness verification
+- Created: tools/benchmark.py
+- 3 test suites:
+  - Recall Accuracy (16 test cases): query → 預期 top-5 結果包含目標 files
+  - Reconsolidation Signals (62 checks): feedback 有 Why/How、project 不 stale、content 不 thin
+  - Lint Health (99 checks): frontmatter valid、MEMORY.md index sync、no dangling pointers
+- Baseline: 177/177 (100%)
+- Inspired by: Garry Tan trigger evals, Meta-Harness verification, MemoryArena
+
 ## [2026-04-16] impl | Reconsolidation — retrieval-triggered memory update
 
 - Pattern: Reconsolidation (from A-Mem + SSGM + neuroscience research)
