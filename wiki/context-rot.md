@@ -57,10 +57,14 @@ RL loop 觀察 task dispatch traffic → 定期 rewrite resolver：
 
 Context rot 是 [[scaffolding-lifecycle]] 的一種表現：scaffolding 不只因為模型變強而需要拆（Levie 的觀點），也因為**系統演化而自然腐敗**（Garry 的觀點）。兩者都指向同一結論：agent 系統需要持續維護機制。
 
+### Meta-Harness: Automated Rot Repair
+
+[[meta-harness]]（Stanford, 2026）提供了 context rot 的自動修復路徑 — 不是人工維護 resolver，而是讓 coding agent 定期搜尋最佳 harness 配置。Garry 的 self-healing resolver（RLM loop）是方向，Meta-Harness 是學術驗證。
+
 ## Key Sources
 
 - **2026-04-16** — Garry Tan: Resolvers 長文，首次系統化描述 context rot。Source: [[raw/garry-tan-resolvers-routing-table]]
 
 ## Related
 
-[[mece-resolver]] [[memory-staleness]] [[scaffolding-lifecycle]] [[thin-harness-fat-skills]] [[gbrain]] [[garry-tan]] [[sleep-time-compute]] [[agent-harness]]
+[[mece-resolver]] [[memory-staleness]] [[scaffolding-lifecycle]] [[thin-harness-fat-skills]] [[gbrain]] [[garry-tan]] [[sleep-time-compute]] [[agent-harness]] [[meta-harness]] [[harness-engineering]]

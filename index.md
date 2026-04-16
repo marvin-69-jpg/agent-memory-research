@@ -75,6 +75,7 @@
 | [[wiki/memory-consistency\|Memory Consistency]] | Multi-agent memory 一致性問題 | memory, multi-agent, architecture | 2026-04-16 |
 | [[wiki/collaborative-memory-system\|Collaborative Memory]] | Multi-user memory sharing + dynamic access control | product, memory, multi-agent, architecture | 2026-04-16 |
 | [[wiki/context-rot\|Context Rot]] | Resolver/routing 隨時間衰敗 | architecture, harness | 2026-04-16 |
+| [[wiki/meta-harness\|Meta-Harness]] | Automated harness optimization（Stanford IRIS Lab） | product, harness, architecture | 2026-04-16 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-16 |
 
 ## Raw Sources
@@ -108,5 +109,6 @@
 | 2025-02-17 | [[raw/a-mem-agentic-memory]] | A-Mem: Agentic Memory for LLM Agents (arxiv 2502.12110) |
 | 2026-03-14 | [[raw/ssgm-stability-safety-governed-memory]] | SSGM: Stability and Safety Governed Memory (arxiv 2603.11768) |
 | 2026-04-16 | [[raw/garry-tan-resolvers-routing-table]] | Resolvers: The Routing Table for Intelligence (46.1K views) |
+| 2026-03-28 | [[raw/stanford-meta-harness]] | Meta-Harness: End-to-End Optimization of Model Harnesses (arxiv 2603.28052) |
 | 2026-03-13 | [[raw/yu-multi-agent-memory-architecture]] | Multi-Agent Memory from a Computer Architecture Perspective (arxiv 2603.10062) |
 | 2025-05-23 | [[raw/rezazadeh-collaborative-memory]] | Collaborative Memory: Multi-User Memory Sharing with Dynamic Access Control (arxiv 2505.18279) |

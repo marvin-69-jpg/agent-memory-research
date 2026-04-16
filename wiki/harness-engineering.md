@@ -1,7 +1,7 @@
 ---
 aliases: [harness engineering, agent harness engineering, 套具工程]
 first_seen: 2026-04-13
-last_updated: 2026-04-13
+last_updated: 2026-04-16
 tags: [harness, architecture, context]
 ---
 
@@ -30,13 +30,15 @@ tags: [harness, architecture, context]
   - NL harness 可 ablate、可 migrate（1-2 週跨 task）、可 compare
   - 核心主張：**scale harnesses, not models**
 - **與我們的做法的對比**：openab-bot 的 CLAUDE.md + hooks + skills 就是 harness engineering。我們做的 behavior benchmark 也是在測 harness 的效果（88% → 100%）。我們的 enforcement spectrum（rules → hard rules → hooks）就是 harness engineering 的實踐
+- **[[meta-harness]]（Stanford IRIS Lab, 2026）**：把 harness engineering **自動化** — 用 coding agent（Claude Code + Opus 4.6）作為 proposer，自動搜尋最佳 harness 設計。同一模型 6x 性能差異來自 harness。在 TerminalBench-2 超越手工 harness（76.4% vs 74.7%），text classification 用 4x fewer tokens 且+7.7 accuracy。核心發現：full execution traces（10M tokens）比 lossy summary 好 15+ 點 — **causal reasoning 需要 raw data**
 
 ## Key Sources
 
+- **2026-03-28** — Stanford IRIS Lab: Meta-Harness，automated end-to-end harness optimization（arxiv 2603.28052）。Source: [[raw/stanford-meta-harness]]
 - **2025-11-04** — dex 定義 harness engineering 概念（48.1K views）。Source: [[raw/dex-harness-engineering]]
 - **2026-01-05** — Philipp Schmid: 2026 = Agent Harnesses 年代（144K views）。Source: [[raw/philipp-schmid-2026-agent-harnesses]]
 - **2026-04-10** — Carlos Perez 整理 NLAH 論文（Pan et al.）。Source: [[raw/carlos-perez-natural-language-agent-harnesses]]
 
 ## Related
 
-[[agent-harness]] [[context-engineering]] [[context-fragment]] [[thin-harness-fat-skills]] [[scaffolding-lifecycle]] [[aaron-levie]] [[philipp-schmid]]
+[[agent-harness]] [[context-engineering]] [[context-fragment]] [[thin-harness-fat-skills]] [[scaffolding-lifecycle]] [[aaron-levie]] [[philipp-schmid]] [[meta-harness]] [[context-rot]] [[mece-resolver]]

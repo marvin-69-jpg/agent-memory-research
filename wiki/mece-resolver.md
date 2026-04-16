@@ -83,4 +83,4 @@ Resolver 會自然衰敗 → [[context-rot]]。Day 30 新 skill 沒 register，D
 
 ## Related
 
-[[gbrain]] [[compiled-truth-pattern]] [[agent-memory]] [[entity-detection]] [[thin-harness-fat-skills]] [[garry-tan]] [[context-rot]] [[context-engineering]] [[scaffolding-lifecycle]] [[brain-first-lookup]] [[sleep-time-compute]]
+[[gbrain]] [[compiled-truth-pattern]] [[agent-memory]] [[entity-detection]] [[thin-harness-fat-skills]] [[garry-tan]] [[context-rot]] [[context-engineering]] [[scaffolding-lifecycle]] [[brain-first-lookup]] [[sleep-time-compute]] [[harness-engineering]] [[meta-harness]]

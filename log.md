@@ -2,6 +2,20 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-16] ingest | Stanford IRIS Lab — Meta-Harness
+
+- Source: https://github.com/stanford-iris-lab/meta-harness + arxiv 2603.28052
+- Raw: raw/stanford-meta-harness.md
+- Created: meta-harness.md
+- Updated: harness-engineering.md, scaffolding-lifecycle.md, context-rot.md, concept-map.md, index.md
+- Key insights:
+  - Automated harness optimization — 同一模型 6x 性能差異來自 harness
+  - Full execution traces（10M tokens）比 lossy summary 好 15+ 點
+  - TerminalBench-2: 76.4% pass 超越手工 harness（#2 leaderboard）
+  - Proposer 自動學會從 aggressive rewrites → additive modifications
+  - Chelsea Finn + Omar Khattab（DSPy）— 從 prompt optimization 到 harness optimization
+- Wiki: 65 → 66 pages
+
 ## [2026-04-16] ingest | Garry Tan — Resolvers: The Routing Table for Intelligence
 
 - Source: https://x.com/garrytan/status/2044479509874020852 (46.1K views)

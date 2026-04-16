@@ -7,7 +7,7 @@ tags: [architecture]
 
 # Concept Map
 
-本 wiki 65 個頁面的結構關係。三層架構 + 跨層主題 + 人物/產品索引。
+本 wiki 66 個頁面的結構關係。三層架構 + 跨層主題 + 人物/產品索引。
 
 ## Layer 1: Infrastructure — Agent 怎麼運作
 
@@ -19,6 +19,7 @@ tags: [architecture]
 | [[context-engineering]] | Harness 管理 context 的方式決定 memory 的一切 |
 | [[context-fragment]] | Context window 中每個 loaded object 是設計決策 |
 | [[harness-engineering]] | Agent integration points 工程（hooks、skills、MCPs） |
+| [[meta-harness]] | Automated harness optimization（Stanford, 6x 性能差異） |
 | [[scaffolding-lifecycle]] | 模型變強時 scaffolding 要拆 |
 | [[context-rot]] | Resolver/routing 隨時間自然衰敗 |
 | [[thin-harness-fat-skills]] | Harness 是薄殼，intelligence 在 skills |
