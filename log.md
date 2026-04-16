@@ -383,3 +383,13 @@ Updated wiki Implementation sections: sleep-time-compute.md, brain-first-lookup.
 
 - Created: .claude/skills/memory/SKILL.md (memory skill，驅動 memory CLI)
 - Updated: CLAUDE.md (Sleep-Time section 簡化，指向 skill)
+
+## [2026-04-17] research | A-Mem 的 follow-up：D-Mem + FLUXMEM
+
+- gap_type: single-source（A-Mem 只有 1 個 source）
+- Sources: raw/song-d-mem.md, raw/lu-fluxmem.md
+- Created: wiki/d-mem.md, wiki/fluxmem.md
+- Updated: wiki/a-mem.md（加 D-Mem critique + FLUXMEM meta-critique 兩節）, wiki/reconsolidation.md（Selective vs Uniform Reconsolidation 新節）, wiki/neuroscience-memory.md（Dopamine RPE 新節）, wiki/locomo.md（LoCoMo-Noise extension）, wiki/open-questions.md（#3 加 D-Mem 解法 + 新增 #15 Memory Structure Selection）, index.md
+- Report: reports/2026-04-17-a-mem-followups.md
+- Threads: reports/threads/2026-04-17-daily.md
+- 推進 open question #3（Compounding vs Forgetting）：D-Mem 證明 lightweight bio-inspired heuristic 可達到 RL approach 的選擇性

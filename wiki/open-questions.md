@@ -5,6 +5,9 @@ last_updated: 2026-04-17
 tags: [memory, architecture]
 ---
 
+> **2026-04-17 update**: Question #3（Compounding vs Forgetting）新增 [[d-mem]] 的 RPE gating approach。新增 Tier 3 #15（Memory Structure Selection）來自 [[fluxmem]]。
+
+
 # Open Questions
 
 研究中遇到的未解決問題和核心張力。按重要性排序。
@@ -41,9 +44,9 @@ Sources: [[chrysb]], [[memory-evaluation]]
 
 **核心張力**：什麼時候該記、什麼時候該忘、什麼時候該假裝不知道？
 
-**現有策略**：Mem0 selective pipeline（ADD/UPDATE/DELETE/NOOP）、AgeMem 用 RL 學、autoreason 直接切斷。沒有統一答案。
+**現有策略**：Mem0 selective pipeline（ADD/UPDATE/DELETE/NOOP）、AgeMem 用 RL 學、autoreason 直接切斷、[[d-mem]] 用 dopamine RPE gating（surprise + utility 的 multiplicative threshold）達 80% token reduction。沒有統一答案，但 D-Mem 證明 lightweight bio-inspired heuristic 可以接近 RL approach 的選擇性。
 
-Sources: [[compounding-memory]], [[autoreason]], [[memory-staleness]], [[agemem]]
+Sources: [[compounding-memory]], [[autoreason]], [[memory-staleness]], [[agemem]], [[d-mem]]
 
 ---
 
@@ -147,6 +150,19 @@ Skill-based self-improvement（[[self-improving-agent]]）面臨兩個問題：
 **為什麼還沒解**：skill ecosystem 還沒夠大到讓這個問題凸顯。但 [[skillfoundry]] 286 個 skills 已經開始遇到 redundancy（28.9% 被 merge/discard），規模再大會更嚴重。
 
 Sources: [[self-improving-agent]], [[asg-si]], [[skillfoundry]], [[mece-resolver]]
+
+### 15. Memory Structure Selection: Single vs Adaptive
+
+[[fluxmem]]（arxiv 2602.14038）質疑既有系統的「single-structure」假設。Mem0 用 flat retrieval、A-Mem 用 graph、MemoryOS 用 OS-inspired hierarchical —— 都假設一種結構通吃。但不同 conversation segment 的 structural cue 不同（時序強的 vs 關係強的 vs topic 多層的）。
+
+**FLUXMEM 的回答**：把結構選擇本身變成 learnable variable，shallow MLP 根據 conversation feature 動態挑 linear/graph/hierarchical。PERSONAMEM avg accuracy 72.43%，比第二名 +9.18%。
+
+**還沒解的**：
+- Selector 的 supervision 來自 offline reward —— 真實部署時 reward signal 怎麼來？
+- 三種結構是 enough 還是只是 starting point？是否需要更多 hybrid 形式
+- Structure switching cost：頻繁切換結構時，memory consistency 怎麼保證
+
+Sources: [[fluxmem]], [[mece-resolver]], [[graph-memory]]
 
 ### 14. Self-Improving Agent Governance
 

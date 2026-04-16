@@ -1,7 +1,7 @@
 ---
-aliases: [LOCOMO, LOCOMO benchmark, Long-term Conversational Memory]
+aliases: [LOCOMO, LOCOMO benchmark, Long-term Conversational Memory, LoCoMo-Noise]
 first_seen: 2026-04-13
-last_updated: 2026-04-13
+last_updated: 2026-04-17
 tags: [benchmark, memory]
 ---
 
@@ -31,6 +31,12 @@ tags: [benchmark, memory]
 - **Survey 定位**（Pengfei Du 2026）：LOCOMO 被歸類為 "passive recall" 層級的 benchmark。Survey 提出更完整的四層 metric stack（task effectiveness / memory quality / efficiency / governance）→ [[memory-evaluation]]
 - **原始論文**：Snap Research + UNC Chapel Hill，ACL 2024。300 turns / 9K tokens / 35 sessions。arxiv 2402.17753
 
+### Extension: LoCoMo-Noise（D-MEM 2026）
+
+[[d-mem]] 提出 LoCoMo-Noise：原 LoCoMo 假設每 turn 都有意義，跟真實對話不符。LoCoMo-Noise 用 GPT-4o-mini 注入三類 noise（phatic fillers 40% / status updates 30% / tangent 30%），noise ratio ρ=0.75。
+
+這暴露了一個原 benchmark 看不到的失敗模式：**append-and-evolve-all 系統（[[a-mem]]）的 token cost 在 noisy 環境會爆炸**（1.64M vs D-Mem 的 319K）。LoCoMo-Noise 把 token efficiency 從 nice-to-have 升級成 必要 metric。
+
 ## Related
 
-[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]] [[memory-arena]] [[memory-evaluation]] [[agemem]] [[mirix]] [[multimodal-memory]] [[neuroscience-memory]] [[synapse]] [[a-mem]]
+[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]] [[memory-arena]] [[memory-evaluation]] [[agemem]] [[mirix]] [[multimodal-memory]] [[neuroscience-memory]] [[synapse]] [[a-mem]] [[d-mem]] [[fluxmem]]

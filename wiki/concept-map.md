@@ -111,6 +111,8 @@ tags: [architecture]
 | [[collaborative-memory-system]] | Multi-user memory sharing + dynamic access control |
 | [[a-mem]] | Zettelkasten-inspired memory evolution |
 | [[ssgm]] | 記憶進化 governance，drift 理論保證 |
+| [[d-mem]] | Dopamine-gated memory routing，解 A-Mem 的 O(N²) 寫入瓶頸 |
+| [[fluxmem]] | Adaptive memory structures：linear/graph/hierarchical 動態選擇 |
 | [[asg-si]] | Audited Skill-Graph Self-Improvement：governance-aware skill graph |
 | [[skillfoundry]] | CMU 自動 mine heterogeneous resources 成 skill library |
 

@@ -1,7 +1,7 @@
 ---
 aliases: [A-Mem, agentic memory, Zettelkasten memory]
 first_seen: 2026-04-15
-last_updated: 2026-04-15
+last_updated: 2026-04-17
 tags: [product, memory, architecture]
 ---
 
@@ -55,10 +55,25 @@ Ablation study：
 | 結構 | Atomic notes + links | Unified long/short-term |
 | 特色 | 記憶互相更新 | Agent 自己學 memory ops |
 
+### Critique: O(N²) Scaling Problem
+
+[[d-mem]]（arxiv 2603.14597, UCSD/CMU）直接攻擊 A-Mem 的 append-and-evolve-all 設計：
+- 每個 utterance（包含 phatic filler、status update）都跑完整 evolution → write-latency O(N²)
+- 在 LoCoMo-Noise（注入 75% noise）上，A-Mem 燒 1.64M tokens；D-Mem 用 RPE gating 只用 319K（−80%）且 multi-hop F1 還更高
+- D-Mem 的論點：人腦的 dopamine RPE 機制已經演化出「只在 surprise + utility 都高時才 consolidate」—— A-Mem 缺這個 gate
+
+A-Mem 不算被 obsoletes —— 它定義了 evolution semantics，D-Mem 是加一層 routing 在前面。但 deployed 系統若 conversation 含 noise（必然），A-Mem 的成本曲線會爆。
+
+### Meta-Critique: Single-Structure Assumption
+
+[[fluxmem]]（arxiv 2602.14038）從另一個角度看 A-Mem：graph + linked notes 只是**一種**結構，對某些 conversation pattern（時序強的、abstraction-heavy 的）不是最佳選擇。FLUXMEM 把 A-Mem 的 graph 結構當成三選項之一，動態根據 context feature 選。
+
 ## Key Sources
 
 - **2025-02-17** — A-Mem: Agentic Memory for LLM Agents。Source: [[raw/a-mem-agentic-memory]]
+- **2026-03-15** — D-MEM critique: O(N²) scaling problem，提出 RPE gating。Source: [[raw/song-d-mem]]
+- **2026-02-15** — FLUXMEM meta-critique: single-structure assumption。Source: [[raw/lu-fluxmem]]
 
 ## Related
 
-[[reconsolidation]] [[agemem]] [[graph-memory]] [[compiled-truth-pattern]] [[neuroscience-memory]] [[agent-memory]] [[memory-evaluation]] [[locomo]] [[ssgm]] [[memory-failure-modes]] [[memory-staleness]]
+[[reconsolidation]] [[agemem]] [[graph-memory]] [[compiled-truth-pattern]] [[neuroscience-memory]] [[agent-memory]] [[memory-evaluation]] [[locomo]] [[ssgm]] [[memory-failure-modes]] [[memory-staleness]] [[d-mem]] [[fluxmem]]

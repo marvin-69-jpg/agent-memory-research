@@ -80,6 +80,8 @@
 | [[wiki/self-improving-agent\|Self-Improving Agent]] | Skill-based self-improvement vs weight-based：學習外化成 verifiable artifacts | memory, architecture, harness | 2026-04-17 |
 | [[wiki/asg-si\|ASG-SI]] | Audited Skill-Graph Self-Improvement：governance-aware 的 skill graph 框架 | product, memory, architecture | 2026-04-17 |
 | [[wiki/skillfoundry\|SKILLFOUNDRY]] | CMU 自動 mine heterogeneous resources 成 skill library，tree-guided closed-loop | product, memory, architecture | 2026-04-17 |
+| [[wiki/d-mem\|D-MEM]] | Dopamine-gated agentic memory，用 RPE routing 解 A-Mem 的 O(N²) 寫入瓶頸 | product, memory, architecture | 2026-04-17 |
+| [[wiki/fluxmem\|FLUXMEM]] | Adaptive memory structures：把結構選擇升級成 learnable 變數 | product, memory, architecture | 2026-04-17 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-17 |
 
 ## Raw Sources
@@ -119,3 +121,5 @@
 | 2026-04-16 | [[raw/thariq-claude-code-session-management]] | Using Claude Code: Session Management & 1M Context (343.2K views) |
 | 2025-12-28 | [[raw/huang-asg-si-audited-skill-graph]] | Audited Skill-Graph Self-Improvement (ASG-SI) (arxiv 2512.23760) |
 | 2026-04-05 | [[raw/cmu-skillfoundry-self-evolving-skill-libraries]] | SKILLFOUNDRY: Self-Evolving Agent Skill Libraries (arxiv 2604.03964, CMU) |
+| 2026-03-15 | [[raw/song-d-mem]] | D-MEM: Dopamine-Gated Agentic Memory via RPE Routing (arxiv 2603.14597, UCSD/CMU) |
+| 2026-02-15 | [[raw/lu-fluxmem]] | Choosing How to Remember: Adaptive Memory Structures (FLUXMEM, arxiv 2602.14038, UTS/Melbourne/UT Austin/UCLA) |

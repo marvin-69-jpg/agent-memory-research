@@ -1,7 +1,7 @@
 ---
 aliases: [reconsolidation, 記憶再鞏固, memory reconsolidation, retrieval-triggered update]
 first_seen: 2026-04-15
-last_updated: 2026-04-15
+last_updated: 2026-04-17
 tags: [memory, architecture]
 ---
 
@@ -59,11 +59,19 @@ Dual storage 與 [[compiled-truth-pattern]] 高度呼應：
 - **[[memory-failure-modes]]**：reconsolidation 本身可能引入新的 failure mode（semantic drift、over-modification）→ SSGM 的 governance 是必要的
 - **[[compounding-memory]]**：reconsolidation 讓記憶 compound 的方式從「累積新記憶」變成「既有記憶越用越精確」
 
+### Selective vs Uniform Reconsolidation
+
+[[a-mem]] 的 evolution 是 **uniform write-triggered** —— 每個新記憶都觸發鄰居更新。但 [[d-mem]]（arxiv 2603.14597）證明這太昂貴而且不必要：在 LoCoMo-Noise 上 A-Mem 燒 1.64M tokens，D-Mem 用 dopamine RPE gating 只在 high-surprise + high-utility 時觸發 evolution，−80% tokens 還更準。
+
+對應到神經科學：人腦的 dopamine 也不是每次經驗都觸發 consolidation —— 只有 prediction error 高時才觸發。A-Mem 缺了這個 gate，D-Mem 補上。
+
+**對 openab-bot 的啟示**：目前 `memory.py reconsolidate` 是 manual triggered（每次 brain-first lookup 後判斷）。要不要學 D-Mem 加 RPE-style gate 自動 SKIP 低 utility 的 recall？但我們的「對話」結構跟 LoCoMo 不同 —— openab-bot 收到的訊息已經 pre-filtered（使用者明確要做事），phatic filler 比例低，gating 收益可能小。
+
 ### 未解問題
 
 1. **Read-triggered reconsolidation**：目前沒有系統在每次 retrieve 時自動 reconsolidate。A-Mem 是 write-triggered（間接的）
-2. **Reconsolidation vs forgetting**：reconsolidate 可能反而 reinforce 該被遺忘的記憶。需要 selective reconsolidation
-3. **Reconsolidation 的成本**：每次 retrieve 都觸發 LLM call 來判斷是否需要更新？太昂貴。需要輕量級 heuristic 先篩選
+2. **Reconsolidation vs forgetting**：reconsolidate 可能反而 reinforce 該被遺忘的記憶。需要 selective reconsolidation。**[[d-mem]] 的 SKIP tier 是一個解 —— 直接不存進長期記憶**。
+3. **Reconsolidation 的成本**：每次 retrieve 都觸發 LLM call 來判斷是否需要更新？太昂貴。需要輕量級 heuristic 先篩選。**D-Mem 的 Surprise（embedding-based, no LLM）+ Utility（minimal LLM call）二元分解是可借鏡的成本結構**。
 
 ## Implementation
 
@@ -85,7 +93,8 @@ Dual storage 與 [[compiled-truth-pattern]] 高度呼應：
 - **2025-02-17** — A-Mem: Zettelkasten-inspired memory evolution，write-triggered reconsolidation。Source: [[raw/a-mem-agentic-memory]]
 - **2026-03-14** — SSGM: Governance framework for evolving memory。Source: [[raw/ssgm-stability-safety-governed-memory]]
 - **2025-12-29** — AI Meets Brain survey: reconsolidation 的神經科學基礎。Source: [[raw/ai-meets-brain-memory-survey]]
+- **2026-03-15** — D-MEM: Selective evolution via dopamine RPE gating，解 A-Mem 的 O(N²) 成本問題。Source: [[raw/song-d-mem]]
 
 ## Related
 
-[[neuroscience-memory]] [[compiled-truth-pattern]] [[memory-staleness]] [[memory-failure-modes]] [[a-mem]] [[ssgm]] [[sleep-time-compute]] [[compounding-memory]] [[agent-memory]] [[agemem]] [[graph-memory]] [[open-questions]] [[session-management]]
+[[neuroscience-memory]] [[compiled-truth-pattern]] [[memory-staleness]] [[memory-failure-modes]] [[a-mem]] [[ssgm]] [[sleep-time-compute]] [[compounding-memory]] [[agent-memory]] [[agemem]] [[graph-memory]] [[open-questions]] [[session-management]] [[d-mem]]
