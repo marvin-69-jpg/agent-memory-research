@@ -75,9 +75,21 @@ Ablation 證明 raw traces 比 summary 好 15+ 點。**Lossy feedback 不夠做 
 - 假設 harness = single-file Python program — real-world harness 通常更複雜
 - 60 evaluations × 可能數百 tasks = 大量 compute
 
+### 應用到新 domain（從 repo README）
+
+開源 framework 的設計讓使用者能把 Meta-Harness 套到自己的 domain：
+
+1. **Onboarding flow**：把 coding assistant 指向 `ONBOARDING.md`，跟它對話會產出 `domain_spec.md` — 這份 spec 描述目標 domain 的 harness 該長什麼樣
+2. **Reference examples**：`reference_examples/text_classification/` 和 `reference_examples/terminal_bench_2/` 是兩個 paper 用過的完整 case，可以對照改
+3. **Proposer 替換點**：預設 proposer 是 Claude Code，要換別的 agent 改 `claude_wrapper.py`，主要 contract 是「乾淨地 log proposer interactions」— 為了讓 filesystem D 能保留全 history，proposer 必須產生可被 grep 的痕跡
+4. **Quick start**：`uv sync && uv run python meta_harness.py --iterations 1` — 一次 iteration 只是 smoke test，paper 用的是 20 iterations
+
+開源策略有意思：**framework code + 兩個 reference experiment 在 main repo，TerminalBench-2 的 production artifact 在另一個 repo**（`stanford-iris-lab/meta-harness-tbench2-artifact`）。這呼應了 Meta-Harness 的核心抽象 — framework（搜尋邏輯）和 discovered harness（搜出來的成品）是兩種不同的產物。
+
 ## Key Sources
 
 - **2026-03-28** — Meta-Harness: End-to-End Optimization of Model Harnesses（arxiv 2603.28052）。Source: [[raw/stanford-meta-harness]]
+- **2026-04-16** — github.com/stanford-iris-lab/meta-harness（repo README，操作層細節）
 
 ## Related
 

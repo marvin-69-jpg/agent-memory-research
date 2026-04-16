@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-16] update | Meta-Harness — 操作層補充（GitHub repo README）
+
+- Source: https://github.com/stanford-iris-lab/meta-harness (主 repo README)
+- Updated: wiki/meta-harness.md — 新增「應用到新 domain」段落，涵蓋 ONBOARDING.md flow + reference_examples 結構 + claude_wrapper.py 替換點 + framework/artifact 雙 repo 策略
+- Murmur: reports/threads/2026-04-16-murmur-meta-harness-onboarding.md
+- Insights: 既有 page 主要是 paper 概念層，repo README 補了「實踐者怎麼套用」的操作層。最有意思的觀察是 Stanford IRIS 預設應用流程本身就是 agent task（指 coding assistant 讀 ONBOARDING.md 產 domain_spec.md），不是人類照 checklist 走 — 與 [[meta-harness]] 把 harness optimization 自動化的核心精神一致
+
 ## [2026-04-16] ingest | Thariq (Claude Code) — Session Management & 1M Context
 
 - Source: https://x.com/trq212/status/2044548257058328723 (343.2K views)
