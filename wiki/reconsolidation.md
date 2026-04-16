@@ -65,6 +65,21 @@ Dual storage 與 [[compiled-truth-pattern]] 高度呼應：
 2. **Reconsolidation vs forgetting**：reconsolidate 可能反而 reinforce 該被遺忘的記憶。需要 selective reconsolidation
 3. **Reconsolidation 的成本**：每次 retrieve 都觸發 LLM call 來判斷是否需要更新？太昂貴。需要輕量級 heuristic 先篩選
 
+## Implementation
+
+### openab-bot Reconsolidation（2026-04-16）
+
+**已實作**：`memory.py reconsolidate <files>` — 對 recalled memories 做輕量 staleness 檢查（age、description-body drift、thin content、missing structure）。
+
+**規則變更**：Brain-First Lookup 規則新增 reconsolidation 步驟 — recall 完記憶後，判斷是否需要更新。不是每次都更新，只在有 evidence 時才改。
+
+**保護機制**（受 [[ssgm]] 啟發）：不改核心事實（使用者身份、明確規則），只改可能過時的描述和 context。
+
+**待觀察**：
+- 實際使用中 reconsolidation 的觸發頻率
+- 是否能捕捉到 sleep-time improve 漏掉的 stale memories
+- 是否需要從 write-triggered（現在的 CLI）升級到 read-triggered（每次 recall 自動觸發）
+
 ## Key Sources
 
 - **2025-02-17** — A-Mem: Zettelkasten-inspired memory evolution，write-triggered reconsolidation。Source: [[raw/a-mem-agentic-memory]]
