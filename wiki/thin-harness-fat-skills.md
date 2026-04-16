@@ -39,4 +39,4 @@ tags: [architecture, harness]
 
 ## Related
 
-[[garry-tan]] [[gbrain]] [[agent-harness]] [[context-engineering]] [[brain-agent-loop]] [[autoreason]] [[coding-agent-memory]] [[context-fragment]] [[harness-engineering]] [[procedural-memory]] [[scaffolding-lifecycle]] [[mece-resolver]] [[context-rot]] [[meta-harness]]
+[[garry-tan]] [[gbrain]] [[agent-harness]] [[context-engineering]] [[brain-agent-loop]] [[autoreason]] [[coding-agent-memory]] [[context-fragment]] [[harness-engineering]] [[procedural-memory]] [[scaffolding-lifecycle]] [[mece-resolver]] [[context-rot]] [[meta-harness]] [[self-improving-agent]] [[asg-si]] [[skillfoundry]]

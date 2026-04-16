@@ -2,6 +2,22 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] research | Self-Improving Agents via Skill Artifacts
+
+- Gap type: research-gap（沒有專門 page 處理「skill-based self-improvement」這個 cross-cutting 主題）
+- Sources: 2 篇 paper
+  - ASG-SI: arxiv 2512.23760（Ken Huang & Jerry Huang, 2025-12-28）
+  - SKILLFOUNDRY: arxiv 2604.03964（CMU, 2026-04-05）
+- New raws: raw/huang-asg-si-audited-skill-graph.md, raw/cmu-skillfoundry-self-evolving-skill-libraries.md
+- New wiki pages: wiki/self-improving-agent.md, wiki/asg-si.md, wiki/skillfoundry.md
+- Updated: wiki/thin-harness-fat-skills, procedural-memory, gbrain, meta-harness, experiential-memory, compounding-memory, sleep-time-compute, ssgm, bitter-lesson-search, memory-evaluation, context-rot, mece-resolver, memory-staleness — bidirectional cross-links
+- Updated: wiki/concept-map.md（新增 self-improving-agent / asg-si / skillfoundry / session-management，新主題 "Skill vs Weight Learning"）
+- Updated: wiki/open-questions.md（新增 #13 Skill Granularity, #14 Self-Improving Agent Governance）
+- Updated: index.md
+- Report: reports/2026-04-17-self-improving-agents.md
+- Threads: reports/threads/2026-04-17-daily.md（3 segments, 921 chars total）
+- Insights: 兩篇從不同角度（從 trajectories vs 從 external resources）收斂到同一個 paradigm — learning 應該外化成 verifiable artifacts，不是塞回 weights。直接連到 [[meta-harness]]（昨天 ingested）的同一精神：把改進變成 inspectable code 不是 weight delta。三篇一起構成「自動發現 + 自動 promote + 自動 controller search」的完整 stack
+
 ## [2026-04-16] update | Meta-Harness — 操作層補充（GitHub repo README）
 
 - Source: https://github.com/stanford-iris-lab/meta-harness (主 repo README)

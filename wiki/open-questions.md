@@ -1,7 +1,7 @@
 ---
 aliases: [open questions, 未解問題, open problems]
 first_seen: 2026-04-14
-last_updated: 2026-04-16
+last_updated: 2026-04-17
 tags: [memory, architecture]
 ---
 
@@ -136,6 +136,27 @@ Sources: [[scaffolding-lifecycle]], [[aaron-levie]]
 **Pengfei Du survey 排名**：10 大 open challenges 第 9。AgeMem 的 RL approach 是這個方向的早期嘗試。
 
 Sources: [[raw/pengfei-du-memory-survey-2026]], [[agemem]]
+
+### 13. Skill Granularity 與 Skill Conflicts
+
+Skill-based self-improvement（[[self-improving-agent]]）面臨兩個問題：
+
+- **Granularity**：什麼 size 的 skill 最好用？太細 → 組合爆炸；太粗 → 不可重用。SKILLFOUNDRY 用「operational contract」當粒度單位，但 contract 邊界本身要怎麼決定還沒解
+- **Conflicts**：兩個 skill 都能解 task 怎麼辦？需要 [[mece-resolver]] 之類的 routing 機制，但 skill 之間的 dominance 關係怎麼學？
+
+**為什麼還沒解**：skill ecosystem 還沒夠大到讓這個問題凸顯。但 [[skillfoundry]] 286 個 skills 已經開始遇到 redundancy（28.9% 被 merge/discard），規模再大會更嚴重。
+
+Sources: [[self-improving-agent]], [[asg-si]], [[skillfoundry]], [[mece-resolver]]
+
+### 14. Self-Improving Agent Governance
+
+Deployed self-improving agents 的安全與審計問題：reward hacking、behavioral drift、改進無法獨立驗證。
+
+**[[asg-si]] 的回答**：把 self-improvement 變成 verifiable artifacts（skill graph）的 promotion 過程，每個改進有 contract + replay log。但 verifier 自身的可靠性是 bottleneck — verifier 出錯就什麼都漏。
+
+**還沒解的**：跨 organization 的 skill sharing 怎麼確保安全？若 SkillHub 上的 community-contributed skill 嵌入惡意行為，誰負責 audit？
+
+Sources: [[asg-si]], [[ssgm]], [[memory-evaluation]]
 
 ---
 

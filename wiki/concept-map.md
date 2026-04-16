@@ -1,13 +1,13 @@
 ---
 aliases: [concept map, 概念地圖, architecture overview]
 first_seen: 2026-04-14
-last_updated: 2026-04-16
+last_updated: 2026-04-17
 tags: [architecture]
 ---
 
 # Concept Map
 
-本 wiki 66 個頁面的結構關係。三層架構 + 跨層主題 + 人物/產品索引。
+本 wiki 70 個頁面的結構關係。三層架構 + 跨層主題 + 人物/產品索引。
 
 ## Layer 1: Infrastructure — Agent 怎麼運作
 
@@ -23,6 +23,8 @@ tags: [architecture]
 | [[scaffolding-lifecycle]] | 模型變強時 scaffolding 要拆 |
 | [[context-rot]] | Resolver/routing 隨時間自然衰敗 |
 | [[thin-harness-fat-skills]] | Harness 是薄殼，intelligence 在 skills |
+| [[session-management]] | Every turn is a branching point：continue/rewind/clear/compact/subagent |
+| [[self-improving-agent]] | Skill-based self-improvement vs weight-based：學習外化成 verifiable artifacts |
 
 ## Layer 2: Memory System — Agent 怎麼記
 
@@ -88,6 +90,7 @@ tags: [architecture]
 | **Recall vs Action** | [[locomo]], [[memory-arena]], [[memory-evaluation]] | 能記得 ≠ 能用記憶做正確決策 |
 | **Isolation vs Accumulation** | [[actor-aware-memory]], [[autoreason]], [[experiential-memory]] | 切斷 context 防 bias vs 累積 context 增智 |
 | **Scaffold vs Model** | [[scaffolding-lifecycle]], [[thin-harness-fat-skills]], [[harness-engineering]] | 模型變強時什麼該留、什麼該拆 |
+| **Skill vs Weight Learning** | [[self-improving-agent]], [[asg-si]], [[skillfoundry]], [[meta-harness]] | 學到的東西塞 weights 還是外化成 verifiable artifacts |
 
 ## Products & Systems
 
@@ -108,6 +111,8 @@ tags: [architecture]
 | [[collaborative-memory-system]] | Multi-user memory sharing + dynamic access control |
 | [[a-mem]] | Zettelkasten-inspired memory evolution |
 | [[ssgm]] | 記憶進化 governance，drift 理論保證 |
+| [[asg-si]] | Audited Skill-Graph Self-Improvement：governance-aware skill graph |
+| [[skillfoundry]] | CMU 自動 mine heterogeneous resources 成 skill library |
 
 ## People
 

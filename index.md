@@ -77,7 +77,10 @@
 | [[wiki/context-rot\|Context Rot]] | Resolver/routing 隨時間衰敗 | architecture, harness | 2026-04-16 |
 | [[wiki/meta-harness\|Meta-Harness]] | Automated harness optimization（Stanford IRIS Lab） | product, harness, architecture | 2026-04-16 |
 | [[wiki/session-management\|Session Management]] | Every turn is a branching point：continue/rewind/clear/compact/subagent | context, architecture | 2026-04-16 |
-| [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-16 |
+| [[wiki/self-improving-agent\|Self-Improving Agent]] | Skill-based self-improvement vs weight-based：學習外化成 verifiable artifacts | memory, architecture, harness | 2026-04-17 |
+| [[wiki/asg-si\|ASG-SI]] | Audited Skill-Graph Self-Improvement：governance-aware 的 skill graph 框架 | product, memory, architecture | 2026-04-17 |
+| [[wiki/skillfoundry\|SKILLFOUNDRY]] | CMU 自動 mine heterogeneous resources 成 skill library，tree-guided closed-loop | product, memory, architecture | 2026-04-17 |
+| [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-17 |
 
 ## Raw Sources
 
@@ -114,3 +117,5 @@
 | 2026-03-13 | [[raw/yu-multi-agent-memory-architecture]] | Multi-Agent Memory from a Computer Architecture Perspective (arxiv 2603.10062) |
 | 2025-05-23 | [[raw/rezazadeh-collaborative-memory]] | Collaborative Memory: Multi-User Memory Sharing with Dynamic Access Control (arxiv 2505.18279) |
 | 2026-04-16 | [[raw/thariq-claude-code-session-management]] | Using Claude Code: Session Management & 1M Context (343.2K views) |
+| 2025-12-28 | [[raw/huang-asg-si-audited-skill-graph]] | Audited Skill-Graph Self-Improvement (ASG-SI) (arxiv 2512.23760) |
+| 2026-04-05 | [[raw/cmu-skillfoundry-self-evolving-skill-libraries]] | SKILLFOUNDRY: Self-Evolving Agent Skill Libraries (arxiv 2604.03964, CMU) |

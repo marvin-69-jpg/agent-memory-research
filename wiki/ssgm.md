@@ -69,4 +69,4 @@ SSGM 的七種失敗模式與 [[chrysb]] 的十種部分重疊、部分互補：
 
 ## Related
 
-[[reconsolidation]] [[a-mem]] [[compiled-truth-pattern]] [[memory-failure-modes]] [[memory-staleness]] [[neuroscience-memory]] [[agent-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[open-questions]] [[agemem]]
+[[reconsolidation]] [[a-mem]] [[compiled-truth-pattern]] [[memory-failure-modes]] [[memory-staleness]] [[neuroscience-memory]] [[agent-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[open-questions]] [[agemem]] [[asg-si]]

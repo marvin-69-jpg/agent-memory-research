@@ -45,4 +45,4 @@ Garry Tan（Y Combinator CEO）開發的個人知識庫系統。核心理念：a
 
 ## Related
 
-[[garry-tan]] [[compiled-truth-pattern]] [[hybrid-search]] [[compounding-memory]] [[agent-memory]] [[agent-harness]] [[thin-harness-fat-skills]] [[brain-agent-loop]] [[brain-first-lookup]] [[entity-detection]] [[enrichment-pipeline]] [[mece-resolver]] [[filesystem-vs-database]] [[multi-scope-memory]] [[sleep-time-compute]] [[context-rot]]
+[[garry-tan]] [[compiled-truth-pattern]] [[hybrid-search]] [[compounding-memory]] [[agent-memory]] [[agent-harness]] [[thin-harness-fat-skills]] [[brain-agent-loop]] [[brain-first-lookup]] [[entity-detection]] [[enrichment-pipeline]] [[mece-resolver]] [[filesystem-vs-database]] [[multi-scope-memory]] [[sleep-time-compute]] [[context-rot]] [[self-improving-agent]] [[skillfoundry]]
