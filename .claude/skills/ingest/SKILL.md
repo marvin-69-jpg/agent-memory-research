@@ -53,7 +53,36 @@
    3. 檢查 concept-map.md — 新 page 要加到對應 layer
    4. 檢查 open-questions.md — 新來源是否回應了某個 open question
 
-4. **Commit & push**
+4. **寫 Ingest Murmur**（對外 Threads 版的短篇）
+
+   ingest 完 wiki 後，產一篇「研究側記」存到 `reports/threads/YYYY-MM-DD-murmur-<slug>.md`。這是給外面的人看的，Threads 會用。
+
+   **風格規則**（見記憶 `feedback_research_writing_style.md`，每次動筆前讀）：
+   - 第一人稱。用「剛讀完」「我發現」「我想了一下」這種主詞開頭。
+   - 好奇的小孩語氣。允許誠實的驚訝、疑惑、不確定。
+   - 話要講完整。每個句子都要有主詞動詞，不用破折號接片語、不用 ellipsis、不用標語式短句。
+   - 不譬喻。不要「像 X 一樣」「就像人腦」。
+   - 不排比。不要「①②③」「A, B, C」。用連接詞把思考串成一段。
+
+   **結構**：
+   1. 講我剛讀完什麼、其中哪一段讓我停下來想。
+   2. 描述那個觀察本身、為什麼覺得意外。
+   3. 我讀完之後的一個小反思。
+   4. 結尾說這篇整理到 wiki 的哪頁。
+
+   **長度**：200-400 字。比每日 Threads 版短，更像研究途中的隨手筆記。
+
+   **Frontmatter**：
+   ```
+   ---
+   date: YYYY-MM-DD
+   type: ingest-murmur
+   source: raw/<filename>.md
+   wiki_page: <page-name>
+   ---
+   ```
+
+5. **Commit & push**
    ```bash
    cd /home/node/agent-memory-research
    git add -A
@@ -85,3 +114,4 @@
 - 保留重要的原文引用（blockquote）
 - 每個 claim 要有 source（link 到 `[[raw/filename]]`）
 - **Micro-source**（< 500 字）只更新已有 page，不建新 concept page
+- **每次 ingest 都要寫 murmur**（Step 4），放 `reports/threads/`，作為對外 Threads 側記
