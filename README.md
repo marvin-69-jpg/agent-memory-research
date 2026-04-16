@@ -41,6 +41,19 @@ agent-memory-research/
 
 CLAUDE.md 只放高層規則，具體操作全在 skill 裡。加新功能 = 加新 CLI + 新 skill，不動 CLAUDE.md。
 
+## benchmark.py CLI
+
+```bash
+# 跑所有 benchmark（recall + reconsolidation + lint）
+benchmark.py eval
+
+# 只跑 recall accuracy（trigger evals）
+benchmark.py recall
+
+# 只跑 reconsolidation signal 檢查
+benchmark.py recon
+```
+
 ## wiki.py CLI
 
 ```bash
