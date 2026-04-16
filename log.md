@@ -2,6 +2,23 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-16] ingest | Thariq (Claude Code) — Session Management & 1M Context
+
+- Source: https://x.com/trq212/status/2044548257058328723 (343.2K views)
+- Raw: raw/thariq-claude-code-session-management.md
+- New wiki page: wiki/session-management.md
+  - Every Turn Is a Branching Point 五選一模型
+  - Rewind > Correct 原則
+  - Compact vs Clear tradeoff
+  - Bad Compact 機制（context rot × unpredictable next query）
+  - Subagent as context management tool
+- Updated: wiki/context-rot.md — 新增 "Compaction Timing" section（context rot 決定壓縮品質）
+- Updated: wiki/context-engineering.md — 加 Branching Point model
+- Updated: wiki/memory-failure-modes.md — 加 Bad Compact 機制
+- Cross-links: session-management ↔ context-rot ↔ context-engineering ↔ memory-failure-modes ↔ reconsolidation ↔ meta-harness
+- 關鍵洞察：context rot 不只在 resolver 層，也在 compaction timing — model 在最弱的時候被要求做最關鍵的壓縮決定
+- Author context: Thariq 是 Anthropic Claude Code team 成員，有 insider authority
+
 ## [2026-04-16] impl | Memory Benchmark — trigger evals + reconsolidation + lint
 
 - Pattern: Trigger Evals (from Garry Tan's resolver testing) + Meta-Harness verification

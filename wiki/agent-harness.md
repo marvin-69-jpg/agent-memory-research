@@ -36,4 +36,4 @@ Agent harness 是包裹在 LLM 外面的執行框架，負責管理 tool calling
 
 ## Related
 
-[[agent-memory]] [[context-engineering]] [[context-fragment]] [[memory-lock-in]] [[deep-agents]] [[letta]] [[harrison-chase]] [[gbrain]] [[viv-trivedy]] [[harness-engineering]] [[scaffolding-lifecycle]] [[philipp-schmid]] [[aaron-levie]] [[thin-harness-fat-skills]] [[autoreason]] [[concept-map]] [[memgpt]] [[sarah-wooders]] [[context-rot]] [[meta-harness]]
+[[agent-memory]] [[context-engineering]] [[context-fragment]] [[memory-lock-in]] [[deep-agents]] [[letta]] [[harrison-chase]] [[gbrain]] [[viv-trivedy]] [[harness-engineering]] [[scaffolding-lifecycle]] [[philipp-schmid]] [[aaron-levie]] [[thin-harness-fat-skills]] [[autoreason]] [[concept-map]] [[memgpt]] [[sarah-wooders]] [[context-rot]] [[meta-harness]] [[session-management]]

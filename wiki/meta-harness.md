@@ -81,4 +81,4 @@ Ablation 證明 raw traces 比 summary 好 15+ 點。**Lossy feedback 不夠做 
 
 ## Related
 
-[[harness-engineering]] [[scaffolding-lifecycle]] [[context-rot]] [[context-engineering]] [[thin-harness-fat-skills]] [[mece-resolver]] [[agent-harness]] [[memory-failure-modes]] [[coding-agent-memory]] [[memory-evaluation]]
+[[harness-engineering]] [[scaffolding-lifecycle]] [[context-rot]] [[context-engineering]] [[thin-harness-fat-skills]] [[mece-resolver]] [[agent-harness]] [[memory-failure-modes]] [[coding-agent-memory]] [[memory-evaluation]] [[session-management]]
