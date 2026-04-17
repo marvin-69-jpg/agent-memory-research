@@ -1,7 +1,7 @@
 ---
 aliases: [filesystem vs database, file-based memory, virtual filesystem pattern, 檔案系統 vs 資料庫]
 first_seen: 2026-04-13
-last_updated: 2026-04-13
+last_updated: 2026-04-17
 tags: [memory, architecture]
 ---
 
@@ -33,11 +33,21 @@ tags: [memory, architecture]
   | Data type | Plain text | Multimodal |
   | Concurrency | Single agent OK | Multi-agent 必須 |
 
-- **我們（openab-bot）的立場**：100% file-based。Auto-memory 是 markdown files，wiki 也是 markdown。用 keyword search（grep / `memory recall`），沒有 DB、沒有 vector store。目前 ~30 個記憶檔 + ~32 個 wiki 頁面，scale 還不是問題。
+- **2026 年產業收斂**：多個獨立系統同時選擇 markdown/filesystem 路線——
+  - **MemU**：三層 markdown 架構，LoCoMo 92.09%（目前最高）
+  - **OpenClaw**：整個 agent 的 identity/memory/skills/tool policies 都是 workspace dir 裡的 markdown，retrieval（semantic + keyword）是 layer on top
+  - **ByteRover/Hermes**：Karpathy 驗證的 markdown 架構 + automated curation layer
+  - **Shannon Sands**："markdown works stupidly well for memory systems. add YAML front matter and you kinda have something that just works well"
+  - 共同模式：**markdown 是 source of truth，retrieval 是加在上面的 layer，不是替代品**
+
+- **我們（openab-bot）的立場**：100% file-based。Auto-memory 是 markdown files，wiki 也是 markdown。用 keyword search（grep / `memory recall`），沒有 DB、沒有 vector store。目前 ~40 個記憶檔 + ~70 個 wiki 頁面，scale 還不是問題。MemU 的 92.09% 某種程度驗證了這條路線。
 
 ## Key Sources
 
 - **2026-01-19** — Leonie 的推文分析兩個 camp 和 trade-offs（29.6K views）。Source: [[raw/leonie-filesystem-vs-database-debate]]
+- **2026-04-03** — Shannon Sands (@max_paperclips)，回覆 Karpathy 的 LLM Knowledge Bases，12.6K views。Source: [[raw/markdown-memory-convergence]]
+- **2026-04-04** — Andy Nguyen (@kevinnguyendn)，ByteRover/Hermes markdown memory。Source: [[raw/markdown-memory-convergence]]
+- **2026-04-07** — Ksenia_TuringPost，OpenClaw architecture overview。Source: [[raw/markdown-memory-convergence]]
 
 ## Related
 
