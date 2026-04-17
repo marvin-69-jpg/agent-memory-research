@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] research | GAM — hierarchical graph-based agentic memory
+
+- Source: Wu et al., GAM: Hierarchical Graph-based Agentic Memory, arxiv 2604.12285, 2026-04-14
+- Created: wiki/gam.md
+- Updated: graph-memory, a-mem, d-mem, sleep-time-compute, neuroscience-memory, compiled-truth-pattern, reconsolidation, mem0, mstar, locomo, memory-evaluation, agent-memory, concept-map, index.md
+- Key insight: encoding/consolidation 解耦 — EPG 暫存 + semantic boundary 觸發 consolidation 到 TAN。LoCoMo F1 40.00 > Mem0 35.38 > A-Mem 24.20。EPG 是最重要組件（ablation -14.94）
+
 ## [2026-04-17] research | M★ — task-specific memory harness evolution
 
 - Source: Pan et al., M★: Every Task Deserves Its Own Memory Harness, arxiv 2604.11811, 2026-04-10

@@ -103,4 +103,4 @@ FLUXMEM 是 runtime routing，M★ 是 compile-time optimization。兩者互補�
 
 ## Related
 
-[[fluxmem]] [[meta-harness]] [[self-improving-agent]] [[asg-si]] [[locomo]] [[mem0]] [[memwright]] [[agent-memory]] [[memory-evaluation]]
+[[fluxmem]] [[meta-harness]] [[self-improving-agent]] [[asg-si]] [[locomo]] [[mem0]] [[memwright]] [[agent-memory]] [[memory-evaluation]] [[gam]]

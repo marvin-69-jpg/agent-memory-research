@@ -118,6 +118,7 @@ tags: [architecture]
 | [[skillfoundry]] | CMU 自動 mine heterogeneous resources 成 skill library |
 | [[memwright]] | Zero-LLM-in-retrieval，5-layer deterministic pipeline，RBAC + provenance |
 | [[mstar]] | Memory = executable program，population-based evolution 自動發現 task-optimal memory |
+| [[gam]] | 雙層圖（EPG+TAN），encoding/consolidation 解耦，sleep-dependent consolidation 靈感 |
 
 ## People
 
