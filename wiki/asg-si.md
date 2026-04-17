@@ -1,8 +1,8 @@
 ---
 aliases: [ASG-SI, Audited Skill-Graph Self-Improvement]
 first_seen: 2026-04-17
-last_updated: 2026-04-17
-tags: [product, memory, architecture]
+last_updated: 2026-04-18
+tags: [product, memory, architecture, governance]
 ---
 
 # ASG-SI（Audited Skill-Graph Self-Improvement）
@@ -77,10 +77,34 @@ Fail → reject + audit log
 - Reward decomposition 在複雜 reward 上的可行性還待驗證
 - Reference implementation 是概念驗證，real production 規模未測
 
+### 與 SkillX 的對照（governance vs capability）
+
+[[skillx]]（2026-04-06 Zhejiang+Ant）跟 ASG-SI 是 skill-based self-improvement 的兩個 pole：
+
+| | ASG-SI | SkillX |
+|---|---|---|
+| 主要目標 | **Governance**（deployed safety） | **Capability expansion / transfer** |
+| Promotion gate | Verifier-backed replay + contract check + reward decomposition | Cosine similarity merge + heuristic filter |
+| Audit trail | 每個 promotion 獨立可 reproduce | Heuristic/embedding-based，無 contract-level audit |
+| 擴充機制 | 只從既有 successful trajectory 抽 | Experience-guided exploration 主動擴充（under-utilized / high-failure tool） |
+| Representation | Single-layer skill with contract | Multi-level（Planning / Functional / Atomic） |
+
+兩者互補：ASG-SI 確保「promote 的東西是對的」，SkillX 確保「有東西好 promote」。未來系統應該融合兩端。
+
+### 來自 [[rl-capability-boundary]] 的挑戰
+
+ASG-SI 把 RL fine-tuning 視為 opaque alternative，但 Zhai et al. 2026-04-16 的 PASS@(k,T) 分析指出：
+
+- Tool-use 任務上的 **capability expansion 來自 self-directed exploration**（RL 的本質）
+- SFT / distillation **會 regress** 同樣的 compositional task
+- ASG-SI 的 skill promotion 來自 successful trajectory，**successful trajectory 本身需要 exploration 才能產生** —— skill graph 的底層 driver 仍然是 RL-like exploration
+
+所以 skill-based vs RL 不是 either/or：RL 做 exploration 產生 trajectory，ASG-SI 把 successful trajectory 轉成可 audit 的 artifact。Skill graph 是 RL 的 **externalization layer**，不是替代品。
+
 ## Key Sources
 
 - **2025-12-28** — Audited Skill-Graph Self-Improvement for Agentic LLMs via Verifiable Rewards, Experience Synthesis, and Continual Memory（arxiv 2512.23760）。Source: [[raw/huang-asg-si-audited-skill-graph]]
 
 ## Related
 
-[[self-improving-agent]] [[skillfoundry]] [[meta-harness]] [[ssgm]] [[procedural-memory]] [[experiential-memory]] [[memory-evaluation]] [[thin-harness-fat-skills]] [[mstar]]
+[[self-improving-agent]] [[skillx]] [[skillfoundry]] [[meta-harness]] [[ssgm]] [[rl-capability-boundary]] [[procedural-memory]] [[experiential-memory]] [[memory-evaluation]] [[thin-harness-fat-skills]] [[mstar]]

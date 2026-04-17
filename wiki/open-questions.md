@@ -1,9 +1,11 @@
 ---
 aliases: [open questions, 未解問題, open problems]
 first_seen: 2026-04-14
-last_updated: 2026-04-17
+last_updated: 2026-04-18
 tags: [memory, architecture]
 ---
+
+> **2026-04-18 update**: #13（Skill Granularity）加入 [[skillx]] 的 multi-level hierarchical 答案（三層 Planning/Functional/Atomic）。新增 Tier 3 #16（Capability Expansion vs Reliability Improvement）來自 [[rl-capability-boundary]]，挑戰 skill-based self-improvement 的 Pass@4 claim。
 
 > **2026-04-17 update**: Question #3（Compounding vs Forgetting）新增 [[d-mem]] 的 RPE gating approach。新增 Tier 3 #15（Memory Structure Selection）來自 [[fluxmem]]。
 
@@ -149,7 +151,14 @@ Skill-based self-improvement（[[self-improving-agent]]）面臨兩個問題：
 
 **為什麼還沒解**：skill ecosystem 還沒夠大到讓這個問題凸顯。但 [[skillfoundry]] 286 個 skills 已經開始遇到 redundancy（28.9% 被 merge/discard），規模再大會更嚴重。
 
-Sources: [[self-improving-agent]], [[asg-si]], [[skillfoundry]], [[mece-resolver]]
+**[[skillx]] 的部分回答（2026-04-06）**：不是選單一 granularity，而是**三層 hierarchy**：
+- **Planning Skills**：subtask 組織（top-level 結構）
+- **Functional Skills**：subtask 級 macro-operation
+- **Atomic Skills**：tool spec 延伸
+
+**但還有新問題**：最適組合因 model 而異。Qwen3-32B（弱模型）只用 Planning 最好，加其他層會 over-imitation 反傷；GLM-4.6 用全部三層最佳。**Skill granularity 對不同 base model 不一樣** —— 這暗示沒有「universally correct」的 granularity，而是 model-capability-dependent。
+
+Sources: [[self-improving-agent]], [[asg-si]], [[skillx]], [[skillfoundry]], [[mece-resolver]]
 
 ### 15. Memory Structure Selection: Single vs Adaptive
 
@@ -163,6 +172,22 @@ Sources: [[self-improving-agent]], [[asg-si]], [[skillfoundry]], [[mece-resolver
 - Structure switching cost：頻繁切換結構時，memory consistency 怎麼保證
 
 Sources: [[fluxmem]], [[mece-resolver]], [[graph-memory]]
+
+### 16. Capability Expansion vs Reliability Improvement
+
+[[rl-capability-boundary]]（Zhai et al. 2026-04-16）用 PASS@(k,T) 指標把 RL 對 agent 的效果分成兩類：**(A) 真的擴展能力**（大 k 仍 widening gap）vs **(B) 只提升 reliability**（大 k 收斂）。Tool-use 任務上 RL 屬於 (A)，但 **SFT / distillation 會 regress** 同樣的 compositional task。
+
+**對 skill-based self-improvement 的挑戰**：
+- [[skillx]]、[[asg-si]]、[[skillfoundry]] 普遍只報 Pass@1 / Pass@4，沒做 PASS@(k,T) 分析
+- 他們聲稱的「capability expansion」可能只是 efficiency / reliability 偽裝
+- Skill library 的使用本質是 distillation（把 skill 當 context 餵給 agent），而 distillation 在 compositional task 上會 regress
+
+**還沒解的**：
+- Skill context 是否避免了 distillation 的 regression？機制是什麼？
+- PASS@(k,T) 在 skill-based 系統上應該長怎樣（k 軸還好，T 軸定義需要重新想）
+- 如果 capability expansion 真的需要 self-directed exploration，那 skill-based 是否永遠只能吸收 exploration 後的結果，不能自己 drive exploration？
+
+Sources: [[rl-capability-boundary]], [[skillx]], [[asg-si]], [[skillfoundry]], [[memory-evaluation]]
 
 ### 14. Self-Improving Agent Governance
 

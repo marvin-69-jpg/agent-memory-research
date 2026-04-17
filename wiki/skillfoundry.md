@@ -90,4 +90,4 @@ Tree (root → domains → subdomains → skill targets)
 
 ## Related
 
-[[self-improving-agent]] [[asg-si]] [[meta-harness]] [[gbrain]] [[thin-harness-fat-skills]] [[procedural-memory]] [[bitter-lesson-search]] [[experiential-memory]]
+[[self-improving-agent]] [[asg-si]] [[skillx]] [[meta-harness]] [[gbrain]] [[thin-harness-fat-skills]] [[procedural-memory]] [[bitter-lesson-search]] [[experiential-memory]] [[rl-capability-boundary]]

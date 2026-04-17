@@ -1,7 +1,7 @@
 ---
 aliases: [Self-Improving Agent, agent self-improvement, self-evolving agent, continual agent learning]
 first_seen: 2026-04-17
-last_updated: 2026-04-17
+last_updated: 2026-04-18
 tags: [memory, architecture, harness]
 ---
 
@@ -61,10 +61,32 @@ Loop
 
 | 來源 | 代表系統 | 特性 |
 |---|---|---|
-| **From own trajectories** | [[asg-si]], Voyager | 從 agent 自己跑過的成功軌跡中抽 skill |
+| **From own trajectories** | [[asg-si]], [[skillx]], Voyager | 從 agent 自己跑過的成功軌跡中抽 skill |
 | **From external resources** | [[skillfoundry]] | 從 papers / repos / docs 等人類產出的 procedural knowledge 抽 skill |
 
-兩種可以並存。SKILLFOUNDRY 證明 external resource mining 在 specialized domain（科學）特別有效，因為人類已經寫過很多 procedural knowledge。ASG-SI 處理 deployed agent 的持續學習。
+兩種可以並存。SKILLFOUNDRY 證明 external resource mining 在 specialized domain（科學）特別有效，因為人類已經寫過很多 procedural knowledge。ASG-SI 和 SkillX 處理 deployed agent 的持續學習 —— 但分別取不同角度（見下）。
+
+### Skill-based 的 Design Space Triangle（2026-04 三個代表作）
+
+| | ASG-SI | SkillX | SKILLFOUNDRY |
+|---|---|---|---|
+| 主要目標 | Governance（safety） | Capability expansion | External knowledge reuse |
+| Skill 來源 | Own successful trajectory | Own successful trajectory | Papers / repos / notebooks |
+| Promotion gate | Verifier-backed replay + contract + reward decomposition | Cosine similarity merge + general/tool-specific filter | Execution + system + synthetic data validation |
+| Representation | Skill with explicit contract | Multi-level（Planning / Functional / Atomic） | Skill with operational contract |
+| Exploration | 被動（從既有 trajectory） | Experience-guided（under-utilized tools） | Domain tree prior |
+
+三者不衝突。真正 production 級系統可能需要三個維度都顧：**ASG-SI 的 audit + SkillX 的 hierarchy + SKILLFOUNDRY 的 external mining**。
+
+### 來自 [[rl-capability-boundary]] 的挑戰（2026-04-16）
+
+Zhai et al. 的 PASS@(k,T) 分析對 skill-based self-improvement 提出三個未驗證 claim：
+
+1. **Capability expansion vs reliability improvement 分不清**：skill-based 路徑普遍只報 Pass@1 / Pass@4，沒做 PASS@(k,T)。SkillX 的 Pass@4 提升可能是 reliability 偽裝成 capability expansion
+2. **SFT/distillation 在 compositional task 會 regress**：但 skill library 的使用本質就是 distillation（把 skill 當 context 餵給 agent）—— 需要驗證 skill context 是否避免了 distillation regression
+3. **Self-directed exploration 才是 causal factor**：skill library 的 driver 仍然是 exploration 產生 successful trajectory。skill 是 RL exploration 的 **externalization layer**，不是替代品
+
+**開放問題**：skill-based self-improvement 帶來的增益到底屬於 (A) capability expansion 還是 (B) efficiency / reliability？需要在 PASS@(k,T) 框架下重測。
 
 ### 開放問題
 
@@ -77,9 +99,11 @@ Loop
 
 - **2025-12-28** — Audited Skill-Graph Self-Improvement (ASG-SI)（arxiv 2512.23760）。Source: [[raw/huang-asg-si-audited-skill-graph]]
 - **2026-04-05** — SKILLFOUNDRY: Self-Evolving Agent Skill Libraries（arxiv 2604.03964, CMU）。Source: [[raw/cmu-skillfoundry-self-evolving-skill-libraries]]
+- **2026-04-06** — SkillX: Automatically Constructing Skill Knowledge Bases for Agents（arxiv 2604.04804, Zhejiang + Ant）。Source: [[raw/wang-skillx-automated-skill-kb]]
+- **2026-04-16** — Does RL Expand the Capability Boundary of LLM Agents? PASS@(k,T)（arxiv 2604.14877）。Source: [[raw/zhai-rl-capability-boundary]]
 - **2026-03-28** — Meta-Harness: End-to-End Optimization of Model Harnesses。詳見 [[meta-harness]]
 - **2026-04-12** — GBrain（Garry Tan）：production-grade hand-crafted skill library。詳見 [[gbrain]]
 
 ## Related
 
-[[asg-si]] [[skillfoundry]] [[meta-harness]] [[thin-harness-fat-skills]] [[gbrain]] [[experiential-memory]] [[compounding-memory]] [[procedural-memory]] [[sleep-time-compute]] [[memory-staleness]] [[context-rot]] [[mece-resolver]] [[mstar]] [[empo2]]
+[[asg-si]] [[skillx]] [[skillfoundry]] [[rl-capability-boundary]] [[meta-harness]] [[thin-harness-fat-skills]] [[gbrain]] [[experiential-memory]] [[compounding-memory]] [[procedural-memory]] [[sleep-time-compute]] [[memory-staleness]] [[context-rot]] [[mece-resolver]] [[mstar]] [[empo2]]

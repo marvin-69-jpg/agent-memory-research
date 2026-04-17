@@ -29,4 +29,4 @@ Rich Sutton 的 Bitter Lesson 應用在 agent 記憶搜尋領域：隨著 agent 
 
 ## Related
 
-[[hybrid-search]] [[agent-memory]] [[experiential-memory]] [[compounding-memory]] [[sleep-time-compute]] [[memory-lock-in]] [[viv-trivedy]] [[filesystem-vs-database]] [[skillfoundry]]
+[[hybrid-search]] [[agent-memory]] [[experiential-memory]] [[compounding-memory]] [[sleep-time-compute]] [[memory-lock-in]] [[viv-trivedy]] [[filesystem-vs-database]] [[skillfoundry]] [[skillx]]

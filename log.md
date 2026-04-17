@@ -2,6 +2,16 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-18] research | SkillX + RL Capability Boundary — skill-based self-improvement 的兩個盲點
+
+- Path: Single-source deepening — ASG-SI 原本只有 1 source，挖 skill-based 對照（SkillX）+ critique（PASS@(k,T)）
+- Picked: Wang et al. 2604.04804 (SkillX, 2026-04-06) + Zhai et al. 2604.14877 (RL Capability Boundary, 2026-04-16)
+- Created: raw/wang-skillx-automated-skill-kb.md, raw/zhai-rl-capability-boundary.md, wiki/skillx.md, wiki/rl-capability-boundary.md
+- Updated: wiki/asg-si.md（加 SkillX 對照段 + PASS@(k,T) 挑戰段）, wiki/self-improving-agent.md（加 Skill-based Design Space Triangle + RL capability boundary 挑戰）, wiki/open-questions.md（推進 #13 Skill Granularity 的 SkillX 分層答案 + 新增 #16 Capability Expansion vs Reliability Improvement）, index.md
+- Report: reports/2026-04-18-skillx-and-rl-capability-boundary.md
+- Threads: reports/threads/2026-04-18-daily.md
+- 關鍵洞察：skill library（ASG-SI/SkillX/SKILLFOUNDRY）不是 RL 的替代品，是 RL exploration 的 externalization layer。Capability expansion 依然來自 self-directed exploration；skill 是 audit / portability / rollback 的 wrapper
+
 ## [2026-04-17] ingest | LangChain Agent Builder memory — production lessons
 
 - Source: Harrison Chase, LangChain blog, 2026-02-01
