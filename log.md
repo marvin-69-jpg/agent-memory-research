@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | MemU — filesystem-based markdown memory
+
+- Source: Sumanth (@Sumanth_077) X thread, 2026-01-05, 73.8K views. GitHub: NevaMind-AI/memU
+- Created: wiki/memu.md
+- Updated: filesystem-vs-database, compiled-truth-pattern, enrichment-pipeline, multimodal-memory, mirix, memwright, coding-agent-memory, locomo, mem0, agent-memory, concept-map, index.md
+- Key insight: filesystem + markdown 路線的 LoCoMo 92.09% 驗證。三層（Resource→Item→Category）= compiled truth pattern 的實作。Dual retrieval（RAG + LLM）提供速度/深度選擇
+
 ## [2026-04-17] research | GAM — hierarchical graph-based agentic memory
 
 - Source: Wu et al., GAM: Hierarchical Graph-based Agentic Memory, arxiv 2604.12285, 2026-04-14

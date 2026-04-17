@@ -78,4 +78,4 @@ Source code analysis 揭示三層設計：
 
 ## Related
 
-[[agent-memory]] [[filesystem-vs-database]] [[chrysb]] [[memory-failure-modes]] [[compounding-memory]] [[procedural-memory]] [[multi-scope-memory]] [[chatgpt-memory]] [[thin-harness-fat-skills]] [[context-engineering]] [[memory-lock-in]] [[meta-harness]]
+[[agent-memory]] [[filesystem-vs-database]] [[chrysb]] [[memory-failure-modes]] [[compounding-memory]] [[procedural-memory]] [[multi-scope-memory]] [[chatgpt-memory]] [[thin-harness-fat-skills]] [[context-engineering]] [[memory-lock-in]] [[meta-harness]] [[memu]]

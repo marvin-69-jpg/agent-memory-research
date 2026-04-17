@@ -39,4 +39,4 @@ tags: [benchmark, memory]
 
 ## Related
 
-[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]] [[memory-arena]] [[memory-evaluation]] [[agemem]] [[mirix]] [[multimodal-memory]] [[neuroscience-memory]] [[synapse]] [[a-mem]] [[d-mem]] [[fluxmem]] [[memwright]] [[mstar]] [[gam]]
+[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]] [[memory-arena]] [[memory-evaluation]] [[agemem]] [[mirix]] [[multimodal-memory]] [[neuroscience-memory]] [[synapse]] [[a-mem]] [[d-mem]] [[fluxmem]] [[memwright]] [[mstar]] [[gam]] [[memu]]
