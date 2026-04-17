@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | Google Context Engineering whitepaper — Sessions & Memory framework
+
+- Source: Google (Milam & Gulli), 2025-11-01, 70-page whitepaper
+- Raw: `raw/google-context-engineering-sessions-memory.md`
+- Wiki: updated `wiki/context-engineering.md` with Google framework (session-memory decoupling, push/pull retrieval, LLM-driven ETL, provenance hierarchy, compaction, multi-agent patterns)
+- Updated: index (raw source)
+
 ## [2026-04-17] ingest | Memory-R1 — Two-agent RL memory management, LoCoMo SOTA
 
 - Source: Yan et al., LMU Munich, arxiv 2508.19828 (2025-08-28)

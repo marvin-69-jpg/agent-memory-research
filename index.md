@@ -146,3 +146,4 @@
 | 2026-02-01 | [[raw/liu-empo2-memory-rl]] | EMPO²: Exploratory Memory-Augmented On- and Off-Policy Optimization (Liu et al., ICLR 2026) |
 | 2025-06-20 | [[raw/zhou-mem1-rl-memory-reasoning]] | MEM1: Learning to Synergize Memory and Reasoning (Zhou et al., MIT/SMART, arxiv 2506.15841) |
 | 2025-08-28 | [[raw/yan-memory-r1-rl-memory]] | Memory-R1: RL for Memory Management and Utilization (Yan et al., LMU Munich, arxiv 2508.19828) |
+| 2025-11-01 | [[raw/google-context-engineering-sessions-memory]] | Context Engineering: Sessions & Memory (Google, Milam & Gulli, 70-page whitepaper) |
