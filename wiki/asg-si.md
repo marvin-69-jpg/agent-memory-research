@@ -83,4 +83,4 @@ Fail → reject + audit log
 
 ## Related
 
-[[self-improving-agent]] [[skillfoundry]] [[meta-harness]] [[ssgm]] [[procedural-memory]] [[experiential-memory]] [[memory-evaluation]] [[thin-harness-fat-skills]]
+[[self-improving-agent]] [[skillfoundry]] [[meta-harness]] [[ssgm]] [[procedural-memory]] [[experiential-memory]] [[memory-evaluation]] [[thin-harness-fat-skills]] [[mstar]]

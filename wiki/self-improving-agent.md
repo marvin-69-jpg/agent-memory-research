@@ -82,4 +82,4 @@ Loop
 
 ## Related
 
-[[asg-si]] [[skillfoundry]] [[meta-harness]] [[thin-harness-fat-skills]] [[gbrain]] [[experiential-memory]] [[compounding-memory]] [[procedural-memory]] [[sleep-time-compute]] [[memory-staleness]] [[context-rot]] [[mece-resolver]]
+[[asg-si]] [[skillfoundry]] [[meta-harness]] [[thin-harness-fat-skills]] [[gbrain]] [[experiential-memory]] [[compounding-memory]] [[procedural-memory]] [[sleep-time-compute]] [[memory-staleness]] [[context-rot]] [[mece-resolver]] [[mstar]]

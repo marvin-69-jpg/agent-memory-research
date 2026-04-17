@@ -117,6 +117,7 @@ tags: [architecture]
 | [[asg-si]] | Audited Skill-Graph Self-Improvement：governance-aware skill graph |
 | [[skillfoundry]] | CMU 自動 mine heterogeneous resources 成 skill library |
 | [[memwright]] | Zero-LLM-in-retrieval，5-layer deterministic pipeline，RBAC + provenance |
+| [[mstar]] | Memory = executable program，population-based evolution 自動發現 task-optimal memory |
 
 ## People
 

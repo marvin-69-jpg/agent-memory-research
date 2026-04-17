@@ -84,6 +84,7 @@
 | [[wiki/fluxmem\|FLUXMEM]] | Adaptive memory structures：把結構選擇升級成 learnable 變數 | product, memory, architecture | 2026-04-17 |
 | [[wiki/memory-worth\|Memory Worth]] | 兩 counter outcome-feedback metric，read/outcome-time governance gate | memory, governance, metric | 2026-04-17 |
 | [[wiki/memwright\|Memwright]] | Zero-LLM-in-retrieval，5-layer deterministic pipeline，RBAC + provenance | product, memory, infrastructure, multi-agent, retrieval | 2026-04-17 |
+| [[wiki/mstar\|M★]] | Memory = executable Python program，evolution 自動發現 task-optimal memory architecture | product, memory, architecture, benchmark | 2026-04-17 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-17 |
 
 ## Raw Sources
@@ -127,3 +128,4 @@
 | 2026-02-15 | [[raw/lu-fluxmem]] | Choosing How to Remember: Adaptive Memory Structures (FLUXMEM, arxiv 2602.14038, UTS/Melbourne/UT Austin/UCLA) |
 | 2026-04-13 | [[raw/simsek-when-to-forget]] | When to Forget: A Memory Governance Primitive (Simsek, arxiv 2604.12007) |
 | 2026-04-15 | [[raw/aarjay-memwright]] | Why I stopped putting LLMs in my agent memory retrieval path (aarjay singh, dev.to) |
+| 2026-04-10 | [[raw/pan-mstar-memory-harness]] | M★: Every Task Deserves Its Own Memory Harness (Pan et al., arxiv 2604.11811) |

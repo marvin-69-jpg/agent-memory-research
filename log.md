@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] research | M★ — task-specific memory harness evolution
+
+- Source: Pan et al., M★: Every Task Deserves Its Own Memory Harness, arxiv 2604.11811, 2026-04-10
+- Created: wiki/mstar.md
+- Updated: fluxmem, meta-harness, self-improving-agent, asg-si, locomo, mem0, memwright, memory-evaluation, agent-memory, concept-map, index.md
+- Key insight: memory architecture 是 search problem 不是 design problem。Population-based evolution 讓系統自己發現 task-optimal memory structure，不同 domain 進化出完全不同的架構。7/8 benchmarks SOTA
+
 ## [2026-04-17] ingest | Memwright — zero-LLM deterministic memory
 
 - Source: aarjay singh, "Why I stopped putting LLMs in my agent memory retrieval path", dev.to, 2026-04-15
