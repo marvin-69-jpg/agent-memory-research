@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | LangChain Agent Builder memory — production lessons
+
+- Source: Harrison Chase, LangChain blog, 2026-02-01
+- Raw: `raw/langchain-agent-builder-memory.md`
+- Wiki: updated `wiki/harrison-chase.md` with Agent Builder memory details (COALA mapping, virtual filesystem, human-in-the-loop, compaction problem, prompting as hardest part)
+- Updated: index (raw source)
+
 ## [2026-04-17] ingest | Google Context Engineering whitepaper — Sessions & Memory framework
 
 - Source: Google (Milam & Gulli), 2025-11-01, 70-page whitepaper
