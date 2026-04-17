@@ -82,6 +82,7 @@ tags: [architecture]
 | [[xmemory]] | Beyond RAG：四層階層 + adaptive retrieval，解 collapsed retrieval 問題 |
 | [[stitch]] | Contextual intent tagging，解 context-mismatched retrieval + CAME-Bench |
 | [[deltamem]] | Single-agent RL memory management，PersonaMem SOTA |
+| [[empo2]] | Hybrid on/off-policy RL，memory 引導 exploration 再蒸餾進 weights，ICLR 2026 |
 
 ## Cross-cutting Themes — 跨層主題
 

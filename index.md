@@ -90,6 +90,7 @@
 | [[wiki/xmemory\|xMemory]] | Beyond RAG：四層階層 + adaptive retrieval，LoCoMo F1 43.98/50.00 | product, memory, retrieval | 2026-04-17 |
 | [[wiki/stitch\|STITCH]] | Contextual intent tagging，CAME-Bench F1 0.844，解 context-mismatched retrieval | product, memory, retrieval, benchmark | 2026-04-17 |
 | [[wiki/deltamem\|DeltaMem]] | Single-agent RL memory management，PersonaMem 63.61 SOTA | product, memory, reinforcement-learning | 2026-04-17 |
+| [[wiki/empo2\|EMPO²]] | Hybrid on/off-policy RL，memory 引導 exploration 再蒸餾進 weights | product, memory, reinforcement-learning | 2026-04-17 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-17 |
 
 ## Raw Sources
@@ -140,3 +141,4 @@
 | 2026-04-14 | [[raw/wu-gam-hierarchical-graph]] | GAM: Hierarchical Graph-based Agentic Memory (Wu et al., arxiv 2604.12285) |
 | 2026-01-05 | [[raw/sumanth-memu]] | MemU: Filesystem-based agentic memory framework (Sumanth, X thread) |
 | 2026-04-10 | [[raw/pan-mstar-memory-harness]] | M★: Every Task Deserves Its Own Memory Harness (Pan et al., arxiv 2604.11811) |
+| 2026-02-01 | [[raw/liu-empo2-memory-rl]] | EMPO²: Exploratory Memory-Augmented On- and Off-Policy Optimization (Liu et al., ICLR 2026) |

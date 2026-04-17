@@ -35,4 +35,4 @@ tags: [memory, architecture, retrieval]
 
 ## Related
 
-[[helix]] [[procedural-memory]] [[compounding-memory]] [[experiential-memory]] [[memory-staleness]] [[brain-first-lookup]] [[nicholas-dapanji]] [[memory-evaluation]]
+[[helix]] [[procedural-memory]] [[compounding-memory]] [[experiential-memory]] [[memory-staleness]] [[brain-first-lookup]] [[nicholas-dapanji]] [[memory-evaluation]] [[empo2]]

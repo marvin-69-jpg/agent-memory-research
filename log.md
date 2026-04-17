@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | EMPO² — Memory-augmented RL with off-policy distillation
+
+- Source: Liu et al., ICLR 2026 (arxiv 2602.23008)
+- Raw: `raw/liu-empo2-memory-rl.md`
+- Wiki: created `wiki/empo2.md`
+- Updated: concept-map, index, deltamem, agemem, scaffolding-lifecycle, procedural-memory, self-improving-agent, memory-failure-modes, memory-arena, memory-evaluation, agent-memory (backlinks)
+
 ## [2026-04-17] ingest | DeltaMem — RL-based agentic memory management
 
 - Source: Zhang et al., arxiv 2604.01560v1 (2026-04-02)
