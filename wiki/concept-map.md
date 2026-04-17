@@ -113,6 +113,7 @@ tags: [architecture]
 | [[ssgm]] | 記憶進化 governance，drift 理論保證 |
 | [[d-mem]] | Dopamine-gated memory routing，解 A-Mem 的 O(N²) 寫入瓶頸 |
 | [[fluxmem]] | Adaptive memory structures：linear/graph/hierarchical 動態選擇 |
+| [[memory-worth]] | Two-counter outcome-feedback metric，read-time / outcome-time governance gate |
 | [[asg-si]] | Audited Skill-Graph Self-Improvement：governance-aware skill graph |
 | [[skillfoundry]] | CMU 自動 mine heterogeneous resources 成 skill library |
 

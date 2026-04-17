@@ -97,4 +97,4 @@ Dual storage 與 [[compiled-truth-pattern]] 高度呼應：
 
 ## Related
 
-[[neuroscience-memory]] [[compiled-truth-pattern]] [[memory-staleness]] [[memory-failure-modes]] [[a-mem]] [[ssgm]] [[sleep-time-compute]] [[compounding-memory]] [[agent-memory]] [[agemem]] [[graph-memory]] [[open-questions]] [[session-management]] [[d-mem]]
+[[neuroscience-memory]] [[compiled-truth-pattern]] [[memory-staleness]] [[memory-failure-modes]] [[a-mem]] [[ssgm]] [[sleep-time-compute]] [[compounding-memory]] [[agent-memory]] [[agemem]] [[graph-memory]] [[open-questions]] [[session-management]] [[d-mem]] [[memory-worth]]

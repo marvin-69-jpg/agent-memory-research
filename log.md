@@ -393,3 +393,13 @@ Updated wiki Implementation sections: sleep-time-compute.md, brain-first-lookup.
 - Report: reports/2026-04-17-a-mem-followups.md
 - Threads: reports/threads/2026-04-17-daily.md
 - 推進 open question #3（Compounding vs Forgetting）：D-Mem 證明 lightweight bio-inspired heuristic 可達到 RL approach 的選擇性
+
+## 2026-04-17 (cron round 1, discovery-driven) — When to Forget (Memory Worth)
+
+- Path: A (discovery) — wiki.py arxiv "agent memory" → 10 papers from past 14 days, all uncovered
+- Picked: Simsek 2604.12007 (2026-04-13) "When to Forget: A Memory Governance Primitive"
+- Created: raw/simsek-when-to-forget.md, wiki/memory-worth.md
+- Updated: wiki/memory-staleness.md, wiki/d-mem.md, wiki/ssgm.md, wiki/reconsolidation.md, wiki/memory-failure-modes.md, wiki/memory-evaluation.md, wiki/agent-memory.md, wiki/concept-map.md, index.md
+- Report: reports/2026-04-17-when-to-forget.md
+- Threads: reports/threads/2026-04-17-when-to-forget.md
+- 補洞：今天有 D-Mem (write-time gate) + reconsolidation (inter-memory)，缺 read/outcome-time gate；MW 正好填這格

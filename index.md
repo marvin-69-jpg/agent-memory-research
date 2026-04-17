@@ -82,6 +82,7 @@
 | [[wiki/skillfoundry\|SKILLFOUNDRY]] | CMU 自動 mine heterogeneous resources 成 skill library，tree-guided closed-loop | product, memory, architecture | 2026-04-17 |
 | [[wiki/d-mem\|D-MEM]] | Dopamine-gated agentic memory，用 RPE routing 解 A-Mem 的 O(N²) 寫入瓶頸 | product, memory, architecture | 2026-04-17 |
 | [[wiki/fluxmem\|FLUXMEM]] | Adaptive memory structures：把結構選擇升級成 learnable 變數 | product, memory, architecture | 2026-04-17 |
+| [[wiki/memory-worth\|Memory Worth]] | 兩 counter outcome-feedback metric，read/outcome-time governance gate | memory, governance, metric | 2026-04-17 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-17 |
 
 ## Raw Sources
@@ -123,3 +124,4 @@
 | 2026-04-05 | [[raw/cmu-skillfoundry-self-evolving-skill-libraries]] | SKILLFOUNDRY: Self-Evolving Agent Skill Libraries (arxiv 2604.03964, CMU) |
 | 2026-03-15 | [[raw/song-d-mem]] | D-MEM: Dopamine-Gated Agentic Memory via RPE Routing (arxiv 2603.14597, UCSD/CMU) |
 | 2026-02-15 | [[raw/lu-fluxmem]] | Choosing How to Remember: Adaptive Memory Structures (FLUXMEM, arxiv 2602.14038, UTS/Melbourne/UT Austin/UCLA) |
+| 2026-04-13 | [[raw/simsek-when-to-forget]] | When to Forget: A Memory Governance Primitive (Simsek, arxiv 2604.12007) |
