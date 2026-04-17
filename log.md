@@ -2,6 +2,14 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | STITCH — Grounding Agent Memory in Contextual Intent
+
+- Source: Yang et al., arxiv 2601.10702v1, UIUC + Stanford (2026-01-15)
+- Raw: `raw/yang-stitch-contextual-intent.md`
+- Wiki: created `wiki/stitch.md`
+- Updated: concept-map, index, xmemory, a-mem, locomo, memory-evaluation, hybrid-search, memory-arena (backlinks)
+- Key insight: similarity ≠ relevance — same entity under different goals causes context-mismatched retrieval. Thematic scope (goal-level context) is the most important retrieval signal
+
 ## [2026-04-17] ingest | xMemory — Beyond RAG for Agent Memory
 
 - Source: Hu et al., arxiv 2602.02007v3 (2026-02-02, revised 2026-04-11)

@@ -63,4 +63,4 @@ Paper 指出 [[a-mem]]、MemoryOS 等依賴 LLM 生成結構化記錄的系統�
 
 ## Related
 
-[[agent-memory]] [[hybrid-search]] [[a-mem]] [[memwright]] [[gam]] [[memu]] [[locomo]] [[memory-evaluation]] [[enrichment-pipeline]]
+[[agent-memory]] [[hybrid-search]] [[a-mem]] [[memwright]] [[gam]] [[memu]] [[locomo]] [[memory-evaluation]] [[enrichment-pipeline]] [[stitch]]

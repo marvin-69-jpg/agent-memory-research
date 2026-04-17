@@ -1,1 +1,0 @@
-2026-04-17 | xmemory | agent memory ≠ general RAG，top-k similarity 在對話記憶上坍縮，需要階層結構 + adaptive expansion

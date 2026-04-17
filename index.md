@@ -88,6 +88,7 @@
 | [[wiki/gam\|GAM]] | 雙層圖（EPG+TAN），encoding/consolidation 解耦，LoCoMo F1 40.00 | product, memory, architecture, retrieval | 2026-04-17 |
 | [[wiki/memu\|MemU]] | Filesystem + markdown memory，三層架構，LoCoMo 92.09%，proactive agents | product, memory, infrastructure | 2026-04-17 |
 | [[wiki/xmemory\|xMemory]] | Beyond RAG：四層階層 + adaptive retrieval，LoCoMo F1 43.98/50.00 | product, memory, retrieval | 2026-04-17 |
+| [[wiki/stitch\|STITCH]] | Contextual intent tagging，CAME-Bench F1 0.844，解 context-mismatched retrieval | product, memory, retrieval, benchmark | 2026-04-17 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-17 |
 
 ## Raw Sources
@@ -130,6 +131,7 @@
 | 2026-03-15 | [[raw/song-d-mem]] | D-MEM: Dopamine-Gated Agentic Memory via RPE Routing (arxiv 2603.14597, UCSD/CMU) |
 | 2026-02-15 | [[raw/lu-fluxmem]] | Choosing How to Remember: Adaptive Memory Structures (FLUXMEM, arxiv 2602.14038, UTS/Melbourne/UT Austin/UCLA) |
 | 2026-04-13 | [[raw/simsek-when-to-forget]] | When to Forget: A Memory Governance Primitive (Simsek, arxiv 2604.12007) |
+| 2026-01-15 | [[raw/yang-stitch-contextual-intent]] | Grounding Agent Memory in Contextual Intent / STITCH (Yang et al., arxiv 2601.10702) |
 | 2026-02-02 | [[raw/hu-xmemory-beyond-rag]] | Beyond RAG for Agent Memory: Retrieval by Decoupling and Aggregation (Hu et al., arxiv 2602.02007) |
 | 2026-04-03 | [[raw/markdown-memory-convergence]] | Markdown memory convergence — OpenClaw, ByteRover, Shannon Sands + Karpathy |
 | 2026-04-15 | [[raw/aarjay-memwright]] | Why I stopped putting LLMs in my agent memory retrieval path (aarjay singh, dev.to) |
