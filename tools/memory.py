@@ -11,6 +11,7 @@ Subcommands:
   brief           Session startup briefing — compressed overview of everything the agent knows
   reconsolidate   Check recalled memories for staleness signals (retrieval-triggered update)
   link            Suggest cross-links between related memories (graph-style enrichment)
+  dedup-check     Check a proposed new memory against existing ones (write-time RPE gate)
 
 Usage:
   memory lint
@@ -21,6 +22,7 @@ Usage:
   memory brief
   memory reconsolidate <file> [<file> ...]
   memory link [--apply] [--threshold 0.15] [--file <name>]
+  memory dedup-check (--file <path> | --name <n> --description <d> [--body <b>])
 
 Global options:
   --memory-dir PATH   Memory directory (default: /home/node/.claude/projects/-home-node/memory/)
@@ -1022,6 +1024,109 @@ def cmd_link(memory_dir: Path, threshold: float, target_file: str | None, apply:
     return 0
 
 
+# ── dedup-check ───────────────────────────────────────────
+
+
+# Overlap coefficient (Szymkiewicz–Simpson) thresholds:
+# = |A ∩ B| / min(|A|, |B|) — asymmetry-aware, catches subset-of cases
+# that jaccard misses when one memory has a much longer body
+DEDUP_REVIEW_THRESHOLD = 0.30
+DEDUP_DUPLICATE_THRESHOLD = 0.55
+DEDUP_TOPN = 3
+
+
+def overlap_coef(a: set, b: set) -> float:
+    if not a or not b:
+        return 0.0
+    return len(a & b) / min(len(a), len(b))
+
+
+def cmd_dedup_check(memory_dir: Path, draft_path: str | None,
+                    prop_name: str | None, prop_desc: str | None,
+                    prop_body: str | None, **_):
+    """Check a proposed memory against existing ones before writing.
+
+    D-Mem RPE inspired: surprise = 1 - max(jaccard with existing).
+    Three-tier verdict:
+      NEW       — no significant overlap, write fresh
+      REVIEW    — moderate overlap, consider enriching the closest match
+      DUPLICATE — high overlap, update existing rather than create new
+
+    Goal: prevent feedback drift (near-duplicates accumulating) while
+    not blocking legitimate new memories. Advisory only — agent decides.
+    """
+    # Resolve proposed memory inputs
+    if draft_path:
+        text = Path(draft_path).read_text("utf-8")
+        fields, body_text = parse_frontmatter(text)
+        if not fields:
+            print(f"❌ {draft_path} has no frontmatter — can't extract name/description")
+            return 1
+        name = fields.get("name", "")
+        desc = fields.get("description", "")
+        body = body_text
+    else:
+        if not (prop_name and prop_desc):
+            print("❌ provide either --file <path> or both --name and --description")
+            return 1
+        name = prop_name
+        desc = prop_desc
+        body = prop_body or ""
+
+    prop_keys = memory_keywords(name, desc, body)
+    if not prop_keys:
+        print("❌ proposed memory yields no keywords (too short or all stop words)")
+        return 1
+
+    # Score against all existing
+    mems = load_memories(memory_dir)
+    valid = {f: m for f, m in mems.items() if m["fields"]}
+
+    scored = []
+    for f, m in valid.items():
+        existing_keys = memory_keywords(
+            m["fields"].get("name", f),
+            m["fields"].get("description", ""),
+            m["body"],
+        )
+        ov = overlap_coef(prop_keys, existing_keys)
+        jac = jaccard(prop_keys, existing_keys)
+        if ov > 0:
+            scored.append((f, ov, jac, prop_keys & existing_keys, existing_keys))
+    scored.sort(key=lambda x: -x[1])
+
+    max_ov = scored[0][1] if scored else 0.0
+    surprise = 1 - max_ov
+
+    if max_ov < DEDUP_REVIEW_THRESHOLD:
+        verdict, marker, advice = "NEW", "✓", "no significant overlap — write as new memory"
+    elif max_ov < DEDUP_DUPLICATE_THRESHOLD:
+        verdict, marker, advice = "REVIEW", "⚠", "moderate overlap — consider enriching the closest existing memory instead"
+    else:
+        verdict, marker, advice = "DUPLICATE", "✗", "high overlap — update existing memory rather than create new"
+
+    print(f"{marker} {verdict}  (max_overlap={max_ov:.2f}, surprise={surprise:.2f})")
+    print(f"  → {advice}\n")
+    print(f"Proposed:")
+    print(f"  name: {name}")
+    print(f"  description: {desc}\n")
+
+    if scored:
+        print(f"Top {min(DEDUP_TOPN, len(scored))} closest existing memories:")
+        for f, ov, jac, overlap, existing_keys in scored[:DEDUP_TOPN]:
+            new_in_prop = prop_keys - existing_keys
+            print(f"  {f}  (overlap={ov:.2f}, jaccard={jac:.2f})")
+            ov_sample = sorted(overlap)[:8]
+            new_sample = sorted(new_in_prop)[:8]
+            print(f"    shared ({len(overlap)}): {ov_sample}{'...' if len(overlap) > 8 else ''}")
+            print(f"    new in proposal ({len(new_in_prop)}): {new_sample}{'...' if len(new_in_prop) > 8 else ''}")
+            print()
+    else:
+        print("(no existing memory shares any keywords — completely new territory)")
+
+    return 0
+
+
 # ── Main ──────────────────────────────────────────────────
 
 
@@ -1051,6 +1156,15 @@ def main():
                         help="Only show candidates for this single file")
     p_link.add_argument("--apply", action="store_true",
                         help="Write Related: lines into each file (dry run by default)")
+    p_dedup = sub.add_parser("dedup-check", help="Check proposed memory against existing (write-time gate)")
+    p_dedup.add_argument("--file", dest="draft_path", default=None,
+                         help="Path to draft markdown file (with frontmatter)")
+    p_dedup.add_argument("--name", dest="prop_name", default=None,
+                         help="Proposed memory name (if not using --file)")
+    p_dedup.add_argument("--description", dest="prop_desc", default=None,
+                         help="Proposed memory description (if not using --file)")
+    p_dedup.add_argument("--body", dest="prop_body", default=None,
+                         help="Proposed memory body text (optional)")
 
     args = parser.parse_args()
     if not args.command:
@@ -1070,6 +1184,11 @@ def main():
         kwargs["threshold"] = args.threshold
         kwargs["target_file"] = args.target_file
         kwargs["apply"] = args.apply
+    if args.command == "dedup-check":
+        kwargs["draft_path"] = args.draft_path
+        kwargs["prop_name"] = args.prop_name
+        kwargs["prop_desc"] = args.prop_desc
+        kwargs["prop_body"] = args.prop_body
     cmds = {
         "lint": cmd_lint,
         "consolidate": cmd_consolidate,
@@ -1079,6 +1198,7 @@ def main():
         "brief": cmd_brief,
         "reconsolidate": cmd_reconsolidate,
         "link": cmd_link,
+        "dedup-check": cmd_dedup_check,
     }
     sys.exit(cmds[args.command](**kwargs))
 
