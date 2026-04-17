@@ -82,4 +82,4 @@ MemU 專為 **24/7 proactive agents** 設計：
 
 ## Related
 
-[[filesystem-vs-database]] [[compiled-truth-pattern]] [[enrichment-pipeline]] [[multimodal-memory]] [[mirix]] [[memwright]] [[coding-agent-memory]] [[locomo]] [[mem0]] [[agent-memory]]
+[[filesystem-vs-database]] [[compiled-truth-pattern]] [[enrichment-pipeline]] [[multimodal-memory]] [[mirix]] [[memwright]] [[coding-agent-memory]] [[locomo]] [[mem0]] [[agent-memory]] [[xmemory]]

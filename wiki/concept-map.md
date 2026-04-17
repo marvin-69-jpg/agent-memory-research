@@ -1,7 +1,7 @@
 ---
 aliases: [concept map, 概念地圖, architecture overview]
 first_seen: 2026-04-14
-last_updated: 2026-04-17
+last_updated: 2026-04-18
 tags: [architecture]
 ---
 
@@ -79,6 +79,7 @@ tags: [architecture]
 | [[memory-evaluation]] | Evaluation paradox + benchmark 演進 |
 | [[locomo]] | 第一個 long-term memory benchmark |
 | [[memory-arena]] | Agentic memory benchmark，測跨 session 行動 |
+| [[xmemory]] | Beyond RAG：四層階層 + adaptive retrieval，解 collapsed retrieval 問題 |
 
 ## Cross-cutting Themes — 跨層主題
 

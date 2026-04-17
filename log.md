@@ -2,6 +2,21 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | xMemory — Beyond RAG for Agent Memory
+
+- Source: Hu et al., arxiv 2602.02007v3 (2026-02-02, revised 2026-04-11)
+- Raw: `raw/hu-xmemory-beyond-rag.md`
+- Wiki: created `wiki/xmemory.md`
+- Updated: concept-map, index, agent-memory, a-mem, memwright, gam, memu, locomo, memory-evaluation, hybrid-search, enrichment-pipeline (backlinks)
+- Key insight: agent memory ≠ general RAG, top-k similarity collapses on coherent dialogue streams, need hierarchy + adaptive expansion
+
+## [2026-04-17] ingest | Markdown Memory Convergence
+
+- Source: X/Twitter (OpenClaw @TheTuringPost, ByteRover @kevinnguyendn, Shannon Sands @max_paperclips)
+- Raw: `raw/markdown-memory-convergence.md`
+- Wiki: updated `wiki/filesystem-vs-database.md` with 2026 convergence evidence
+- Key insight: multiple independent systems converging on markdown-as-source-of-truth + retrieval-as-layer
+
 ## [2026-04-17] ingest | MemU — filesystem-based markdown memory
 
 - Source: Sumanth (@Sumanth_077) X thread, 2026-01-05, 73.8K views. GitHub: NevaMind-AI/memU
