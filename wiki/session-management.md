@@ -110,4 +110,4 @@ Thariq 的 rule of thumb：**新 task = 新 session**。
 
 ## Related
 
-[[context-engineering]] [[context-rot]] [[memory-failure-modes]] [[reconsolidation]] [[compiled-truth-pattern]] [[meta-harness]] [[multi-scope-memory]] [[agent-harness]] [[sleep-time-compute]]
+[[context-engineering]] [[context-rot]] [[memory-failure-modes]] [[reconsolidation]] [[compiled-truth-pattern]] [[meta-harness]] [[multi-scope-memory]] [[agent-harness]] [[sleep-time-compute]] [[mem1]]

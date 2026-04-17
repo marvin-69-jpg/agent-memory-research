@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | MEM1 — RL for memory-reasoning synergy with constant memory
+
+- Source: Zhou et al., MIT/SMART, arxiv 2506.15841 (2025-06-20)
+- Raw: `raw/zhou-mem1-rl-memory-reasoning.md`
+- Wiki: created `wiki/mem1.md`
+- Updated: concept-map, index, agent-memory, deltamem, empo2, agemem, memgpt, session-management, context-engineering, memory-evaluation, scaffolding-lifecycle (backlinks)
+
 ## [2026-04-17] ingest | EMPO² — Memory-augmented RL with off-policy distillation
 
 - Source: Liu et al., ICLR 2026 (arxiv 2602.23008)
