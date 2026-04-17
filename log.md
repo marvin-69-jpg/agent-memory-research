@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | Memory-R1 — Two-agent RL memory management, LoCoMo SOTA
+
+- Source: Yan et al., LMU Munich, arxiv 2508.19828 (2025-08-28)
+- Raw: `raw/yan-memory-r1-rl-memory.md`
+- Wiki: created `wiki/memory-r1.md`
+- Updated: concept-map, index, agent-memory, deltamem, empo2, mem1, agemem, locomo, memory-evaluation, hybrid-search, memory-failure-modes (backlinks)
+
 ## [2026-04-17] ingest | MEM1 — RL for memory-reasoning synergy with constant memory
 
 - Source: Zhou et al., MIT/SMART, arxiv 2506.15841 (2025-06-20)

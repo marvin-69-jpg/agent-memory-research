@@ -92,6 +92,7 @@
 | [[wiki/deltamem\|DeltaMem]] | Single-agent RL memory management，PersonaMem 63.61 SOTA | product, memory, reinforcement-learning | 2026-04-17 |
 | [[wiki/empo2\|EMPO²]] | Hybrid on/off-policy RL，memory 引導 exploration 再蒸餾進 weights | product, memory, reinforcement-learning | 2026-04-17 |
 | [[wiki/mem1\|MEM1]] | RL 學 constant-size internal state，memory-reasoning 統一，3.5x 性能 27% token | product, memory, reinforcement-learning | 2026-04-17 |
+| [[wiki/memory-r1\|Memory-R1]] | Two-agent RL memory，152 QA pairs 訓練，LoCoMo SOTA +28.5% F1 | product, memory, reinforcement-learning | 2026-04-17 |
 | [[wiki/open-questions\|Open Questions]] | 12 個未解問題 + 研究缺口 | memory, architecture | 2026-04-17 |
 
 ## Raw Sources
@@ -144,3 +145,4 @@
 | 2026-04-10 | [[raw/pan-mstar-memory-harness]] | M★: Every Task Deserves Its Own Memory Harness (Pan et al., arxiv 2604.11811) |
 | 2026-02-01 | [[raw/liu-empo2-memory-rl]] | EMPO²: Exploratory Memory-Augmented On- and Off-Policy Optimization (Liu et al., ICLR 2026) |
 | 2025-06-20 | [[raw/zhou-mem1-rl-memory-reasoning]] | MEM1: Learning to Synergize Memory and Reasoning (Zhou et al., MIT/SMART, arxiv 2506.15841) |
+| 2025-08-28 | [[raw/yan-memory-r1-rl-memory]] | Memory-R1: RL for Memory Management and Utilization (Yan et al., LMU Munich, arxiv 2508.19828) |

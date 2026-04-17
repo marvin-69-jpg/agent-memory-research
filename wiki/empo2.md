@@ -56,4 +56,4 @@ EMPO² 挑戰了一個假設：memory 的價值在 inference time。如果 memor
 
 ## Related
 
-[[agent-memory]] [[deltamem]] [[agemem]] [[scaffolding-lifecycle]] [[procedural-memory]] [[self-improving-agent]] [[memory-failure-modes]] [[gene-map]] [[memory-evaluation]] [[memory-arena]] [[mem1]]
+[[agent-memory]] [[deltamem]] [[agemem]] [[scaffolding-lifecycle]] [[procedural-memory]] [[self-improving-agent]] [[memory-failure-modes]] [[gene-map]] [[memory-evaluation]] [[memory-arena]] [[mem1]] [[memory-r1]]

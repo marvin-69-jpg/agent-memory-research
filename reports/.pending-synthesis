@@ -1,1 +1,0 @@
-2026-04-17 | mem1 | RL 教 agent 用 constant-size internal state 取代 full context，memory consolidation 不需要 memory-specific reward，是 reasoning 的 side effect
