@@ -2,6 +2,14 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | DeltaMem — RL-based agentic memory management
+
+- Source: Zhang et al., arxiv 2604.01560v1 (2026-04-02)
+- Raw: `raw/zhang-deltamem-rl-memory.md`
+- Wiki: created `wiki/deltamem.md`
+- Updated: concept-map, index, agent-memory, agemem, memory-worth, mem0, memory-failure-modes, locomo (backlinks)
+- Key insight: single-agent RL for memory CRUD outperforms multi-agent pipeline; reward based on factual keywords not vector similarity
+
 ## [2026-04-17] ingest | STITCH — Grounding Agent Memory in Contextual Intent
 
 - Source: Yang et al., arxiv 2601.10702v1, UIUC + Stanford (2026-01-15)

@@ -81,6 +81,7 @@ tags: [architecture]
 | [[memory-arena]] | Agentic memory benchmark，測跨 session 行動 |
 | [[xmemory]] | Beyond RAG：四層階層 + adaptive retrieval，解 collapsed retrieval 問題 |
 | [[stitch]] | Contextual intent tagging，解 context-mismatched retrieval + CAME-Bench |
+| [[deltamem]] | Single-agent RL memory management，PersonaMem SOTA |
 
 ## Cross-cutting Themes — 跨層主題
 
