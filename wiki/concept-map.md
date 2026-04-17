@@ -116,6 +116,7 @@ tags: [architecture]
 | [[memory-worth]] | Two-counter outcome-feedback metric，read-time / outcome-time governance gate |
 | [[asg-si]] | Audited Skill-Graph Self-Improvement：governance-aware skill graph |
 | [[skillfoundry]] | CMU 自動 mine heterogeneous resources 成 skill library |
+| [[memwright]] | Zero-LLM-in-retrieval，5-layer deterministic pipeline，RBAC + provenance |
 
 ## People
 

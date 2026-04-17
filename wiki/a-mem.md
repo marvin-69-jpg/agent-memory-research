@@ -76,4 +76,4 @@ A-Mem 不算被 obsoletes —— 它定義了 evolution semantics，D-Mem 是加
 
 ## Related
 
-[[reconsolidation]] [[agemem]] [[graph-memory]] [[compiled-truth-pattern]] [[neuroscience-memory]] [[agent-memory]] [[memory-evaluation]] [[locomo]] [[ssgm]] [[memory-failure-modes]] [[memory-staleness]] [[d-mem]] [[fluxmem]] [[memory-worth]]
+[[reconsolidation]] [[agemem]] [[graph-memory]] [[compiled-truth-pattern]] [[neuroscience-memory]] [[agent-memory]] [[memory-evaluation]] [[locomo]] [[ssgm]] [[memory-failure-modes]] [[memory-staleness]] [[d-mem]] [[fluxmem]] [[memory-worth]] [[memwright]]

@@ -2,6 +2,13 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-17] ingest | Memwright — zero-LLM deterministic memory
+
+- Source: aarjay singh, "Why I stopped putting LLMs in my agent memory retrieval path", dev.to, 2026-04-15
+- Created: wiki/memwright.md
+- Updated: hybrid-search, actor-aware-memory, collaborative-memory-system, compiled-truth-pattern, memory-evaluation, locomo, a-mem, mem0, agent-memory, concept-map, index.md
+- Key insight: 5-layer deterministic retrieval pipeline (FTS → Graph BFS → Vector → RRF Fusion → MMR Diversity), zero LLM in critical path, RBAC + provenance + temporal supersede。LOCOMO v2 81.2%
+
 ## [2026-04-17] research | Self-Improving Agents via Skill Artifacts
 
 - Gap type: research-gap（沒有專門 page 處理「skill-based self-improvement」這個 cross-cutting 主題）
