@@ -18,7 +18,9 @@ agent-memory-research/
 ├── tools/
 │   ├── memory.py                  記憶管理 CLI（lint, recall, reconsolidate...）
 │   ├── wiki.py                    wiki 管理 CLI（lint, match, gaps, arxiv...）
-│   └── benchmark.py               記憶系統 benchmark（trigger evals + recon + lint）
+│   ├── benchmark.py               記憶系統 benchmark（trigger evals + recon + lint）
+│   └── threads.py                 Threads 對外發文 CLI（preview / post / thread）
+├── reports/threads/                對外 Threads 版輸出（每日長 + ingest murmur）
 ├── .claude/skills/
 │   ├── memory/SKILL.md            記憶管理 skill
 │   ├── ingest/SKILL.md            文獻 ingest skill
@@ -39,6 +41,7 @@ agent-memory-research/
 | `browser` | `npx agent-browser` | 網頁全文讀取（X/Twitter 必用） |
 | `arxiv` | alphaxiv API | 論文結構化分析 |
 | `research` | `tools/wiki.py gaps` + `arxiv` + 全流程 | 自主研究：找缺口 → 搜論文 → 分析 → 融入 wiki |
+| (內嵌於 `ingest` / `research`) | `tools/threads.py` | Threads 對外發文（preview / post / thread chain） |
 
 CLAUDE.md 只放高層規則，具體操作全在 skill 裡。加新功能 = 加新 CLI + 新 skill，不動 CLAUDE.md。
 
@@ -54,6 +57,28 @@ benchmark.py recall
 # 只跑 reconsolidation signal 檢查
 benchmark.py recon
 ```
+
+## threads.py CLI
+
+研究產出有兩種對外格式，**都先 preview、由人確認再 post**：
+
+| 觸發 | 檔名 | 長度 | 對應 skill 步驟 |
+|------|------|------|-----------------|
+| 每日 23:00 daily research | `reports/threads/YYYY-MM-DD-daily.md` | 長（會切多段成 thread chain） | `research` Step 7 |
+| 每次 ingest 完成 | `reports/threads/YYYY-MM-DD-murmur-<slug>.md` | 短（單篇） | `ingest` Step 6 |
+
+```bash
+# 切段預覽（不發）
+threads.py preview reports/threads/2026-04-17-daily.md
+
+# 單篇 post
+threads.py post reports/threads/YYYY-MM-DD-murmur-<slug>.md
+
+# 多段 thread chain（自動切，每段 ≤ 500 字）
+threads.py thread reports/threads/YYYY-MM-DD-daily.md
+```
+
+帳號和 token 見 auto-memory `reference_threads_account.md`（目前 `opus_666999`）。Token 在 PVC `~/.threads-token`，**不寫進 repo**。
 
 ## wiki.py CLI
 
