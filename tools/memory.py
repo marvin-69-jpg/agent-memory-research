@@ -10,6 +10,7 @@ Subcommands:
   recall          Search across memory/ + wiki/ for a query (brain-first lookup)
   brief           Session startup briefing — compressed overview of everything the agent knows
   reconsolidate   Check recalled memories for staleness signals (retrieval-triggered update)
+  link            Suggest cross-links between related memories (graph-style enrichment)
 
 Usage:
   memory lint
@@ -19,6 +20,7 @@ Usage:
   memory recall <query> [<query> ...]
   memory brief
   memory reconsolidate <file> [<file> ...]
+  memory link [--apply] [--threshold 0.15] [--file <name>]
 
 Global options:
   --memory-dir PATH   Memory directory (default: /home/node/.claude/projects/-home-node/memory/)
@@ -888,6 +890,138 @@ def cmd_reconsolidate(memory_dir: Path, files: list[str], **_):
     return 0
 
 
+# ── link ──────────────────────────────────────────────────
+
+
+LINK_THRESHOLD_DEFAULT = 0.08
+LINK_TOPN = 4
+LINK_BODY_CHARS = 400
+
+
+EN_STOP = {"the","and","for","this","that","with","from","you","are","not","but",
+           "have","has","had","was","were","been","being","into","over","than",
+           "can","will","should","must","may","does","did","just","like","also",
+           "more","most","some","any","all","one","two","its","their","they",
+           "use","using","used","add","get","set","run","make","need","when",
+           "what","which","where","while","then","else","each","such"}
+CJK_STOP = {"的","是","在","有","要","不","和","我","也","都","就","可以","沒有","這個","那個",
+            "什麼","怎麼","為什麼","因為","所以","但是","如果","或者","以及","以後","以前",
+            "時候","這樣","那樣","一個","一下","一些","可能","應該","必須","已經","還是",
+            "或是","這種","這次","這篇","下次","上次","目前","現在","以及","還有","等等",
+            "改成","改進","用法","作法","做法","結果","發現","看到","知道","想要"}
+
+
+def memory_keywords(name: str, desc: str, body: str) -> set[str]:
+    """Extract clean keyword set for graph similarity.
+
+    Strategy:
+    - Strip markdown / punctuation noise
+    - English: lowercase words ≥3 chars, exclude stop words
+    - CJK: 2-grams from cleaned text, exclude common 2-gram stop words
+    - Weight: name + description + first ~400 chars of body
+    """
+    text = f"{name} {desc} {body[:LINK_BODY_CHARS]}".lower()
+    # Strip markdown artifacts and punctuation
+    text = re.sub(r'[`*_\[\](){}<>"\'，。、；：！？「」『』—\-\.,:;!?/\\=+@#$%^&|~]', ' ', text)
+    text = re.sub(r'\s+', ' ', text)
+
+    tokens = set()
+    # English words
+    for w in re.findall(r'[a-z]{3,}', text):
+        if w not in EN_STOP:
+            tokens.add(w)
+    # CJK 2-grams (cleaner — no punctuation contamination)
+    for run in re.findall(r'[\u4e00-\u9fff]+', text):
+        for i in range(len(run) - 1):
+            bigram = run[i:i+2]
+            if bigram not in CJK_STOP:
+                tokens.add(bigram)
+    return tokens
+
+
+def jaccard(a: set, b: set) -> float:
+    if not a or not b:
+        return 0.0
+    return len(a & b) / len(a | b)
+
+
+def cmd_link(memory_dir: Path, threshold: float, target_file: str | None, apply: bool, **_):
+    """Suggest cross-links between related memories.
+
+    Inspired by FLUXMEM (graph structure) and boba-wiki Related sections.
+    Currently auto-memory is flat — recalling one memory doesn't surface
+    related ones. Cross-links turn the memory dir into a navigable graph.
+    """
+    mems = load_memories(memory_dir)
+    valid = {f: m for f, m in mems.items() if m["fields"]}
+
+    # Pre-compute keyword sets
+    keysets: dict[str, set] = {}
+    for f, m in valid.items():
+        name = m["fields"].get("name", f)
+        desc = m["fields"].get("description", "")
+        keysets[f] = memory_keywords(name, desc, m["body"])
+
+    # Pairwise similarity
+    suggestions: dict[str, list[tuple[str, float]]] = {}
+    files = sorted(valid.keys())
+    for i, f1 in enumerate(files):
+        candidates = []
+        for f2 in files:
+            if f1 == f2:
+                continue
+            sim = jaccard(keysets[f1], keysets[f2])
+            if sim >= threshold:
+                candidates.append((f2, sim))
+        candidates.sort(key=lambda x: -x[1])
+        if candidates:
+            suggestions[f1] = candidates[:LINK_TOPN]
+
+    if target_file:
+        if not target_file.endswith(".md"):
+            target_file += ".md"
+        suggestions = {k: v for k, v in suggestions.items() if k == target_file}
+        if not suggestions:
+            print(f"no link candidates for {target_file} (threshold={threshold})")
+            return 0
+
+    # Report
+    print(f"link — {len(valid)} memories analyzed, threshold={threshold}\n")
+    if not suggestions:
+        print("✓ no cross-link candidates above threshold")
+        return 0
+
+    print(f"Cross-link candidates ({len(suggestions)} files have ≥1 link):\n")
+    for f in sorted(suggestions.keys()):
+        existing_related = "[[" in valid[f]["body"]
+        marker = " (already has links)" if existing_related else ""
+        print(f"  {f}{marker}:")
+        for other, sim in suggestions[f]:
+            other_stem = other[:-3] if other.endswith(".md") else other
+            print(f"    [[{other_stem}]]  ({sim:.2f})")
+        print()
+
+    if apply:
+        applied = 0
+        for f, candidates in suggestions.items():
+            path = memory_dir / f
+            text = path.read_text("utf-8")
+            # Skip if already has a Related: line
+            if re.search(r'^Related:', text, re.MULTILINE):
+                continue
+            link_line = "Related: " + " ".join(
+                f"[[{c[:-3] if c.endswith('.md') else c}]]" for c, _ in candidates
+            )
+            new_text = text.rstrip() + "\n\n" + link_line + "\n"
+            path.write_text(new_text, "utf-8")
+            applied += 1
+        print(f"\n✓ applied Related: links to {applied} files")
+    else:
+        print("(dry run — pass --apply to write Related: lines into each file)")
+
+    return 0
+
+
 # ── Main ──────────────────────────────────────────────────
 
 
@@ -910,6 +1044,13 @@ def main():
     sub.add_parser("brief", help="Session startup briefing — what you currently know")
     p_recon = sub.add_parser("reconsolidate", help="Check recalled memories for staleness signals")
     p_recon.add_argument("files", nargs="+", help="Memory filenames to check")
+    p_link = sub.add_parser("link", help="Suggest cross-links between related memories (graph)")
+    p_link.add_argument("--threshold", type=float, default=LINK_THRESHOLD_DEFAULT,
+                        help=f"Jaccard similarity threshold (default {LINK_THRESHOLD_DEFAULT})")
+    p_link.add_argument("--file", dest="target_file", default=None,
+                        help="Only show candidates for this single file")
+    p_link.add_argument("--apply", action="store_true",
+                        help="Write Related: lines into each file (dry run by default)")
 
     args = parser.parse_args()
     if not args.command:
@@ -925,6 +1066,10 @@ def main():
         kwargs["query"] = args.query
     if args.command == "reconsolidate":
         kwargs["files"] = args.files
+    if args.command == "link":
+        kwargs["threshold"] = args.threshold
+        kwargs["target_file"] = args.target_file
+        kwargs["apply"] = args.apply
     cmds = {
         "lint": cmd_lint,
         "consolidate": cmd_consolidate,
@@ -933,6 +1078,7 @@ def main():
         "recall": cmd_recall,
         "brief": cmd_brief,
         "reconsolidate": cmd_reconsolidate,
+        "link": cmd_link,
     }
     sys.exit(cmds[args.command](**kwargs))
 
