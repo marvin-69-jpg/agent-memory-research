@@ -82,6 +82,8 @@
 | [[wiki/skillfoundry\|SKILLFOUNDRY]] | CMU 自動 mine heterogeneous resources 成 skill library，tree-guided closed-loop | product, memory, architecture | 2026-04-17 |
 | [[wiki/skillx\|SkillX]] | Multi-level skill hierarchy（Planning/Functional/Atomic）+ experience-guided expansion，plug-and-play skill library | product, memory, architecture | 2026-04-18 |
 | [[wiki/rl-capability-boundary\|RL Capability Boundary]] | PASS@(k,T) 分辨 capability expansion vs reliability，挑戰 skill-based 評估盲點 | memory, architecture, rl, metric, reinforcement-learning | 2026-04-18 |
+| [[wiki/evolve-self-refinement\|EVOLVE]] | Trained self-refinement via synergistic training-inference loop，Llama-3.1-8B 贏 GPT-4o | training, reasoning, system | 2026-04-19 |
+| [[wiki/refinement-regime\|Refinement Regime]] | Self-refinement 三種體制分類：Panel / Criteria / Training，對應 memory quality 的三種路線 | architecture, reasoning, system | 2026-04-19 |
 | [[wiki/d-mem\|D-MEM]] | Dopamine-gated agentic memory，用 RPE routing 解 A-Mem 的 O(N²) 寫入瓶頸 | product, memory, architecture | 2026-04-17 |
 | [[wiki/fluxmem\|FLUXMEM]] | Adaptive memory structures：把結構選擇升級成 learnable 變數 | product, memory, architecture | 2026-04-17 |
 | [[wiki/memory-worth\|Memory Worth]] | 兩 counter outcome-feedback metric，read/outcome-time governance gate | memory, governance, metric | 2026-04-17 |
@@ -152,3 +154,5 @@
 | 2025-08-28 | [[raw/yan-memory-r1-rl-memory]] | Memory-R1: RL for Memory Management and Utilization (Yan et al., LMU Munich, arxiv 2508.19828) |
 | 2025-11-01 | [[raw/google-context-engineering-sessions-memory]] | Context Engineering: Sessions & Memory (Google, Milam & Gulli, 70-page whitepaper) |
 | 2026-02-01 | [[raw/langchain-agent-builder-memory]] | How we built Agent Builder's memory system (Harrison Chase, LangChain) |
+| 2025-02-08 | [[raw/zeng-evolve-self-refinement]] | EVOLVE: Evolving LLMs' Self-Refinement Capability via Synergistic Training-Inference Optimization (arxiv 2502.05605) |
+| 2026-04-02 | [[raw/guliani-dejure-iterative-refinement]] | De Jure: Iterative LLM Self-Refinement for Structured Extraction of Regulatory Rules (arxiv 2604.02276) |

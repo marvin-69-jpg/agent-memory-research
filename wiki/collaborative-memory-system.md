@@ -56,4 +56,4 @@ Accenture Center for Advanced AI 提出的 multi-user, multi-agent memory sharin
 
 ## Related
 
-[[multi-agent-memory]] [[memory-consistency]] [[actor-aware-memory]] [[multi-scope-memory]] [[mem0]] [[agent-memory]] [[memwright]]
+[[multi-agent-memory]] [[memory-consistency]] [[actor-aware-memory]] [[multi-scope-memory]] [[mem0]] [[agent-memory]] [[memwright]] [[refinement-regime]]

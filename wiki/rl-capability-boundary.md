@@ -81,4 +81,4 @@ openab-bot 自己的 sleep-time compute（`memory improve`）屬於 **heuristic-
 
 ## Related
 
-[[self-improving-agent]] [[asg-si]] [[skillx]] [[skillfoundry]] [[memory-evaluation]] [[sleep-time-compute]] [[memory-r1]] [[agemem]]
+[[self-improving-agent]] [[asg-si]] [[skillx]] [[skillfoundry]] [[memory-evaluation]] [[sleep-time-compute]] [[memory-r1]] [[agemem]] [[evolve-self-refinement]] [[refinement-regime]]

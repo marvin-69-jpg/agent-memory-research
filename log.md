@@ -2,6 +2,17 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-19] research | Self-Refinement 三種體制 — 從 Autoreason 向外延伸
+
+- gap_type: single-source（autoreason 只有 1 個 source）
+- Sources: raw/zeng-evolve-self-refinement.md (arxiv 2502.05605), raw/guliani-dejure-iterative-refinement.md (arxiv 2604.02276)
+- Created: wiki/evolve-self-refinement.md, wiki/refinement-regime.md
+- Updated: wiki/autoreason.md (加入三體制位置 + EVOLVE/De Jure 連結；tag 加 reasoning), wiki/memory-evaluation.md (Judge Design from De Jure 新節), wiki/open-questions.md (Q2 加三個 operational 子問題 + 新增 Q17 Refinement Regime Selection), index.md
+- Report: reports/2026-04-19-self-refinement-three-regimes.md
+- Threads: reports/threads/2026-04-19-daily.md
+- 推進 open question #2（Evaluation Paradox）+ 新增 #17（Refinement Regime Selection）
+- 接續 2026-04-18 的 "distillation 退化" 敘事：從 RL vs skill 擴展到 self-refinement 的三種體制分類
+
 ## [2026-04-18] research | SkillX + RL Capability Boundary — skill-based self-improvement 的兩個盲點
 
 - Path: Single-source deepening — ASG-SI 原本只有 1 source，挖 skill-based 對照（SkillX）+ critique（PASS@(k,T)）

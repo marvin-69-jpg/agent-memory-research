@@ -1,9 +1,11 @@
 ---
 aliases: [open questions, 未解問題, open problems]
 first_seen: 2026-04-14
-last_updated: 2026-04-18
+last_updated: 2026-04-19
 tags: [memory, architecture]
 ---
+
+> **2026-04-19 update**: Q2（Evaluation Paradox）新增三個 operational 子問題（來自 [[refinement-regime]] 三篇來源的對照）。新增 Tier 3 #17（Refinement Regime Selection）來自 [[refinement-regime]]，回應 self-refinement 研究光譜的分類問題。
 
 > **2026-04-18 update**: #13（Skill Granularity）加入 [[skillx]] 的 multi-level hierarchical 答案（三層 Planning/Functional/Atomic）。新增 Tier 3 #16（Capability Expansion vs Reliability Improvement）來自 [[rl-capability-boundary]]，挑戰 skill-based self-improvement 的 Pass@4 claim。
 
@@ -36,7 +38,12 @@ Sources: [[chrysb]], [[memory-failure-modes]]
 
 **現有方向**：[[memory-arena]] 從 recall → agentic tasks 提升了層級。Pengfei Du 提出 four-layer metric stack。但都只是近似。
 
-Sources: [[chrysb]], [[memory-evaluation]]
+**2026-04-19 新觀察**（來自 [[refinement-regime]] 三源對照）：Evaluation Paradox 可拆成三個可操作的子問題：
+- **Judge 拆維度 vs 整合**：De Jure 的 19-dim explicit judge 比整體判斷可靠，單一維度的 judge 比 multi-aspect judge 有更小的 context 需求
+- **Judge 無狀態性**：[[autoreason]] 的 "fresh isolated agents" 證明，judge 的無狀態性比 judge 的強度更重要
+- **Judge 遞迴**：[[evolve-self-refinement]] 的 reward model 本身是另一個需要被評的 judge — paradox 並未解決，只是外推
+
+Sources: [[chrysb]], [[memory-evaluation]], [[refinement-regime]], [[autoreason]], [[evolve-self-refinement]]
 
 ### 3. Compounding vs Forgetting：越記越聰明 vs 遺忘是 feature
 
@@ -198,6 +205,19 @@ Deployed self-improving agents 的安全與審計問題：reward hacking、behav
 **還沒解的**：跨 organization 的 skill sharing 怎麼確保安全？若 SkillHub 上的 community-contributed skill 嵌入惡意行為，誰負責 audit？
 
 Sources: [[asg-si]], [[ssgm]], [[memory-evaluation]]
+
+### 17. Refinement Regime Selection
+
+[[refinement-regime]] 把 self-refinement 研究分成三種體制（Panel / Criteria / Training），每種靠不同機制解決「LLM 原生無法 self-critique」的核心困境。三者都證實同一個 empirical fact，但選擇不同的繞過路線。
+
+**未解問題**：
+- 什麼任務該用哪種 regime？目前沒有選擇 framework
+- **Hybrid regimes**：能不能 criteria judge + training loop 疊用？例如把 De Jure 的 19-dim criteria 當 reward signal 餵進 [[evolve-self-refinement]] 的訓練框架
+- **Memory-specific adaptation**：De Jure 的 19 維哪幾個通用、哪幾個需要 domain-specific 才能搬到 memory quality scoring？
+
+**對 memory 的意義**：現有 memory 系統很多還在用 prompt-only 的「請 agent 判斷這條重要性」策略，這不屬於任何 regime，應視為 anti-pattern。要嘛走 Panel（多 agent 投票）、Criteria（multi-dim rubric 如 [[memory-worth]]）、或 Training（[[memory-r1]]、[[agemem]]、[[d-mem]]）。
+
+Sources: [[refinement-regime]], [[autoreason]], [[evolve-self-refinement]], [[memory-evaluation]], [[memory-worth]]
 
 ---
 
