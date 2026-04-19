@@ -63,10 +63,20 @@ SSGM 的七種失敗模式與 [[chrysb]] 的十種部分重疊、部分互補：
 - SSGM 獨有：semantic/procedural/goal drift（reconsolidation 特有）、memory poisoning、privacy leakage
 - Chrys Bader 獨有：entity confusion、retrieval misfire、selective retrieval bias、compaction info loss
 
+### 與 [[apex-mem]] 的對比：Proactive vs Reactive Governance
+
+SSGM 代表 **proactive governance** — 寫入前驗證、consolidation 前過 gate。[[apex-mem]]（Amazon AGI, 2026-04）代表光譜的另一端 **reactive governance** — 全部 append，在 retrieval time 才做 temporal resolution。
+
+兩者解決同一組失敗模式（drift、temporal obsolescence、矛盾），但在不同的 pipeline 階段花 compute：
+- SSGM：低 storage、低 retrieval 成本，但 gate 可能有 false positive（擋掉日後有用的資訊）
+- APEX-MEM：完整歷史保留，但 retrieval 需要 multi-tool agent，成本高且依賴 agent 品質
+
+APEX-MEM 的 append-only + temporal event anchoring 設計，某種程度上也實踐了 SSGM 的 Principle 4（reversible reconciliation）— 因為從不刪除原始 event，任何 resolution 都是可重算的。
+
 ## Key Sources
 
 - **2026-03-14** — SSGM: Stability and Safety Governed Memory for LLM Agents。Source: [[raw/ssgm-stability-safety-governed-memory]]
 
 ## Related
 
-[[reconsolidation]] [[a-mem]] [[compiled-truth-pattern]] [[memory-failure-modes]] [[memory-staleness]] [[neuroscience-memory]] [[agent-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[open-questions]] [[agemem]] [[asg-si]] [[d-mem]] [[memory-worth]]
+[[reconsolidation]] [[a-mem]] [[compiled-truth-pattern]] [[memory-failure-modes]] [[memory-staleness]] [[neuroscience-memory]] [[agent-memory]] [[multi-scope-memory]] [[actor-aware-memory]] [[open-questions]] [[agemem]] [[asg-si]] [[d-mem]] [[memory-worth]] [[apex-mem]]

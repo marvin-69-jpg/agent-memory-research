@@ -29,6 +29,8 @@ tags: [memory, architecture, retrieval]
 - **多模態延伸**（M3-Agent）：entity-centric multimodal graph — 同一 entity 的臉、聲音、文字知識相連。用 weight-based voting 解決衝突，外部工具做 face_id / voice_id 跨 clip 追蹤。Graph memory 從純文字 relationship 擴展到多模態 entity binding → [[multimodal-memory]]
 - **Spreading Activation**（SYNAPSE）：受 Collins & Loftus 1975 啟發，記憶檢索 = graph 上的 energy propagation。加入 fan effect（出度 dilute）、lateral inhibition（注意力選擇）、temporal decay（Ebbinghaus）。LoCoMo F1 40.5 SOTA，multi-hop +8.7。graph 不只是 static structure，加入 cognitive dynamics 後成為 active reasoning mechanism → [[synapse]]、[[neuroscience-memory]]
 
+- **Append-only temporal property graph**（APEX-MEM）：Amazon AGI 的 [[apex-mem]] 把 property graph 跟 append-only 語意結合 — facts 錨定到 temporally grounded events，不做 overwrite，在 retrieval time 用 multi-tool agent resolve 矛盾。35 entity classes（YAGO-like），LOCOMO 88.88% SOTA。這是 graph memory 從「static relationship store」進化到「temporal event store with deferred resolution」的代表
+
 ## Key Sources
 
 - **2026-04-01** — Mem0 報告：graph memory 從實驗到 production。Source: [[raw/mem0-state-of-ai-agent-memory-2026]]
@@ -37,4 +39,4 @@ tags: [memory, architecture, retrieval]
 
 ## Related
 
-[[mem0]] [[hybrid-search]] [[agent-memory]] [[brain-first-lookup]] [[entity-detection]] [[chrysb]] [[yohei-nakajima]] [[memory-staleness]] [[multimodal-memory]] [[mirix]] [[neuroscience-memory]] [[synapse]] [[a-mem]] [[reconsolidation]] [[fluxmem]] [[gam]]
+[[mem0]] [[hybrid-search]] [[agent-memory]] [[brain-first-lookup]] [[entity-detection]] [[chrysb]] [[yohei-nakajima]] [[memory-staleness]] [[multimodal-memory]] [[mirix]] [[neuroscience-memory]] [[synapse]] [[a-mem]] [[reconsolidation]] [[fluxmem]] [[gam]] [[apex-mem]]

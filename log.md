@@ -2,6 +2,17 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-20] research | Write-Time vs Retrieval-Time Governance — APEX-MEM
+
+- gap_type: single-source（ssgm 只有 1 個 source，graph-memory 缺 append-only 方向）
+- Sources: raw/banerjee-apex-mem.md (arxiv 2604.14362, Amazon AGI)
+- Created: wiki/apex-mem.md
+- Updated: wiki/ssgm.md (加 APEX-MEM 對比), wiki/graph-memory.md (加 append-only temporal graph), wiki/memory-failure-modes.md (加 APEX-MEM 另一種解法), concept-map.md, index.md, + 10 個 backlink fixes
+- Report: reports/2026-04-20-write-vs-retrieval-governance.md
+- Threads: reports/threads/2026-04-20-daily.md
+- Insights: SSGM（proactive gate）、D-MEM（write-time RPE gate）、APEX-MEM（reactive retrieval-time resolution）構成 governance 的三端點光譜。跟 refinement-regime 的三種體制結構性平行
+- 接續 2026-04-19 的 upstream validation 問題：APEX-MEM 的答案是「不要 upstream validate，defer 到 retrieval time」
+
 ## [2026-04-19] research | Self-Refinement 三種體制 — 從 Autoreason 向外延伸
 
 - gap_type: single-source（autoreason 只有 1 個 source）

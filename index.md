@@ -12,6 +12,7 @@
 | Page | Summary | Tags | Last Updated |
 |------|---------|------|-------------|
 | [[wiki/agent-harness\|Agent Harness]] | Agent 的執行框架，與 memory 密不可分 | harness, architecture | 2026-04-12 |
+| [[wiki/apex-mem\|APEX-MEM]] | Amazon AGI append-only temporal property graph，retrieval-time resolution | product, memory, architecture, retrieval, governance | 2026-04-20 |
 | [[wiki/agent-memory\|Agent Memory]] | Agent 記憶系統，三層模型（world/operational/session） | memory, architecture | 2026-04-12 |
 | [[wiki/memory-lock-in\|Memory Lock-in]] | 封閉 harness 造成的記憶鎖定，memory 是最強 lock-in 武器 | lock-in, memory | 2026-04-11 |
 | [[wiki/compounding-memory\|Compounding Memory]] | 記憶複合成長效應，越用越聰明 | memory, architecture | 2026-04-12 |
