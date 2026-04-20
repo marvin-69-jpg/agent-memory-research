@@ -1,7 +1,7 @@
 ---
 aliases: [LOCOMO, LOCOMO benchmark, Long-term Conversational Memory, LoCoMo-Noise]
 first_seen: 2026-04-13
-last_updated: 2026-04-17
+last_updated: 2026-04-21
 tags: [benchmark, memory]
 ---
 
@@ -37,6 +37,17 @@ tags: [benchmark, memory]
 
 這暴露了一個原 benchmark 看不到的失敗模式：**append-and-evolve-all 系統（[[a-mem]]）的 token cost 在 noisy 環境會爆炸**（1.64M vs D-Mem 的 319K）。LoCoMo-Noise 把 token efficiency 從 nice-to-have 升級成 必要 metric。
 
+### 近期 LOCOMO 成績（2026-04-21 補充）
+
+| 系統 | 指標 | 分數 |
+|------|------|------|
+| APEX-MEM（GPT5）| overall accuracy | 88.88% |
+| MIRIX | overall accuracy | 85.38% |
+| TA-Mem | temporal F1 | 55.95（所有系統最高）|
+| MemR3（疊在基礎 retriever 上）| 提升幅度 | +7.29% |
+
+TA-Mem 在時序問題特別強，MemR3 是 plug-in 方式提升任何基礎系統。
+
 ## Related
 
-[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]] [[memory-arena]] [[memory-evaluation]] [[agemem]] [[mirix]] [[multimodal-memory]] [[neuroscience-memory]] [[synapse]] [[a-mem]] [[d-mem]] [[fluxmem]] [[memwright]] [[mstar]] [[gam]] [[memu]] [[xmemory]] [[stitch]] [[deltamem]] [[memory-r1]]
+[[mem0]] [[memgpt]] [[agent-memory]] [[compounding-memory]] [[memory-arena]] [[memory-evaluation]] [[agemem]] [[mirix]] [[multimodal-memory]] [[neuroscience-memory]] [[synapse]] [[a-mem]] [[d-mem]] [[fluxmem]] [[memwright]] [[mstar]] [[gam]] [[memu]] [[xmemory]] [[stitch]] [[deltamem]] [[memory-r1]] [[ta-mem]] [[memr3]] [[apex-mem]]

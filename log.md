@@ -2,6 +2,17 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-21] research | Retrieval Completeness — TA-Mem + MemR3
+
+- gap_type: single-source（現有 apex-mem 頁面缺 completeness 視角；stitch 缺後續研究）
+- Sources: raw/yuan-ta-mem-tool-augmented-retrieval.md (arxiv 2603.09297), raw/rohanpaul-memr3-reflective-retrieval.md (arxiv 2512.20237)
+- Created: wiki/ta-mem.md, wiki/memr3.md
+- Updated: wiki/apex-mem.md (加 TA-Mem 對比), wiki/locomo.md (加新 benchmark scores), wiki/stitch.md、wiki/xmemory.md、wiki/memory-failure-modes.md、wiki/a-mem.md、wiki/mem0.md (backlinks), index.md, log.md
+- Report: reports/2026-04-21-iterative-retrieval-loop.md
+- Threads: reports/threads/2026-04-21-daily.md
+- Insights: 記憶 quality（記憶是否正確）vs completeness（搜尋有沒有找全）是兩個不同的失敗模式，需要不同的解法。TA-Mem = write-time enrichment + adaptive tool selection；MemR3 = explicit gap-tracking loop（plug-in，不改底層）。兩者都在時序問題上有顯著提升。
+- 接續 2026-04-20 APEX-MEM：read-time governance 不是單一解法，分 staleness（APEX-MEM）和 completeness（TA-Mem/MemR3）
+
 ## [2026-04-20] research | Write-Time vs Retrieval-Time Governance — APEX-MEM
 
 - gap_type: single-source（ssgm 只有 1 個 source，graph-memory 缺 append-only 方向）

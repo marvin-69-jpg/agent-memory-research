@@ -85,4 +85,4 @@ Thariq（Claude Code team）指出 **compaction information loss** 的一個具�
 
 ## Related
 
-[[agent-memory]] [[memory-staleness]] [[memory-consistency]] [[chrysb]] [[hybrid-search]] [[actor-aware-memory]] [[entity-detection]] [[autoreason]] [[compounding-memory]] [[chatgpt-memory]] [[coding-agent-memory]] [[memory-evaluation]] [[open-questions]] [[multimodal-memory]] [[neuroscience-memory]] [[synapse]] [[reconsolidation]] [[a-mem]] [[ssgm]] [[meta-harness]] [[session-management]] [[context-rot]] [[d-mem]] [[memory-worth]] [[deltamem]] [[empo2]] [[memory-r1]] [[apex-mem]]
+[[agent-memory]] [[memory-staleness]] [[memory-consistency]] [[chrysb]] [[hybrid-search]] [[actor-aware-memory]] [[entity-detection]] [[autoreason]] [[compounding-memory]] [[chatgpt-memory]] [[coding-agent-memory]] [[memory-evaluation]] [[open-questions]] [[multimodal-memory]] [[neuroscience-memory]] [[synapse]] [[reconsolidation]] [[a-mem]] [[ssgm]] [[meta-harness]] [[session-management]] [[context-rot]] [[d-mem]] [[memory-worth]] [[deltamem]] [[empo2]] [[memory-r1]] [[apex-mem]] [[ta-mem]] [[memr3]]
