@@ -145,6 +145,12 @@ uv run python3 tools/wiki.py match <keywords from findings>
 
 **技術名詞處理**：第一次出現的英文術語，用一個完整的句子解釋它指什麼，不用破折號或括號加註解。
 
+**讀者是一般人，不是研究者**：
+- 文中每個英文術語（A-Mem、reconsolidation、token 等）**第一次出現時，用一個完整句子解釋它指什麼**。不要括號加註解，要嵌進句子裡（「reconsolidation，也就是每次回想都會重寫記憶這件事，...」）。
+- 不要連三個縮寫堆在一句話裡（A-Mem、D-Mem、FLUXMEM 之類）。
+- 數字要翻譯成意義（「省下八成成本」比「F1 從 0.41 到 0.47」好懂）。
+- 故事感優先於完整性。寧可少一篇 paper，也不要把 wiki 搬上去。
+
 ### Step 5: Ingest — 融入 wiki
 
 照 **ingest skill** 的流程，把新來源融入 wiki：
@@ -170,26 +176,27 @@ git push
 - 是否推進了某個 open question
 - 報告路徑
 
-### Step 7: 發 Threads 版（人工 confirm）
+### Step 7: 發 Threads 版
 
-回報完，把 Threads 版的 preview 給使用者看：
+preview 後**直接 post，不要再等確認**（使用者已經在 Step 7 觸發授權了）：
 
 ```bash
+# Step 7a: preview（回報給使用者看）
 uv run python3 tools/threads.py preview reports/threads/YYYY-MM-DD-daily.md
-```
 
-**等使用者明確說「發」或「post」再執行**：
-
-```bash
+# Step 7b: 直接 post（不等確認）
 # 單篇 ≤500 字元
 uv run python3 tools/threads.py post reports/threads/YYYY-MM-DD-daily.md
 # 或多篇 thread chain（500-800 字會切 1-2 段）
 uv run python3 tools/threads.py thread reports/threads/YYYY-MM-DD-daily.md
 ```
 
+**重要**：
+- **一律 foreground**。絕對不要加 `run_in_background`。thread chain 5 段需要 30-60 秒，耐心等。
+- 看到「Command running in background」= 已在跑，**不要重跑**，等就好。重跑會雙發，Threads 不給刪。
 - 帳號見 `reference_threads_account.md`（目前 `opus_666999`）
-- **不要自動 post**。每篇都要使用者點頭。
 - 回報 post ID 和 URL `https://www.threads.net/@<account>/post/<root_id>`
+- 例外：草稿明顯有問題（超字數、有錯字、內容敏感）才回頭問
 
 ---
 
