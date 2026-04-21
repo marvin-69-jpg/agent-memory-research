@@ -99,10 +99,11 @@ Thariq 的 rule of thumb：**新 task = 新 session**。
 - Subagent for research exploration（符合 context isolation 原則）
 - Compact 由 Claude Code 自動處理
 
-**待觀察 / 可改進**：
-- **Proactive compact**：目前是 autocompact。可以在 ingest flow 結束時主動 /compact focus 到 summary，避免後續 debugging context 進來時把 ingest detail 擠掉
-- **Rewind 使用**：bot 在 autonomous mode 下無法 rewind（沒有 esc esc）。但可以模擬 — 發現錯誤 approach 時明確說「忽略上面的 reasoning，重新從 X 開始」
-- **Bad compact 防禦**：autocompact 可能漏掉 research 脈絡。每個 research report 寫入 reports/ 就是 durability 策略（不依賴 context window）
+**觀察（2026-04-22）**：
+- **Proactive compact**：仍是 autocompact，沒有改動。長 research session 中確實偶爾有 context 被壓縮過度的情況（後面的 debug 把前面的 ingest 脈絡擠掉），但因為 reports/ 有檔案做 durability，實際傷害有限。proactive compact 屬於「nice to have」。
+- **Rewind 模擬**：「忽略上面的 reasoning」workaround 偶有使用，實際效果比直接 continue 好，但需要 bot 自己意識到走錯路才會觸發。在 autonomous 任務（跑研究、跑日報）裡，對話 turn 數少，rewind 需求不大。
+- **Reports/ durability**：有效。所有研究報告存 `reports/`，wiki pages 存 `wiki/`，session 間的資訊連續性靠這兩層，不靠 context window。壞 compact 的代價因此被限制在「需要重讀」而非「永久遺失」。
+- **整體評估**：1 thread = 1 session 的邊界清楚，session management 目前沒有明顯問題。最大的風險是超長 autonomous session（例如跑 ingest + 研究 + 開 PR 全在同一 thread），那時 context rot 最明顯，可以考慮把 ingest 和 research 分開 thread。
 
 ## Key Sources
 

@@ -83,10 +83,11 @@ Dual storage 與 [[compiled-truth-pattern]] 高度呼應：
 
 **保護機制**（受 [[ssgm]] 啟發）：不改核心事實（使用者身份、明確規則），只改可能過時的描述和 context。
 
-**待觀察**：
-- 實際使用中 reconsolidation 的觸發頻率
-- 是否能捕捉到 sleep-time improve 漏掉的 stale memories
-- 是否需要從 write-triggered（現在的 CLI）升級到 read-triggered（每次 recall 自動觸發）
+**觀察（2026-04-22）**：
+- **觸發頻率**：低。主要路徑是 session 開頭的 `memory improve` batch；session 中的 brain-first recall 後手動 reconsolidate 幾乎不執行。
+- **stale 捕捉**：`memory improve` 的 REVIEW 項目（>14 天的 project 記憶）能捕捉到顯性過時。但 recalled memories 在對話中被動發現「描述跟現實不符」時的即時更新仍依賴人工判斷，沒有自動觸發。
+- **read-triggered 升級**：尚未實作。升級路徑是：每次 `memory recall` 完自動 call `reconsolidate <recalled_files>`。成本可接受（只掃被 recall 的少量檔案），但目前還沒有足夠的 stale-miss 案例推動這個改動。
+- **現狀評估**：write-triggered（session 開頭 batch）目前已足夠，主要 stale 問題能被 REVIEW 攔截。只有在 brain-first lookup 使用率變高後，read-triggered 才有明顯的 ROI。
 
 ## Key Sources
 

@@ -38,7 +38,7 @@ GBrain 的查詢優先級：永遠先查 brain，external API 是 fallback。
 
 - **做法**：新增 `memory recall <query>` subcommand，同時搜尋 memory/ 和 wiki/。按 keyword 頻率排序，輸出 compiled truth 摘要。把 brain-first lookup 從「只 grep memory/」擴展到「查整個 brain（memory + wiki）」。
 - **PR**：marvin-69-jpg/agent-memory-research#12
-- **觀察**：剛實作，待後續 session 觀察是否被使用
+- **觀察（2026-04-22）**：UserPromptSubmit hook 每則訊息注入的提醒（「先查 memory/ AND wiki/」）是目前 brain-first 的主要執行路徑，不是 `memory recall` CLI。CLI 在手動 `memory improve` 中有被呼叫，但 session 內的 ad-hoc brain-first query 仍以 grep 為主。**結論：CLI 實作了對的功能，但 hook 比 CLI 更可靠，因為 hook 是每則訊息都強制觸發；CLI 適合使用者主動問「之前說過什麼」時的精準搜尋**。
 
 ### 2026-04-13 — UserPromptSubmit Hook：每則訊息注入提醒
 
