@@ -41,4 +41,4 @@ tags: [harness, architecture, context]
 
 ## Related
 
-[[agent-harness]] [[context-engineering]] [[context-fragment]] [[thin-harness-fat-skills]] [[scaffolding-lifecycle]] [[aaron-levie]] [[philipp-schmid]] [[meta-harness]] [[context-rot]] [[mece-resolver]]
+[[agent-harness]] [[context-engineering]] [[context-fragment]] [[thin-harness-fat-skills]] [[scaffolding-lifecycle]] [[aaron-levie]] [[philipp-schmid]] [[meta-harness]] [[context-rot]] [[mece-resolver]] [[experience-compression-spectrum]]

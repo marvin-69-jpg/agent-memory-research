@@ -46,4 +46,4 @@ Three are complementary — none subsumes the others.
 
 ## Related
 
-[[memory-staleness]] [[ssgm]] [[reconsolidation]] [[a-mem]] [[d-mem]] [[memory-failure-modes]] [[memory-evaluation]] [[autoreason]] [[agent-memory]] [[deltamem]] [[refinement-regime]] [[apex-mem]]
+[[memory-staleness]] [[ssgm]] [[reconsolidation]] [[a-mem]] [[d-mem]] [[memory-failure-modes]] [[memory-evaluation]] [[autoreason]] [[agent-memory]] [[deltamem]] [[refinement-regime]] [[apex-mem]] [[experience-compression-spectrum]]

@@ -2,6 +2,16 @@
 
 > Append-only record of all wiki operations.
 
+## [2026-04-23] research | Experience Compression Spectrum
+
+- gap_type: research-gap（全新主題，統一 memory/skill/rule 的壓縮框架）
+- Sources: raw/zhang-experience-compression-spectrum.md (arxiv 2604.15877), raw/zhou-externalization-llm-agents.md (arxiv 2604.08224)
+- Created: wiki/experience-compression-spectrum.md
+- Updated: wiki/thin-harness-fat-skills.md, wiki/compiled-truth-pattern.md, wiki/harness-engineering.md, wiki/agent-memory.md (backlinks), index.md, log.md
+- Report: reports/2026-04-23-experience-compression-spectrum.md
+- Threads: reports/threads/2026-04-23-daily.md
+- 核心發現：memory/skill/rule 是 5-20×/50-500×/1000×+ 的壓縮連續體；無系統能自動跨層提升知識（"missing diagonal"）
+
 ## [2026-04-21] research | Retrieval Completeness — TA-Mem + MemR3
 
 - gap_type: single-source（現有 apex-mem 頁面缺 completeness 視角；stitch 缺後續研究）

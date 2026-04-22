@@ -15,6 +15,7 @@
 | [[wiki/apex-mem\|APEX-MEM]] | Amazon AGI append-only temporal property graph，retrieval-time resolution | product, memory, architecture, retrieval, governance | 2026-04-20 |
 | [[wiki/ta-mem\|TA-Mem]] | Tool-augmented autonomous retrieval：write-time enrichment + adaptive tool selection，temporal F1 最高 | product, memory, retrieval, architecture | 2026-04-21 |
 | [[wiki/memr3\|MemR3]] | Reflective reasoning retrieval：explicit gap tracking loop，+7.29% on LoCoMo，plug-in 架構 | product, memory, retrieval, architecture | 2026-04-21 |
+| [[wiki/experience-compression-spectrum\|Experience Compression Spectrum]] | Memory/Skill/Rule 統一框架：四層壓縮（5-20×/50-500×/1000×+），缺失的對角線（無系統能自動跨層提升知識） | architecture, memory, harness, governance, skill | 2026-04-23 |
 | [[wiki/agent-memory\|Agent Memory]] | Agent 記憶系統，三層模型（world/operational/session） | memory, architecture | 2026-04-12 |
 | [[wiki/memory-lock-in\|Memory Lock-in]] | 封閉 harness 造成的記憶鎖定，memory 是最強 lock-in 武器 | lock-in, memory | 2026-04-11 |
 | [[wiki/compounding-memory\|Compounding Memory]] | 記憶複合成長效應，越用越聰明 | memory, architecture | 2026-04-12 |

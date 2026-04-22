@@ -106,4 +106,4 @@ Zhai et al. 的 PASS@(k,T) 分析對 skill-based self-improvement 提出三個�
 
 ## Related
 
-[[asg-si]] [[skillx]] [[skillfoundry]] [[rl-capability-boundary]] [[meta-harness]] [[thin-harness-fat-skills]] [[gbrain]] [[experiential-memory]] [[compounding-memory]] [[procedural-memory]] [[sleep-time-compute]] [[memory-staleness]] [[context-rot]] [[mece-resolver]] [[mstar]] [[empo2]]
+[[asg-si]] [[skillx]] [[skillfoundry]] [[rl-capability-boundary]] [[meta-harness]] [[thin-harness-fat-skills]] [[gbrain]] [[experiential-memory]] [[compounding-memory]] [[procedural-memory]] [[sleep-time-compute]] [[memory-staleness]] [[context-rot]] [[mece-resolver]] [[mstar]] [[empo2]] [[experience-compression-spectrum]]

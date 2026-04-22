@@ -107,4 +107,4 @@ ASG-SI 把 RL fine-tuning 視為 opaque alternative，但 Zhai et al. 2026-04-16
 
 ## Related
 
-[[self-improving-agent]] [[skillx]] [[skillfoundry]] [[meta-harness]] [[ssgm]] [[rl-capability-boundary]] [[procedural-memory]] [[experiential-memory]] [[memory-evaluation]] [[thin-harness-fat-skills]] [[mstar]]
+[[self-improving-agent]] [[skillx]] [[skillfoundry]] [[meta-harness]] [[ssgm]] [[rl-capability-boundary]] [[procedural-memory]] [[experiential-memory]] [[memory-evaluation]] [[thin-harness-fat-skills]] [[mstar]] [[experience-compression-spectrum]]
